@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/Api/">
+    <Project Path="Mona-Logistics-LTD.Api.Web/Mona-Logistics-LTD.Api.Web.csproj" />
+  </Folder>
+  <Folder Name="/Data/">
+    <Project Path="Mona-Logistics-LTD.Data.Common/Mona-Logistics-LTD.Data.Common.csproj" />
+    <Project Path="Mona-Logistics-LTD.Data.Models/Mona-Logistics-LTD.Data.Models.csproj" />
+    <Project Path="Mona-Logistics-LTD.Data/Mona-Logistics-LTD.Data.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="Mona-Logistics-LTD.Services.Common/Mona-Logistics-LTD.Services.Common.csproj" />
+    <Project Path="Mona-Logistics-LTD.Services/Mona-Logistics-LTD.Services.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Mona-Logistics-LTD.Tests.Integration/Mona-Logistics-LTD.Tests.Integration.csproj" />
+    <Project Path="Mona-Logistics-LTD.Tests.Services/Mona-Logistics-LTD.Tests.Services.csproj" />
+  </Folder>
+  <Folder Name="/Web/">
+    <Project Path="Mona-Logistics-LTD.Web.Infrastructure/Mona-Logistics-LTD.Web.Infrastructure.csproj" />
+    <Project Path="Mona-Logistics-LTD.Web.ViewModels/Mona-Logistics-LTD.Web.ViewModels.csproj" />
+    <Project Path="Mona-Logistics-LTD.Web/Mona-Logistics-LTD.Web.csproj" />
+  </Folder>
+</Solution>

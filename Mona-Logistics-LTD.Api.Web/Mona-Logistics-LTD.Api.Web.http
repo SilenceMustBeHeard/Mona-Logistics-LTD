@@ -1,0 +1,6 @@
+@Mona_Logistics_LTD.Api.Web_HostAddress = http://localhost:5064
+
+GET {{Mona_Logistics_LTD.Api.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
