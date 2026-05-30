@@ -22,11 +22,11 @@ public class AppUser : IdentityUser
     public string? AlternateEmail { get; set; }
 
     // Navigation properties for messages
-    public virtual ICollection<SystemInboxMessage> ReceivedSystemMessages { get; set; }
-        = new HashSet<SystemInboxMessage>();
+    public virtual ICollection<SystemMessage> ReceivedSystemMessages { get; set; }
+        = new HashSet<SystemMessage>();
 
-    public virtual ICollection<SystemInboxMessage> SentSystemMessages { get; set; }
-        = new HashSet<SystemInboxMessage>();
+    public virtual ICollection<SystemMessage> SentSystemMessages { get; set; }
+        = new HashSet<SystemMessage>();
 
     public virtual ICollection<ContactMessage> ReceivedContactMessages { get; set; }
         = new HashSet<ContactMessage>();

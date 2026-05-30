@@ -6,7 +6,7 @@ using System.Text;
 namespace Mona_Logistics_LTD.Data.Models.Messages;
 
 
-public class SystemInboxMessage : BaseMessage
+public class SystemMessage : BaseMessage
 {
     [Required]
     [MinLength(5, ErrorMessage = "Title must be at least 5 characters long.")]

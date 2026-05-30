@@ -16,10 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Repositories\Implementations\" />
     <Folder Include="Seeding\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mona-Logistics-LTD.Data.Common\Mona-Logistics-LTD.Data.Common.csproj" />
+    <ProjectReference Include="..\Mona-Logistics-LTD.Data.Models\Mona-Logistics-LTD.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>
