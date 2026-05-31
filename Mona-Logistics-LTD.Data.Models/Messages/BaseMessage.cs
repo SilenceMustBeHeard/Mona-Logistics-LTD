@@ -11,7 +11,7 @@ namespace Mona_Logistics_LTD.Data.Models.Messages;
 public abstract class BaseMessage : BaseDeletableEntity
 {
     [Required]
-    public required string ReceiverId { get; set; }
+    public  string ReceiverId { get; set; }
 
     public string? SenderId { get; set; }
 
@@ -23,7 +23,7 @@ public abstract class BaseMessage : BaseDeletableEntity
 
     // Navigation properties - using required keyword (C# 11+)
     [Required]
-    public virtual required AppUser Receiver { get; set; }
+    public virtual  AppUser Receiver { get; set; } = null!;
 
     public virtual AppUser? Sender { get; set; }
 }
