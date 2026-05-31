@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.CRUD;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Repositories.Implementations.Base;
 

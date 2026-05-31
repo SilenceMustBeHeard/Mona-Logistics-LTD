@@ -22,8 +22,4 @@ public class ContactMessageRepository
          .Where(m => m.ReceiverId == adminId)
          .OrderByDescending(m => m.CreatedAt)
          .ToListAsync();
-
 }
-
-
-
