@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Mona_Logistics_LTD.Data.Models.Loads;
 using Mona_Logistics_LTD.Data.Models.Messages;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,10 @@ public class AppUser : IdentityUser
 
     public string? AlternateEmail { get; set; }
 
+
+
+    public ICollection<Shipment> Shipments { get; set; }
+    = new HashSet<Shipment>();
     // Navigation properties for messages
     public virtual ICollection<SystemMessage> ReceivedSystemMessages { get; set; }
         = new HashSet<SystemMessage>();
