@@ -7,9 +7,8 @@ using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Loads;
 
-public class Shipment
+public class Shipment : BaseDeletableEntity
 {
-    public Guid Id { get; set; }
 
     public string TrackingNumber { get; set; } = null!;
 

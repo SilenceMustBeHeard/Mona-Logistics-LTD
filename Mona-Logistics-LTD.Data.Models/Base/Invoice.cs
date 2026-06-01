@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Base;
 
-public class Invoice
+public class Invoice : BaseDeletableEntity
 {
-    public Guid Id { get; set; }
+    
 
     public decimal Amount { get; set; }
 
