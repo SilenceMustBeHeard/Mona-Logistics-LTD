@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Models.Base;
+using Mona_Logistics_LTD.Data.Models.Loads;
 using Mona_Logistics_LTD.Data.Models.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Mona_Logistics_LTD.Data.Models.Routes;
+using Mona_Logistics_LTD.Data.Models.Trucks;
 
 namespace Mona_Logistics_LTD.Data;
 
@@ -15,19 +15,35 @@ public class AppDbContext : IdentityDbContext<AppUser>
     {
     }
 
-    public virtual DbSet<ContactMessage> ContactMessages { get; set; } = null!;
-    public virtual DbSet<SystemMessage> SystemMessages { get; set; } = null!;
+    public DbSet<AppUser> AppUsers => Set<AppUser>();
+
+    public DbSet<Shipment> Shipments { get; set; }
+
+    public DbSet<Cargo> Cargos { get; set; }
+
+    public DbSet<Truck> Trucks { get; set; }
+
+    public DbSet<Driver> Drivers { get; set; }
+
+    public DbSet<Route> Routes { get; set; }
+
+    public DbSet<Trip> Trips { get; set; }
+
+    public DbSet<Invoice> Invoices { get; set; }
+
+    public DbSet<ContactMessage> ContactMessages { get; set; }
+
+    public DbSet<SystemMessage> SystemMessages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
-        // Apply all configurations automatically
         builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-
-        // Global soft delete filter
 
         builder.Entity<ContactMessage>().HasQueryFilter(m => !m.IsDeleted);
         builder.Entity<SystemMessage>().HasQueryFilter(m => !m.IsDeleted);
+        builder.Entity<Shipment>().HasQueryFilter(s => !s.IsDeleted);
+        builder.Entity<Invoice>().HasQueryFilter(i => !i.IsDeleted);
     }
 }
