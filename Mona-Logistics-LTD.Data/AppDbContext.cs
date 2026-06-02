@@ -43,6 +43,7 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
         builder.Entity<ContactMessage>().HasQueryFilter(m => !m.IsDeleted);
         builder.Entity<SystemMessage>().HasQueryFilter(m => !m.IsDeleted);
+
         builder.Entity<Shipment>().HasQueryFilter(s => !s.IsDeleted);
         builder.Entity<Invoice>().HasQueryFilter(i => !i.IsDeleted);
     }

@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Mona-Logistics-LTD.Data\Mona-Logistics-LTD.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>
