@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mona_Logistics_LTD.Services.User.Trucks;
+namespace Mona_Logistics_LTD.Services.User.Interfaces.Trucks;
 
 public interface IDriverService
 {
