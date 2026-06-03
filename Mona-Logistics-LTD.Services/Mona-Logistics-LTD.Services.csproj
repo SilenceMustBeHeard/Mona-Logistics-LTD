@@ -12,4 +12,10 @@
     <PackageReference Include="FluentValidation" Version="12.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="User\Base\" />
+    <Folder Include="User\Account\" />
+  </ItemGroup>
+
 </Project>
