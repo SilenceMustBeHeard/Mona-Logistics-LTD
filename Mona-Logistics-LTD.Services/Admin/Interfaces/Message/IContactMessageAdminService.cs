@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mona_Logistics_LTD.Services.Core.Service.Admin.Interfaces.Message;
+namespace Mona_Logistics_LTD.Services.Admin.Interfaces.Message;
 
-public interface IContactMessageService
+public interface IContactMessageAdminService
 {
     Task<List<ContactMessageDetailsViewModel>> GetAdminMessagesAsync(string adminId);
 
