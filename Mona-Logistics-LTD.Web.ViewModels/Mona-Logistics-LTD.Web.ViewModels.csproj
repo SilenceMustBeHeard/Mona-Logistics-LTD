@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mona-Logistics-LTD.Data.Common\Mona-Logistics-LTD.Data.Common.csproj" />
+  </ItemGroup>
+
 </Project>
