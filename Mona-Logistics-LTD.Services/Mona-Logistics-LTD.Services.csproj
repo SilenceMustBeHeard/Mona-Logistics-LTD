@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="User\Implementations\Account\" />
     <Folder Include="User\Interfaces\Account\" />
   </ItemGroup>
