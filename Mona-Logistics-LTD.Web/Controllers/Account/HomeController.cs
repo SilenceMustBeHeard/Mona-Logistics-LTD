@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mona_Logistics_LTD.Web.Models;
 using System.Diagnostics;
 
-namespace Mona_Logistics_LTD.Web.Controllers;
+namespace Mona_Logistics_LTD.Web.Controllers.Account;
 
 public class HomeController : Controller
 {

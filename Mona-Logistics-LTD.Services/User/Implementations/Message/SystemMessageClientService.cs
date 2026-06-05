@@ -1,10 +1,10 @@
 ﻿using Mona_Logistics_LTD.Data.Repositories.Interfaces.Messages;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
-using Mona_Logistics_LTD.Web.ViewModels.User.Account;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
 
 namespace Mona_Logistics_LTD.Services.User.Implementations.Message;
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Mona_Logistics_LTD.Data.Common.Enums;
 
-namespace Mona_Logistics_LTD.Web.ViewModels.User.Account;
+namespace Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
 
 
 public class SystemMessageViewModel

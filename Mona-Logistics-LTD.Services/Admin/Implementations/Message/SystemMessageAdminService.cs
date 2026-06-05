@@ -3,9 +3,9 @@ using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Account;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Messages;
 using Mona_Logistics_LTD.Services.Admin.Interfaces.Message;
-using Mona_Logistics_LTD.Web.ViewModels.User.Account;
 using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Models.Messages;
+using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
 
 namespace Mona_Logistics_LTD.Services.Admin.Implementations.Message;
 
