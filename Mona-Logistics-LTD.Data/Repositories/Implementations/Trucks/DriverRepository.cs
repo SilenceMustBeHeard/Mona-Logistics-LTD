@@ -14,5 +14,6 @@ public class DriverRepository : RepositoryAsync<Driver, Guid>, IDriverRepository
         : base(context)
     {
         _context = context;
-        {
+    }
+
 }

@@ -15,5 +15,5 @@ public class ShipmentRepository : RepositoryAsync<Shipment, Guid>, IShipmentRepo
     {
         _context = context;
     }
-{ 
+
 }

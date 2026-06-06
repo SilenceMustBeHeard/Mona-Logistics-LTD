@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
+using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
 
 namespace Mona_Logistics_LTD.Web.Controllers.Message;
 

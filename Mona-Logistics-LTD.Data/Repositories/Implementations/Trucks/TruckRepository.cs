@@ -15,5 +15,5 @@ public class TruckRepository : RepositoryAsync<Truck, Guid>, ITruckRepository
     {
         _context = context;
     }
-{
+
 }
