@@ -13,11 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="User\Implementations\Account\" />
-    <Folder Include="User\Interfaces\Account\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Mona-Logistics-LTD.Data.Common\Mona-Logistics-LTD.Data.Common.csproj" />
     <ProjectReference Include="..\Mona-Logistics-LTD.Data.Models\Mona-Logistics-LTD.Data.Models.csproj" />
     <ProjectReference Include="..\Mona-Logistics-LTD.Data\Mona-Logistics-LTD.Data.csproj" />
