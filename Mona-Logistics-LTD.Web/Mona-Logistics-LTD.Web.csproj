@@ -23,6 +23,7 @@
     <ProjectReference Include="..\Mona-Logistics-LTD.Data\Mona-Logistics-LTD.Data.csproj" />
     <ProjectReference Include="..\Mona-Logistics-LTD.Services.Common\Mona-Logistics-LTD.Services.Common.csproj" />
     <ProjectReference Include="..\Mona-Logistics-LTD.Services\Mona-Logistics-LTD.Services.csproj" />
+    <ProjectReference Include="..\Mona-Logistics-LTD.Web.Infrastructure\Mona-Logistics-LTD.Web.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
