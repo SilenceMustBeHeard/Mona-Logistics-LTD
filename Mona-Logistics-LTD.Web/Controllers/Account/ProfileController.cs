@@ -55,7 +55,7 @@ public class ProfileController : Controller
             return RedirectToAction("Login", "Account");
         }
 
-        var viewModel = await _.GetMessageDetailsAsync(id, user.Id);
+        var viewModel = await _systemMessageClientService.GetMessageDetailsAsync(id, user.Id);
 
         if (viewModel == null)
         {
