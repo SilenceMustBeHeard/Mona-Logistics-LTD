@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "Jean",
+    "lastName": "Smith",
+    "phoneNumber": "+1234567890",
+    "licenseNumber": "BG123456789",
+    "licenseExpiryDate": "2028-12-31T00:00:00",
+    "isAvailable": true
+  },
+  {
+    "firstName": "Sam",
+    "lastName": "Ferguson",
+    "phoneNumber": "+1234567891",
+    "licenseNumber": "BG987654321",
+    "licenseExpiryDate": "2027-06-15T00:00:00",
+    "isAvailable": true
+  },
+  {
+    "firstName": "Peter",
+    "lastName": "Johnson",
+    "phoneNumber": "+1234567892",
+    "licenseNumber": "BG456789123",
+    "licenseExpiryDate": "2026-03-20T00:00:00",
+    "isAvailable": false
+  }
+]

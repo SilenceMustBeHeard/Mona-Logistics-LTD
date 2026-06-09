@@ -1,0 +1,29 @@
+[
+  {
+    "registrationNumber": "CA1234AB",
+    "brand": "Volvo",
+    "model": "FH16",
+    "vehicleType": 0,
+    "maxWeightKg": 26000,
+    "maxVolumeM3": 90,
+    "isAvailable": true
+  },
+  {
+    "registrationNumber": "CA5678CD",
+    "brand": "Mercedes-Benz",
+    "model": "Actros 2545",
+    "vehicleType": 0,
+    "maxWeightKg": 25000,
+    "maxVolumeM3": 85,
+    "isAvailable": true
+  },
+  {
+    "registrationNumber": "CA9012EF",
+    "brand": "Scania",
+    "model": "R500",
+    "vehicleType": 1,
+    "maxWeightKg": 22000,
+    "maxVolumeM3": 70,
+    "isAvailable": false
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "origin": "Sofia",
+    "destination": "Plovdiv",
+    "distanceKm": 150
+  },
+  {
+    "origin": "Sofia",
+    "destination": "Varna",
+    "distanceKm": 470
+  },
+  {
+    "origin": "Plovdiv",
+    "destination": "Burgas",
+    "distanceKm": 280
+  },
+  {
+    "origin": "Sofia",
+    "destination": "Burgas",
+    "distanceKm": 390
+  },
+  {
+    "origin": "Varna",
+    "destination": "Munich",
+    "distanceKm": 2000 
+  }
+]
