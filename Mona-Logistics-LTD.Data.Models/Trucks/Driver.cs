@@ -1,13 +1,14 @@
-﻿using Mona_Logistics_LTD.Data.Models.Routes;
+﻿using Mona_Logistics_LTD.Data.Models.Base;
+using Mona_Logistics_LTD.Data.Models.Routes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Trucks;
 
-public class Driver
+public class Driver : BaseDeletableEntity
 {
-    public Guid Id { get; set; }
+    
 
     public string FirstName { get; set; } = null!;
 

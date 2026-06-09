@@ -51,7 +51,7 @@ public class Program
             options.IdleTimeout = TimeSpan.FromMinutes(30);
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
-            options.Cookie.Name = "GruersShop.Session";
+            options.Cookie.Name = "Mona_Logistics_LTD.Session";
         });
 
         builder.Services.AddHttpContextAccessor();

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Mona_Logistics_LTD.Data.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Loads;
 
-public class Cargo
+public class Cargo : BaseDeletableEntity
 { 
-    public Guid Id { get; set; }
+   
 
     public string Name { get; set; } = null!;
 

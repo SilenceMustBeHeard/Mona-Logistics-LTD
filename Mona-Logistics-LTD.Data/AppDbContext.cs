@@ -17,23 +17,23 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
     public DbSet<AppUser> AppUsers => Set<AppUser>();
 
-    public DbSet<Shipment> Shipments { get; set; }
+    public DbSet<Shipment> Shipments { get; set; } = null!;
 
-    public DbSet<Cargo> Cargos { get; set; }
+    public DbSet<Cargo> Cargos { get; set; } = null!;
 
-    public DbSet<Truck> Trucks { get; set; }
+    public DbSet<Truck> Trucks { get; set; } = null!;
 
-    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Driver> Drivers { get; set; } = null!;
 
-    public DbSet<Route> Routes { get; set; }
+    public DbSet<Route> Routes { get; set; } = null!;
 
-    public DbSet<Trip> Trips { get; set; }
+    public DbSet<Trip> Trips { get; set; } = null!;
 
-    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<Invoice> Invoices { get; set; } = null!;
 
-    public DbSet<ContactMessage> ContactMessages { get; set; }
+    public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
 
-    public DbSet<SystemMessage> SystemMessages { get; set; }
+    public DbSet<SystemMessage> SystemMessages { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -44,7 +44,14 @@ public class AppDbContext : IdentityDbContext<AppUser>
         builder.Entity<ContactMessage>().HasQueryFilter(m => !m.IsDeleted);
         builder.Entity<SystemMessage>().HasQueryFilter(m => !m.IsDeleted);
 
-        builder.Entity<Shipment>().HasQueryFilter(s => !s.IsDeleted);
         builder.Entity<Invoice>().HasQueryFilter(i => !i.IsDeleted);
+
+        builder.Entity<Trip>().HasQueryFilter(t => !t.IsDeleted);
+        builder.Entity<Route>().HasQueryFilter(r => !r.IsDeleted);
+        builder.Entity<Shipment>().HasQueryFilter(s => !s.IsDeleted);
+        builder.Entity<Cargo>().HasQueryFilter(c => !c.IsDeleted);
+
+        builder.Entity<Truck>().HasQueryFilter(t => !t.IsDeleted);
+        builder.Entity<Driver>().HasQueryFilter(d => !d.IsDeleted);
     }
 }

@@ -102,10 +102,12 @@ namespace Mona_Logistics_LTD.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -142,10 +144,12 @@ namespace Mona_Logistics_LTD.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -183,6 +187,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -281,9 +288,21 @@ namespace Mona_Logistics_LTD.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsFragile")
                         .HasColumnType("bit");
@@ -297,6 +316,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
 
                     b.Property<Guid>("ShipmentId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("VolumeM3")
                         .HasColumnType("float");
@@ -509,6 +531,15 @@ namespace Mona_Logistics_LTD.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Destination")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -516,9 +547,15 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<double>("DistanceKm")
                         .HasColumnType("float");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Origin")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -534,11 +571,23 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<DateTime?>("ArrivalDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("DriverId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("RouteId")
                         .HasColumnType("uniqueidentifier");
@@ -548,6 +597,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
 
                     b.Property<Guid>("TruckId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -568,11 +620,23 @@ namespace Mona_Logistics_LTD.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
@@ -589,6 +653,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -608,7 +675,19 @@ namespace Mona_Logistics_LTD.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<double>("MaxVolumeM3")
@@ -624,6 +703,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<string>("RegistrationNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("VehicleType")
                         .HasColumnType("int");

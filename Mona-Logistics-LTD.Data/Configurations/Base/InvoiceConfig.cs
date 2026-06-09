@@ -12,5 +12,8 @@ public class InvoiceConfig : IEntityTypeConfiguration<Invoice>
             .WithOne()
             .HasForeignKey<Invoice>(i => i.ShipmentId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        // unique index on ShipmentId to ensure one-to-one relationship
+        builder.HasIndex(i => i.ShipmentId).IsUnique();
     }
 }

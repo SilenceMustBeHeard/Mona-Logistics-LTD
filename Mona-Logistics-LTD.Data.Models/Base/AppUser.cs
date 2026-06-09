@@ -22,7 +22,7 @@ public class AppUser : IdentityUser
 
     public string? AlternateEmail { get; set; }
 
-
+    public bool IsActive { get; set; } = true;
 
     public ICollection<Shipment> Shipments { get; set; }
     = new HashSet<Shipment>();
