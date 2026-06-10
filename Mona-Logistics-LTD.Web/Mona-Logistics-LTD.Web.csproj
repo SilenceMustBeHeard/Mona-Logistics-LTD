@@ -27,8 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Views\Error\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
 
 </Project>
