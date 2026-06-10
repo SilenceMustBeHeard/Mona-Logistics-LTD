@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Services.Admin.Interfaces.Message;
@@ -6,6 +7,8 @@ using Mona_Logistics_LTD.Web.ViewModels.Admin.Messages;
 
 namespace Mona_Logistics_LTD.Web.Areas.Admin.Controllers.Message;
 
+[Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class ContactMessageAdminController : Controller
 {
     private readonly IContactMessageAdminService _contactMessageService;
