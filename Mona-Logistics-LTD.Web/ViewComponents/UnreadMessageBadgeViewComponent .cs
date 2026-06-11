@@ -1,9 +1,10 @@
-﻿using GruersShop.Services.Core.Service.Interfaces.Messages;
+﻿
 using Microsoft.AspNetCore.Mvc;
+using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using System.Security.Claims;
 
 
-namespace GruersShop.Web.ViewComponents;
+namespace Mona_Logistics_LTD.Web.ViewComponents;
 
 public class UnreadMessageBadgeViewComponent : ViewComponent
 {

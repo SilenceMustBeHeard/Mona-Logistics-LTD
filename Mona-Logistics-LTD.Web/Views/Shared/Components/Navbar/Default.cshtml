@@ -1,11 +1,10 @@
-﻿﻿
-@model Mona_Logistics_LTD.Web.ViewModels.NavbarButtonsViewModel
+﻿@model Mona_Logistics_LTD.Web.ViewModels.NavbarButtonsViewModel
 
-<div class="nav-links d-flex gap-4">
+<div class="nav-links d-flex gap-3">
     <a class="nav-link-logistics" asp-controller="Home" asp-action="Index">
         <i class="bi bi-house-door me-1"></i> Home
     </a>
-    
+
     @if (Model.IsLoggedIn)
     {
         @if (Model.IsAdmin)
@@ -19,19 +18,25 @@
             <a class="nav-link-logistics" asp-area="Admin" asp-controller="TruckManagement" asp-action="Index">
                 <i class="bi bi-truck me-1"></i> Fleet
             </a>
+            <a class="nav-link-logistics" asp-area="Admin" asp-controller="SystemMessage" asp-action="Index">
+                <i class="bi bi-megaphone me-1"></i> Broadcast
+            </a>
         }
         else if (Model.IsManager)
         {
             <a class="nav-link-logistics" asp-area="Manager" asp-controller="Dashboard" asp-action="Index">
                 <i class="bi bi-clipboard-data me-1"></i> Dashboard
             </a>
-            <a class="nav-link-logistics" asp-controller="Shipment" asp-action="Index">
+            <a class="nav-link-logistics" asp-area="Manager" asp-controller="ShipmentManagement" asp-action="Index">
                 <i class="bi bi-box-seam me-1"></i> Shipments
+            </a>
+            <a class="nav-link-logistics" asp-area="Manager" asp-controller="DriverManagement" asp-action="Index">
+                <i class="bi bi-person-badge me-1"></i> Drivers
             </a>
         }
         else
         {
-            <a class="nav-link-logistics position-relative" asp-controller="Shipment" asp-action="MyShipments">
+            <a class="nav-link-logistics" asp-controller="Shipment" asp-action="MyShipments">
                 <i class="bi bi-box-seam me-1"></i> My Shipments
             </a>
             <a class="nav-link-logistics position-relative" asp-controller="Messages" asp-action="Inbox">
@@ -42,7 +47,7 @@
                 }
             </a>
         }
-        
+
         <a class="nav-link-logistics" asp-controller="Track" asp-action="Index">
             <i class="bi bi-geo-alt me-1"></i> Track
         </a>
@@ -53,7 +58,7 @@
             <i class="bi bi-info-circle me-1"></i> About Us
         </a>
         <a class="nav-link-logistics" asp-controller="Services" asp-action="Index">
-            <i class="bi bi-gear me-1"></i> Services
+            <i class="bi bi-truck me-1"></i> Services
         </a>
         <a class="nav-link-logistics" asp-controller="Contact" asp-action="Index">
             <i class="bi bi-envelope me-1"></i> Contact

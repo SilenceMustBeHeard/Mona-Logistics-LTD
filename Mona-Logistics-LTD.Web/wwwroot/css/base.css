@@ -1,3 +1,17 @@
+
+/* IMPORTANT: Remove any default body margins */
+body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Ensure header has no extra space */
+header {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
 /* reset & base */
 * {
     margin: 0;

@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data;
 using Mona_Logistics_LTD.Data.Models.Base;
+using Mona_Logistics_LTD.Data.Repositories.Implementations.UnitOfWork;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Account;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.CRUD;
-using Mona_Logistics_LTD.Data.Repositories.Implementations.UnitOfWork;
-using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
 using Mona_Logistics_LTD.Services.User.Implementations.Account;
-using Mona_Logistics_LTD.Services.User.Interfaces.Account;
-using SendGrid;
-using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Services.User.Implementations.Message;
+using Mona_Logistics_LTD.Services.User.Interfaces.Account;
+using Mona_Logistics_LTD.Services.User.Interfaces.Message;
+using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
+using Mona_Logistics_LTD.Web.ViewComponents;
+using SendGrid;
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -55,6 +56,13 @@ public class Program
         });
 
         builder.Services.AddHttpContextAccessor();
+
+        // Register ViewComponents
+        builder.Services.AddScoped<NavbarViewComponent>();
+        builder.Services.AddScoped<AccountMenuViewComponent>();
+        builder.Services.AddScoped<UnreadMessageBadgeViewComponent>();
+
+
 
         builder.Services.RegisterRepositories(typeof(IAppUserRepository).Assembly);
         builder.Services.RegisterServices(typeof(IAccountService).Assembly);
