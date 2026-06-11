@@ -1,130 +1,105 @@
 ﻿<!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mona Logistics LTD</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap Icons  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Theme styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout/navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/buttons.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/badges.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/cards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base/typography.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base/variables.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/themes/dark.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/themes/light.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animations.css" asp-append-version="true" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/animations.css" asp-append-version="true">
-
-    @await RenderSectionAsync("Styles", required: false)
 </head>
-<body class="page-transition">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="menu-toggle">
-                <span>☰</span>
-            </div>
+<body>
+    <canvas id="roadCanvas"></canvas>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark py-2">
+            <div class="container">
+                <!-- Logo / Brand -->
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-truck fs-2 text-accent"></i>
+                        <div>
+                            <span class="brand-main">MONA</span>
+                            <span class="brand-subtitle">LOGISTICS LTD</span>
+                        </div>
+                    </div>
+                </a>
 
-            <a class="navbar-brand" href="/">
-              
-                <div>
-                    <div class="logo-text">MONA LOGISTICS</div>
-                    <div class="logo-subtitle">DELIVERING SOLUTIONS</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <!-- Center Navigation -->
+                    <div class="mx-auto d-flex justify-content-center">
+                        @await Component.InvokeAsync("Navbar")
+                    </div>
+
+                    <!-- Right Side - Account area -->
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="dropdown">
+                            <button class="btn-logistics dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                                <span>Profile</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" style="min-width: 240px;">
+                                @await Component.InvokeAsync("AccountMenu")
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </a>
-
-            <ul class="nav-menu">
-                <li><a class="nav-link" href="/"><i class="bi bi-house-door"></i> Начало</a></li>
-                <li><a class="nav-link" href="/Shipment"><i class="bi bi-box-seam"></i> Пратки</a></li>
-                <li><a class="nav-link" href="/Truck"><i class="bi bi-truck"></i> Камиони</a></li>
-                <li><a class="nav-link" href="/Driver"><i class="bi bi-person-badge"></i> Шофьори</a></li>
-                <li><a class="nav-link" href="/Contact"><i class="bi bi-envelope"></i> Контакти</a></li>
-            </ul>
-
-            <div class="user-area">
-                @if (User.Identity?.IsAuthenticated == true)
-                {
-                    <span class="welcome-text">Здравей, <span class="user-name">@User.Identity.Name</span>!</span>
-
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a href="/Admin/Dashboard" class="btn-logout" style="background: #d4a017;">Admin</a>
-                    }
-
-                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="logout-form">
-                        <button type="submit" class="btn-logout">Изход <i class="bi bi-box-arrow-right"></i></button>
-                    </form>
-                }
-                else
-                {
-                    <a href="/Identity/Account/Login" class="btn-login">Вход <i class="bi bi-box-arrow-in-right"></i></a>
-                    <a href="/Identity/Account/Register" class="btn-register">Регистрация</a>
-                }
             </div>
-        </div>
-    </nav>
+        </nav>
+
+        <!-- Toast Container -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100"></div>
+    </header>
 
     <!-- Main Content -->
-    <main role="main" class="slide-up">
-        <div class="container">
-            @if (TempData["Success"] != null)
-            {
-                <div class="alert alert-success">
-                    <i class="bi bi-check-circle-fill"></i>
-                    @TempData["Success"]
-                </div>
-            }
-
-            @if (TempData["Error"] != null)
-            {
-                <div class="alert alert-danger">
-                    <i class="bi bi-exclamation-triangle-fill"></i>
-                    @TempData["Error"]
-                </div>
-            }
-
+    <main class="main-content">
+        <div class="container py-4">
             @RenderBody()
         </div>
     </main>
 
     <!-- Footer -->
-    <footer style="background: var(--primary-dark); color: white; margin-top: 60px; padding: 40px 0 20px;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
-                <div>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                        <span style="font-size: 28px;">🚛</span>
-                        <h3 style="color: var(--secondary);">MONA LOGISTICS</h3>
-                    </div>
-                    <p style="opacity: 0.8;">Доставяме решения. движим бизнеса напред.</p>
-                </div>
-                <div>
-                    <h4 style="color: var(--secondary); margin-bottom: 15px;">Бързи връзки</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="/" style="color: white; text-decoration: none; opacity: 0.8;">Начало</a></li>
-                        <li><a href="/Shipment" style="color: white; text-decoration: none; opacity: 0.8;">Пратки</a></li>
-                        <li><a href="/Contact" style="color: white; text-decoration: none; opacity: 0.8;">Контакти</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: var(--secondary); margin-bottom: 15px;">Контакти</h4>
-                    <p><i class="bi bi-geo-alt-fill"></i> София, България</p>
-                    <p><i class="bi bi-envelope-fill"></i> info@monalogistics.com</p>
-                    <p><i class="bi bi-telephone-fill"></i> +359 888 123 456</p>
-                </div>
-            </div>
-            <hr style="border-color: rgba(255,255,255,0.1);">
-            <p style="text-align: center; opacity: 0.6; margin-top: 20px;">© 2026 MONA LOGISTICS LTD. Всички права запазени.</p>
+    <footer class="footer-logistics mt-auto py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; @DateTime.Now.Year - MONA LOGISTICS LTD</p>
+            <small class="text-muted">"Delivering Solutions. Moving Business Forward."</small>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/toast-notifications.js" asp-append-version="true"></script>
+    <!-- Hidden fields for TempData -->
+    <input type="hidden" id="tempDataSuccess" value="@TempData["Success"]" />
+    <input type="hidden" id="tempDataError" value="@TempData["Error"]" />
+    <input type="hidden" id="tempDataWarning" value="@TempData["Warning"]" />
+    <input type="hidden" id="tempDataInfo" value="@TempData["Info"]" />
 
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/notifications.js" asp-append-version="true"></script>
+    <script src="~/js/toast-notifications.js" asp-append-version="true"></script>
+    <script src="~/js/road-animation.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
