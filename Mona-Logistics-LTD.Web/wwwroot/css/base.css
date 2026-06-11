@@ -1,0 +1,113 @@
+/* reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette - Logistics Theme */
+    --primary-dark: #0a2a3b;
+    --primary: #1a4a6b;
+    --primary-light: #2c6e9e;
+    --secondary: #d4a017;
+    --secondary-dark: #b8860b;
+    --accent: #e63946;
+    --light: #f4f6f9;
+    --dark: #1e2a36;
+    --gray: #6c757d;
+    --success: #2a9d8f;
+    --warning: #e9c46a;
+    --danger: #e63946;
+    /* Typography */
+    --heading-font: 'Poppins', 'Segoe UI', sans-serif;
+    --body-font: 'Inter', 'Segoe UI', sans-serif;
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+    --shadow-xl: 0 16px 32px rgba(0,0,0,0.2);
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    /* Container */
+    --container-width: 1280px;
+    --header-height: 80px;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+    .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+.btn-secondary {
+    background: var(--secondary);
+    color: var(--dark);
+}
+
+    .btn-secondary:hover {
+        background: var(--secondary-dark);
+        transform: translateY(-2px);
+    }
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}

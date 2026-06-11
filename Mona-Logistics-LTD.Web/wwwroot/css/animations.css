@@ -1,0 +1,147 @@
+/* Page Transition - Highway Navigation */
+.page-transition {
+    animation: highwayEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes highwayEnter {
+    0% {
+        opacity: 0;
+        transform: translateX(100px) rotateY(15deg);
+        filter: blur(8px);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(-20px) rotateY(-5deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Navigation turn animation (завои) */
+.nav-turn {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+    .nav-turn:hover {
+        transform: translateX(8px) translateY(-2px);
+        letter-spacing: 1px;
+    }
+
+/* Truck moving on load */
+@keyframes truckMove {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Road line animation */
+.road-line {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: repeating-linear-gradient( 90deg, var(--secondary) 0px, var(--secondary) 40px, transparent 40px, transparent 80px );
+    z-index: 1001;
+    animation: roadMove 1s linear infinite;
+}
+
+@keyframes roadMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 80px 0;
+    }
+}
+
+/* Hero section animation */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.2), transparent);
+        animation: shine 3s infinite;
+    }
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Loader animation */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--light);
+    border-top: 3px solid var(--secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Slide in from bottom */
+.slide-up {
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse effect for notifications */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.notification-badge {
+    animation: pulse 1.5s infinite;
+}
