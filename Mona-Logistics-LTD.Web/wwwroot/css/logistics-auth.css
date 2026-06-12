@@ -1,0 +1,94 @@
+/* Logistics Auth Pages */
+.logistics-card {
+    background: var(--logistics-primary-dark);
+    border: 1px solid rgba(212, 160, 23, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.login-icon, .confirmation-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(212, 160, 23, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 28px;
+}
+
+.accent-line {
+    width: 48px;
+    height: 2px;
+    background: var(--logistics-accent);
+    margin: 1rem auto;
+}
+
+.logistics-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+    .logistics-input:focus {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--logistics-accent);
+        box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+        color: white;
+    }
+
+    .logistics-input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+.btn-logistics-primary {
+    background: var(--logistics-accent);
+    color: var(--logistics-primary-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+    .btn-logistics-primary:hover {
+        background: var(--logistics-accent-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(212, 160, 23, 0.3);
+        color: var(--logistics-primary-dark);
+    }
+
+.text-link {
+    color: var(--logistics-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .text-link:hover {
+        color: var(--logistics-accent-dark);
+        text-decoration: underline;
+    }
+
+/* Form validation */
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #ff8a8a;
+    border-radius: 8px;
+}
+
+.text-danger {
+    color: #ff8a8a !important;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .logistics-card {
+        padding: 1.5rem;
+    }
+}
