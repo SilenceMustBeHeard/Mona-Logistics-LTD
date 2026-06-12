@@ -1,0 +1,300 @@
+/* About Page Styles */
+.about-hero {
+    background: linear-gradient(135deg, var(--logistics-primary-dark) 0%, var(--logistics-primary) 100%);
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.about-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.about-hero-line {
+    width: 60px;
+    height: 3px;
+    background: var(--logistics-accent);
+    margin: 0 auto 20px;
+}
+
+.about-hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section Common */
+.about-section {
+    padding: 60px 0;
+}
+
+.section-tag {
+    color: var(--logistics-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.section-line {
+    width: 50px;
+    height: 2px;
+    background: var(--logistics-accent);
+    margin-bottom: 25px;
+}
+
+.section-text {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Stats Grid */
+.about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    background: rgba(212, 160, 23, 0.05);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--logistics-accent);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mission & Vision */
+.mission-section {
+    padding: 60px 0;
+    background: rgba(212, 160, 23, 0.03);
+}
+
+.mission-card {
+    background: var(--logistics-primary-dark);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+    border-radius: 16px;
+    padding: 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .mission-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--logistics-accent);
+    }
+
+.mission-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.mission-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--logistics-accent);
+}
+
+.mission-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* Values Section */
+.values-section {
+    padding: 60px 0;
+}
+
+.value-card {
+    background: var(--logistics-primary-dark);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+    .value-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--logistics-accent);
+    }
+
+.value-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(212, 160, 23, 0.2);
+    margin-bottom: 15px;
+}
+
+.value-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.value-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Team Section */
+.team-section {
+    padding: 60px 0;
+    background: rgba(212, 160, 23, 0.03);
+}
+
+.team-card {
+    background: var(--logistics-primary-dark);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .team-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--logistics-accent);
+    }
+
+.team-photo-placeholder {
+    width: 100px;
+    height: 100px;
+    background: rgba(212, 160, 23, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--logistics-accent);
+}
+
+.team-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.team-position {
+    color: var(--logistics-accent);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.team-bio {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* CTA Section */
+.about-cta {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--logistics-primary) 0%, var(--logistics-primary-dark) 100%);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.cta-content p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-logistics-primary {
+    background: var(--logistics-accent);
+    color: var(--logistics-primary-dark);
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-logistics-primary:hover {
+        background: var(--logistics-accent-dark);
+        transform: translateY(-2px);
+        color: var(--logistics-primary-dark);
+    }
+
+.btn-logistics-outline {
+    border: 1px solid var(--logistics-accent);
+    color: var(--logistics-accent);
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-logistics-outline:hover {
+        background: var(--logistics-accent);
+        color: var(--logistics-primary-dark);
+        transform: translateY(-2px);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .about-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
