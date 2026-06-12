@@ -1,0 +1,58 @@
+﻿@using Mona_Logistics_LTD.Web.ViewModels.Account
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Вход - Mona Logistics";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="logistics-card">
+                <div class="text-center mb-4">
+                    <div class="login-icon">🔐</div>
+                    <h1 class="h3 mb-2">Вход в системата</h1>
+                    <p class="text-muted">Въведете вашите идентификационни данни</p>
+                    <div class="accent-line mx-auto"></div>
+                </div>
+
+                <form asp-action="Login" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label fw-semibold">Имейл адрес</label>
+                        <input asp-for="Email" class="form-control logistics-input" placeholder="office@monalogistics.com" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label fw-semibold">Парола</label>
+                        <input asp-for="Password" type="password" class="form-control logistics-input" placeholder="Вашата парола" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label">Запомни ме</label>
+                    </div>
+
+                    <button type="submit" class="btn-logistics-primary w-100 py-2 mb-3">
+                        Вход
+                    </button>
+
+                    <div class="text-center mt-3">
+                        <a asp-action="ForgotPassword" class="text-link">Забравена парола?</a>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="text-muted small">Нямате акаунт?</span>
+                        <a asp-action="Register" class="text-link ms-1">Регистрация</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
