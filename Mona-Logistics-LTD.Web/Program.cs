@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
 using Mona_Logistics_LTD.Web.ViewComponents;
 using SendGrid;
+using System.Globalization;
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -95,6 +97,33 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
 
+
+        // ========== LOCALIZATION ==========
+        builder.Services.AddLocalization(options =>
+        {
+            options.ResourcesPath = "Resources";
+        });
+
+        builder.Services.AddMvc()
+            .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
+
+        builder.Services.Configure<RequestLocalizationOptions>(options =>
+        {
+            var supportedCultures = new[]
+            {
+        new CultureInfo("bg-BG"),  // Bulgarian
+        new CultureInfo("en-US")   // English
+    };
+
+            options.DefaultRequestCulture = new RequestCulture("bg-BG");
+            options.SupportedCultures = supportedCultures;
+            options.SupportedUICultures = supportedCultures;
+
+            // Cookie provider - saves the user's language preference in a cookie
+            options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+        });
+
         builder.Services.Configure<ApiBehaviorOptions>(options =>
         {
             options.SuppressModelStateInvalidFilter = true;
@@ -141,6 +170,7 @@ public class Program
         });
 
         app.UseRouting();
+        app.UseRequestLocalization();
         app.UseAuthentication();
         app.UseAuthorization();
 
