@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Cms.AspNetCore.JsonLocalizer.Interfaces
+@inject ILocalizer Localizer
+
+<!DOCTYPE html>
 <html lang="bg" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mona Logistics LTD</title>
+    <title>@ViewData["Title"] - @Localizer.GetString("AppTitle").Value</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -20,9 +23,6 @@
     <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/logistics-auth.css" asp-append-version="true" />
-
-   
-
 </head>
 
 <body>
@@ -53,10 +53,13 @@
 
                     <!-- Right Side - Account area -->
                     <div class="d-flex gap-2 align-items-center">
+                        <!-- Language Switcher -->
+                        <partial name="_LanguageSwitcher" />
+
                         <div class="dropdown">
                             <button class="btn-logistics dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
                                 <i class="bi bi-person-circle"></i>
-                                <span>Profile</span>
+                                <span>@Localizer.GetString("Profile").Value</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" style="min-width: 240px;">
                                 @await Component.InvokeAsync("AccountMenu")
@@ -81,8 +84,8 @@
     <!-- Footer -->
     <footer class="footer-logistics mt-auto py-4">
         <div class="container text-center">
-            <p class="mb-0">&copy; @DateTime.Now.Year - MONA LOGISTICS LTD</p>
-            <small class="text-muted">"Delivering Solutions. Moving Business Forward."</small>
+            <p class="mb-0">&copy; @DateTime.Now.Year - @Localizer.GetString("AppTitle").Value</p>
+            <small class="text-muted">@Localizer.GetString("FooterSlogan").Value</small>
         </div>
     </footer>
 

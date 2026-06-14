@@ -1,3 +1,4 @@
+using Cms.AspNetCore.JsonLocalizer.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -64,8 +65,6 @@ public class Program
         builder.Services.AddScoped<AccountMenuViewComponent>();
         builder.Services.AddScoped<UnreadMessageBadgeViewComponent>();
 
-
-
         builder.Services.RegisterRepositories(typeof(IAppUserRepository).Assembly);
         builder.Services.RegisterServices(typeof(IAccountService).Assembly);
 
@@ -73,13 +72,12 @@ public class Program
         builder.Services.AddScoped<IContactMessageClientService, ContactMessageClientService>();
 
         builder.Services.AddScoped<ISystemMessageClientService, SystemMessageClientService>();
-      
+
         builder.Services.AddSingleton(sp =>
         {
             var apiKey = builder.Configuration["SendGrid:ApiKey"];
             if (string.IsNullOrEmpty(apiKey))
             {
-
                 apiKey = builder.Configuration.GetValue<string>("SendGrid:ApiKey");
             }
 
@@ -91,38 +89,37 @@ public class Program
             return new SendGridClient(apiKey);
         });
 
-
         builder.Services.AddScoped<IEmailService, EmailService>();
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddJsonLocalizer(Path.Combine(Directory.GetCurrentDirectory(), "Resources"));
         builder.Services.AddRazorPages();
 
-
         // ========== LOCALIZATION ==========
-    //    builder.Services.AddLocalization(options =>
-    //    {
-    //        options.ResourcesPath = "Resources";
-    //    });
+        builder.Services.AddLocalization(options =>
+        {
+            options.ResourcesPath = "Resources";
+        });
 
-    //    builder.Services.AddMvc()
-    //        .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-    //        .AddDataAnnotationsLocalization();
+        builder.Services.AddMvc()
+            .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
 
-    //    builder.Services.Configure<RequestLocalizationOptions>(options =>
-    //    {
-    //        var supportedCultures = new[]
-    //        {
-    //    new CultureInfo("bg-BG"),  // Bulgarian
-    //    new CultureInfo("en-US")   // English
-    //};
+        builder.Services.Configure<RequestLocalizationOptions>(options =>
+        {
+            var supportedCultures = new[]
+            {
+        new CultureInfo("bg-BG"),  // Bulgarian
+        new CultureInfo("en-US")   // English
+    };
 
-    //        options.DefaultRequestCulture = new RequestCulture("bg-BG");
-    //        options.SupportedCultures = supportedCultures;
-    //        options.SupportedUICultures = supportedCultures;
+            options.DefaultRequestCulture = new RequestCulture("bg-BG");
+            options.SupportedCultures = supportedCultures;
+            options.SupportedUICultures = supportedCultures;
 
-    //        // Cookie provider - saves the user's language preference in a cookie
-    //        options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
-    //    });
+            // Cookie provider - saves the user's language preference in a cookie
+            options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+        });
 
         builder.Services.Configure<ApiBehaviorOptions>(options =>
         {
@@ -170,7 +167,7 @@ public class Program
         });
 
         app.UseRouting();
-        //app.UseRequestLocalization();
+        app.UseRequestLocalization();
         app.UseAuthentication();
         app.UseAuthorization();
 

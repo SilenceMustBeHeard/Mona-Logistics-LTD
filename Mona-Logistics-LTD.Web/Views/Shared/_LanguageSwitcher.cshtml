@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Localization
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var currentCulture = requestCulture?.RequestCulture.UICulture.Name ?? "bg-BG";
+    var isBulgarian = currentCulture == "bg-BG";
+    var isEnglish = currentCulture == "en-US";
+}
+
+<div class="language-switcher">
+    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" data-culture="bg-BG">БГ</a>
+    <span class="lang-separator">|</span>
+    <a href="#" class="lang-link @(isEnglish ? "active" : "")" data-culture="en-US">EN</a>
+</div>
+
+<form id="cultureForm" asp-action="SetLanguage" asp-controller="Home" method="post" style="display: none;">
+    <input type="hidden" name="culture" id="cultureInput" />
+    <input type="hidden" name="returnUrl" id="returnUrlInput" />
+    @Html.AntiForgeryToken()
+</form>
+
+<script>
+    document.querySelectorAll('.lang-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const culture = link.dataset.culture;
+            document.getElementById('cultureInput').value = culture;
+            document.getElementById('returnUrlInput').value = window.location.pathname + window.location.search;
+            document.getElementById('cultureForm').submit();
+        });
+    });
+</script>
+
+<style>
+    .language-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-right: 15px;
+        padding-right: 15px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .lang-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        padding: 2px 4px;
+    }
+
+        .lang-link:hover {
+            color: var(--logistics-accent, #d4a017);
+        }
+
+        .lang-link.active {
+            color: var(--logistics-accent, #d4a017);
+            font-weight: 700;
+        }
+
+    .lang-separator {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.7rem;
+    }
+</style>
