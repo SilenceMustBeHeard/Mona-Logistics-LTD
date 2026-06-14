@@ -70,7 +70,6 @@ public class Program
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IContactMessageClientService, ContactMessageClientService>();
-
         builder.Services.AddScoped<ISystemMessageClientService, SystemMessageClientService>();
 
         builder.Services.AddSingleton(sp =>
@@ -91,33 +90,35 @@ public class Program
 
         builder.Services.AddScoped<IEmailService, EmailService>();
 
-        builder.Services.AddControllersWithViews();
-        builder.Services.AddJsonLocalizer(Path.Combine(Directory.GetCurrentDirectory(), "Resources"));
-        builder.Services.AddRazorPages();
-
-        // ========== LOCALIZATION ==========
+        //  LOCALIZATION 
+        // register localization services
         builder.Services.AddLocalization(options =>
         {
             options.ResourcesPath = "Resources";
         });
 
-        builder.Services.AddMvc()
+        // add JSON Localizer
+        builder.Services.AddJsonLocalizer(Path.Combine(Directory.GetCurrentDirectory(), "Resources"));
+
+        // MVC with localization
+        builder.Services.AddControllersWithViews()
             .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization();
 
+        builder.Services.AddRazorPages();
+
+        // configure RequestLocalizationOptions
         builder.Services.Configure<RequestLocalizationOptions>(options =>
         {
             var supportedCultures = new[]
             {
-        new CultureInfo("bg-BG"),  // Bulgarian
-        new CultureInfo("en-US")   // English
-    };
+                new CultureInfo("bg-BG"),  // Bulgarian
+                new CultureInfo("en-US")   // English
+            };
 
             options.DefaultRequestCulture = new RequestCulture("bg-BG");
             options.SupportedCultures = supportedCultures;
             options.SupportedUICultures = supportedCultures;
-
-            // Cookie provider - saves the user's language preference in a cookie
             options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
         });
 
@@ -135,13 +136,6 @@ public class Program
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             await context.Database.MigrateAsync();
-
-            //await IdentitySeeder.SeedRolesAsync(roleManager);
-            //await IdentitySeeder.SeedAdminAsync(userManager);
-            //await IdentitySeeder.SeedManagerAsync(userManager);
-
-            //if (!await context.Categories.AnyAsync())
-            //    await DbSeeder.SeedAllAsync(context);
         }
 
         var provider = new FileExtensionContentTypeProvider();
@@ -167,12 +161,12 @@ public class Program
         });
 
         app.UseRouting();
+
+        // Important: UseRequestLocalization must be called before UseAuthentication and UseAuthorization
         app.UseRequestLocalization();
         app.UseAuthentication();
         app.UseAuthorization();
-
         app.UseSession();
-        //app.MapControllers();
 
         app.MapGet("/", context =>
         {
