@@ -1,5 +1,3 @@
-using AspNetCore.Localizer.Json.Extensions;
-using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +8,17 @@ using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Data.Repositories.Implementations.UnitOfWork;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Account;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.CRUD;
+using Mona_Logistics_LTD.Services.Localizer.Implementations;
+using Mona_Logistics_LTD.Services.Localizer.Interfaces;
 using Mona_Logistics_LTD.Services.User.Implementations.Account;
 using Mona_Logistics_LTD.Services.User.Implementations.Message;
 using Mona_Logistics_LTD.Services.User.Interfaces.Account;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
+
 using Mona_Logistics_LTD.Web.ViewComponents;
 using SendGrid;
+using System.Globalization;
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -90,26 +92,11 @@ public class Program
 
         builder.Services.AddScoped<IEmailService, EmailService>();
 
-        //  LOCALIZATION 
-        builder.Services.AddLocalization();
+        //  LOCALIZATION  
+        // Register our simple JSON localizer
+        builder.Services.AddSingleton<IJsonLocalizer, JsonLocalizerService>();
 
-        builder.Services.AddJsonLocalization(options =>
-        {
-            options.ResourcesPath = "";
-            options.CacheDuration = TimeSpan.FromMinutes(30);
-            options.SupportedCultureInfos = new HashSet<CultureInfo>
-            {
-                new CultureInfo("bg-BG"),
-                new CultureInfo("en-US")
-            };
-            options.UseEmbeddedResources = false;
-        });
-
-        builder.Services.AddControllersWithViews()
-            .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-            .AddDataAnnotationsLocalization();
-
-        // configure supported cultures and localization options
+        // Configure supported cultures for request localization
         builder.Services.Configure<RequestLocalizationOptions>(options =>
         {
             var supportedCultures = new[]
@@ -124,6 +111,7 @@ public class Program
             options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
         });
 
+        builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
 
         builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -166,7 +154,7 @@ public class Program
 
         app.UseRouting();
 
-        // Important: UseRequestLocalization must be called before UseAuthentication and UseAuthorization
+        // Important: UseRequestLocalization must be called before UseAuthentication
         app.UseRequestLocalization();
         app.UseAuthentication();
         app.UseAuthorization();

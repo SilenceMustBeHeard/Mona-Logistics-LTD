@@ -1,34 +1,36 @@
-﻿@using Microsoft.AspNetCore.Localization
-
-@{
-    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-    var currentCulture = requestCulture?.RequestCulture.UICulture.Name ?? "bg-BG";
-    var isBulgarian = currentCulture == "bg-BG";
-    var isEnglish = currentCulture == "en-US";
+﻿@{
+    var currentCulture = Context.Request.Cookies[".AspNetCore.Culture"];
+    var isBulgarian = currentCulture?.Contains("bg-BG") ?? true;
+    var isEnglish = currentCulture?.Contains("en-US") ?? false;
 }
 
 <div class="language-switcher">
-    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" data-culture="bg-BG">БГ</a>
+    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" onclick="setLanguage('bg-BG')">БГ</a>
     <span class="lang-separator">|</span>
-    <a href="#" class="lang-link @(isEnglish ? "active" : "")" data-culture="en-US">EN</a>
+    <a href="#" class="lang-link @(isEnglish ? "active" : "")" onclick="setLanguage('en-US')">EN</a>
 </div>
 
-<form id="cultureForm" asp-action="SetLanguage" asp-controller="Home" method="post" style="display: none;">
+<form id="cultureForm" method="post" style="display: none;">
     <input type="hidden" name="culture" id="cultureInput" />
     <input type="hidden" name="returnUrl" id="returnUrlInput" />
-    @Html.AntiForgeryToken()
 </form>
 
 <script>
-    document.querySelectorAll('.lang-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const culture = link.dataset.culture;
-            document.getElementById('cultureInput').value = culture;
-            document.getElementById('returnUrlInput').value = window.location.pathname + window.location.search;
-            document.getElementById('cultureForm').submit();
+    function setLanguage(culture) {
+        document.getElementById('cultureInput').value = culture;
+        document.getElementById('returnUrlInput').value = window.location.pathname + window.location.search;
+
+        fetch('/Home/SetLanguage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+            },
+            body: `culture=${culture}&returnUrl=${encodeURIComponent(window.location.pathname)}`
+        }).then(() => {
+            location.reload();
         });
-    });
+    }
 </script>
 
 <style>
@@ -48,6 +50,7 @@
         font-weight: 500;
         transition: color 0.2s ease;
         padding: 2px 4px;
+        cursor: pointer;
     }
 
         .lang-link:hover {

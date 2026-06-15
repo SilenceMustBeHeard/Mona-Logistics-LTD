@@ -24,20 +24,13 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult SetLanguage(string culture, string returnUrl)
     {
-        if (!string.IsNullOrEmpty(culture))
+        Response.Cookies.Append(".AspNetCore.Culture", $"c={culture}|uic={culture}", new CookieOptions
         {
-            var requestCulture = new RequestCulture(culture);
-            var cookieName = CookieRequestCultureProvider.DefaultCookieName;
-            var cookieValue = CookieRequestCultureProvider.MakeCookieValue(requestCulture);
-
-            Response.Cookies.Append(cookieName, cookieValue, new CookieOptions
-            {
-                Expires = DateTimeOffset.UtcNow.AddYears(1),
-                IsEssential = true,
-                HttpOnly = true,
-                SameSite = SameSiteMode.Lax
-            });
-        }
+            Expires = DateTimeOffset.UtcNow.AddYears(1),
+            IsEssential = true,
+            HttpOnly = true,
+            SameSite = SameSiteMode.Lax
+        });
 
         return LocalRedirect(returnUrl ?? "/");
     }

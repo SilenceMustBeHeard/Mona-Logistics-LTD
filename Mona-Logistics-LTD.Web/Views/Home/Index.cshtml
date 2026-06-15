@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = Localizer["HomeTitle"].Value;
+    ViewData["Title"] = Localizer["HomeTitle"];
 }
 
 <link rel="stylesheet" href="~/css/pages/home.css" asp-append-version="true" />
@@ -10,21 +10,21 @@
         <div class="home-hero-content">
             <div class="home-hero-badge">
                 <span class="home-hero-icon">🚛</span>
-                <span class="home-hero-tag">@Localizer["OfficialPartner"].Value</span>
+                <span class="home-hero-tag">@Localizer["OfficialPartner"]</span>
             </div>
             <h1 class="home-hero-title">
-                @Localizer["HeroTitle"].Value<br>
-                <span class="home-hero-title-accent">@Localizer["HeroTitleAccent"].Value</span>
+                @Localizer["HeroTitle"]<br>
+                <span class="home-hero-title-accent">@Localizer["HeroTitleAccent"]</span>
             </h1>
             <p class="home-hero-description">
-                @Localizer["HeroDescription"].Value
+                @Localizer["HeroDescription"]
             </p>
             <div class="home-hero-buttons">
                 <a href="/Identity/Account/Register" class="home-hero-btn-primary">
-                    <i class="bi bi-person-plus-fill"></i> @Localizer["Register"].Value
+                    <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
                 </a>
                 <a href="/Shipment/Track" class="home-hero-btn-secondary">
-                    <i class="bi bi-search"></i> @Localizer["TrackShipment"].Value
+                    <i class="bi bi-search"></i> @Localizer["TrackShipment"]
                 </a>
             </div>
         </div>
@@ -40,19 +40,19 @@
         <div class="home-stats-grid">
             <div class="home-stat-card">
                 <div class="home-stat-number">5000+</div>
-                <div class="home-stat-label">@Localizer["StatDeliveries"].Value</div>
+                <div class="home-stat-label">@Localizer["StatDeliveries"]</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">98%</div>
-                <div class="home-stat-label">@Localizer["StatOnTime"].Value</div>
+                <div class="home-stat-label">@Localizer["StatOnTime"]</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">50+</div>
-                <div class="home-stat-label">@Localizer["StatTrucks"].Value</div>
+                <div class="home-stat-label">@Localizer["StatTrucks"]</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">24/7</div>
-                <div class="home-stat-label">@Localizer["StatSupport"].Value</div>
+                <div class="home-stat-label">@Localizer["StatSupport"]</div>
             </div>
         </div>
     </div>
@@ -62,38 +62,38 @@
 <section class="home-services">
     <div class="container">
         <div class="home-section-header">
-            <span class="home-section-tag">@Localizer["ServicesTag"].Value</span>
-            <h2 class="home-section-title">@Localizer["ServicesTitle"].Value</h2>
-            <p class="home-section-subtitle">@Localizer["ServicesSubtitle"].Value</p>
+            <span class="home-section-tag">@Localizer["ServicesTag"]</span>
+            <h2 class="home-section-title">@Localizer["ServicesTitle"]</h2>
+            <p class="home-section-subtitle">@Localizer["ServicesSubtitle"]</p>
         </div>
 
         <div class="home-services-grid">
             <div class="home-service-card">
                 <div class="home-service-icon">🚚</div>
-                <h3 class="home-service-title">@Localizer["ServiceTransportTitle"].Value</h3>
-                <p class="home-service-description">@Localizer["ServiceTransportDesc"].Value</p>
-                <a href="/Services/Transport" class="home-service-link">@Localizer["LearnMore"].Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceTransportTitle"]</h3>
+                <p class="home-service-description">@Localizer["ServiceTransportDesc"]</p>
+                <a href="/Services/Transport" class="home-service-link">@Localizer["LearnMore"] →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">📦</div>
-                <h3 class="home-service-title">@Localizer["ServiceWarehouseTitle"].Value</h3>
-                <p class="home-service-description">@Localizer["ServiceWarehouseDesc"].Value</p>
-                <a href="/Services/Warehouse" class="home-service-link">@Localizer["LearnMore"].Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceWarehouseTitle"]</h3>
+                <p class="home-service-description">@Localizer["ServiceWarehouseDesc"]</p>
+                <a href="/Services/Warehouse" class="home-service-link">@Localizer["LearnMore"] →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">🛰️</div>
-                <h3 class="home-service-title">@Localizer["ServiceTrackingTitle"].Value</h3>
-                <p class="home-service-description">@Localizer["ServiceTrackingDesc"].Value</p>
-                <a href="/Services/Tracking" class="home-service-link">@Localizer["LearnMore"].Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceTrackingTitle"]</h3>
+                <p class="home-service-description">@Localizer["ServiceTrackingDesc"]</p>
+                <a href="/Services/Tracking" class="home-service-link">@Localizer["LearnMore"] →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">🌍</div>
-                <h3 class="home-service-title">@Localizer["ServiceInternationalTitle"].Value</h3>
-                <p class="home-service-description">@Localizer["ServiceInternationalDesc"].Value</p>
-                <a href="/Services/International" class="home-service-link">@Localizer["LearnMore"].Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceInternationalTitle"]</h3>
+                <p class="home-service-description">@Localizer["ServiceInternationalDesc"]</p>
+                <a href="/Services/International" class="home-service-link">@Localizer["LearnMore"] →</a>
             </div>
         </div>
     </div>
@@ -104,31 +104,31 @@
     <div class="container">
         <div class="home-whyus-grid">
             <div class="home-whyus-content">
-                <span class="home-whyus-tag">@Localizer["WhyUsTag"].Value</span>
-                <h2 class="home-whyus-title">@Localizer["WhyUsTitle"].Value</h2>
-                <p class="home-whyus-description">@Localizer["WhyUsDescription"].Value</p>
+                <span class="home-whyus-tag">@Localizer["WhyUsTag"]</span>
+                <h2 class="home-whyus-title">@Localizer["WhyUsTitle"]</h2>
+                <p class="home-whyus-description">@Localizer["WhyUsDescription"]</p>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-check-circle-fill home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer["WhyUsTeam"].Value</h4>
-                        <p class="home-whyus-item-text">@Localizer["WhyUsTeamDesc"].Value</p>
+                        <h4>@Localizer["WhyUsTeam"]</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsTeamDesc"]</p>
                     </div>
                 </div>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-shield-check home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer["WhyUsInsurance"].Value</h4>
-                        <p class="home-whyus-item-text">@Localizer["WhyUsInsuranceDesc"].Value</p>
+                        <h4>@Localizer["WhyUsInsurance"]</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsInsuranceDesc"]</p>
                     </div>
                 </div>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-clock-history home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer["WhyUsSupport"].Value</h4>
-                        <p class="home-whyus-item-text">@Localizer["WhyUsSupportDesc"].Value</p>
+                        <h4>@Localizer["WhyUsSupport"]</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsSupportDesc"]</p>
                     </div>
                 </div>
             </div>
@@ -136,9 +136,9 @@
             <div class="home-testimonial">
                 <div class="home-testimonial-card">
                     <i class="bi bi-quote home-testimonial-quote"></i>
-                    <p class="home-testimonial-text">@Localizer["TestimonialText"].Value</p>
-                    <div class="home-testimonial-author">@Localizer["TestimonialAuthor"].Value</div>
-                    <div class="home-testimonial-title">@Localizer["TestimonialTitle"].Value</div>
+                    <p class="home-testimonial-text">@Localizer["TestimonialText"]</p>
+                    <div class="home-testimonial-author">@Localizer["TestimonialAuthor"]</div>
+                    <div class="home-testimonial-title">@Localizer["TestimonialTitle"]</div>
                 </div>
             </div>
         </div>
@@ -149,8 +149,8 @@
 <section class="home-partners">
     <div class="container">
         <div class="home-partners-header">
-            <h2 class="home-partners-title">@Localizer["PartnersTitle"].Value</h2>
-            <p class="home-partners-subtitle">@Localizer["PartnersSubtitle"].Value</p>
+            <h2 class="home-partners-title">@Localizer["PartnersTitle"]</h2>
+            <p class="home-partners-subtitle">@Localizer["PartnersSubtitle"]</p>
         </div>
 
         <div class="home-partners-grid">
@@ -166,14 +166,14 @@
 <!-- CTA Section -->
 <section class="home-cta">
     <div class="container">
-        <h2 class="home-cta-title">@Localizer["CTATitle"].Value</h2>
-        <p class="home-cta-description">@Localizer["CTADescription"].Value</p>
+        <h2 class="home-cta-title">@Localizer["CTATitle"]</h2>
+        <p class="home-cta-description">@Localizer["CTADescription"]</p>
         <div class="home-cta-buttons">
             <a href="/Identity/Account/Register" class="home-cta-btn-primary">
-                <i class="bi bi-person-plus-fill"></i> @Localizer["Register"].Value
+                <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
             </a>
             <a href="/Contact" class="home-cta-btn-secondary">
-                <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"].Value
+                <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"]
             </a>
         </div>
     </div>

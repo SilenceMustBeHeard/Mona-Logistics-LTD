@@ -1,13 +1,9 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
-
-@inject IViewLocalizer Localizer
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="bg" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @Localizer.GetString("AppTitle")?.Value</title>
+    <title>@ViewData["Title"] - @Localizer["AppTitle"]</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -61,7 +57,7 @@
                         <div class="dropdown">
                             <button class="btn-logistics dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
                                 <i class="bi bi-person-circle"></i>
-                                <span>@Localizer.GetString("Profile")?.Value</span>
+                                <span>@Localizer["Profile"]</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" style="min-width: 240px;">
                                 @await Component.InvokeAsync("AccountMenu")
@@ -86,8 +82,8 @@
     <!-- Footer -->
     <footer class="footer-logistics mt-auto py-4">
         <div class="container text-center">
-            <p class="mb-0">&copy; @DateTime.Now.Year - @Localizer.GetString("AppTitle")?.Value</p>
-            <small class="text-muted">@Localizer.GetString("FooterSlogan")?.Value</small>
+            <p class="mb-0">&copy; @DateTime.Now.Year - @Localizer["AppTitle"]</p>
+            <small class="text-muted">@Localizer["FooterSlogan"]</small>
         </div>
     </footer>
 
