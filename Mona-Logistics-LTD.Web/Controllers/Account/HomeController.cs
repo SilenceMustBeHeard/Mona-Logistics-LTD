@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Mona_Logistics_LTD.Services.Localizer.Interfaces;
 using Mona_Logistics_LTD.Web.Models;
 using System.Diagnostics;
 
@@ -19,20 +20,6 @@ public class HomeController : Controller
     public IActionResult About()
     {
         return View();
-    }
-
-    [HttpPost]
-    public IActionResult SetLanguage(string culture, string returnUrl)
-    {
-        Response.Cookies.Append(".AspNetCore.Culture", $"c={culture}|uic={culture}", new CookieOptions
-        {
-            Expires = DateTimeOffset.UtcNow.AddYears(1),
-            IsEssential = true,
-            HttpOnly = true,
-            SameSite = SameSiteMode.Lax
-        });
-
-        return LocalRedirect(returnUrl ?? "/");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

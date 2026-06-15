@@ -1,35 +1,25 @@
 ﻿@{
-    var currentCulture = Context.Request.Cookies[".AspNetCore.Culture"];
-    var isBulgarian = currentCulture?.Contains("bg-BG") ?? true;
-    var isEnglish = currentCulture?.Contains("en-US") ?? false;
+    var currentCookie = Context.Request.Cookies[".AspNetCore.Culture"];
+    var isBulgarian = currentCookie != null && currentCookie.Contains("bg-BG");
+    var isEnglish = currentCookie != null && currentCookie.Contains("en-US");
+
+    if (currentCookie == null)
+    {
+        isBulgarian = true;
+        isEnglish = false;
+    }
 }
 
 <div class="language-switcher">
-    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" onclick="setLanguage('bg-BG')">БГ</a>
+    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" onclick="setLanguage('bg-BG'); return false;">БГ</a>
     <span class="lang-separator">|</span>
-    <a href="#" class="lang-link @(isEnglish ? "active" : "")" onclick="setLanguage('en-US')">EN</a>
+    <a href="#" class="lang-link @(isEnglish ? "active" : "")" onclick="setLanguage('en-US'); return false;">EN</a>
 </div>
-
-<form id="cultureForm" method="post" style="display: none;">
-    <input type="hidden" name="culture" id="cultureInput" />
-    <input type="hidden" name="returnUrl" id="returnUrlInput" />
-</form>
 
 <script>
     function setLanguage(culture) {
-        document.getElementById('cultureInput').value = culture;
-        document.getElementById('returnUrlInput').value = window.location.pathname + window.location.search;
-
-        fetch('/Home/SetLanguage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
-            },
-            body: `culture=${culture}&returnUrl=${encodeURIComponent(window.location.pathname)}`
-        }).then(() => {
-            location.reload();
-        });
+        document.cookie = `.AspNetCore.Culture=c=${culture}|uic=${culture}; path=/; max-age=${365*24*60*60}`;
+        location.reload();
     }
 </script>
 
@@ -54,11 +44,11 @@
     }
 
         .lang-link:hover {
-            color: var(--logistics-accent, #d4a017);
+            color: #d4a017;
         }
 
         .lang-link.active {
-            color: var(--logistics-accent, #d4a017);
+            color: #d4a017;
             font-weight: 700;
         }
 

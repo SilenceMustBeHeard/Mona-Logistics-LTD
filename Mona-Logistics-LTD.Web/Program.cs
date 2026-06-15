@@ -94,6 +94,8 @@ public class Program
 
         //  LOCALIZATION  
         // Register our simple JSON localizer
+        builder.Services.AddMemoryCache(); 
+      
         builder.Services.AddSingleton<IJsonLocalizer, JsonLocalizerService>();
 
         // Configure supported cultures for request localization
