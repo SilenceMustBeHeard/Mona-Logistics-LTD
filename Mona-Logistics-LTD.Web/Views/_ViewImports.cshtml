@@ -1,8 +1,8 @@
 ﻿@using Mona_Logistics_LTD.Web
 @using Mona_Logistics_LTD.Data.Models.Base
 @using Microsoft.AspNetCore.Identity
-@using Cms.AspNetCore.JsonLocalizer.Interfaces
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@inject ILocalizer Localizer
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager

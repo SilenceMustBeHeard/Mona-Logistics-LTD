@@ -1,4 +1,5 @@
-using Cms.AspNetCore.JsonLocalizer.Extensions;
+using AspNetCore.Localizer.Json.Extensions;
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,6 @@ using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
 using Mona_Logistics_LTD.Web.ViewComponents;
 using SendGrid;
-using System.Globalization;
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -91,29 +91,31 @@ public class Program
         builder.Services.AddScoped<IEmailService, EmailService>();
 
         //  LOCALIZATION 
-        // register localization services
-        builder.Services.AddLocalization(options =>
+        builder.Services.AddLocalization();
+
+        builder.Services.AddJsonLocalization(options =>
         {
-            options.ResourcesPath = "Resources";
+            options.ResourcesPath = "";
+            options.CacheDuration = TimeSpan.FromMinutes(30);
+            options.SupportedCultureInfos = new HashSet<CultureInfo>
+            {
+                new CultureInfo("bg-BG"),
+                new CultureInfo("en-US")
+            };
+            options.UseEmbeddedResources = false;
         });
 
-        // add JSON Localizer
-        builder.Services.AddJsonLocalizer(Directory.GetCurrentDirectory());
-
-        // MVC with localization
         builder.Services.AddControllersWithViews()
             .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization();
 
-        builder.Services.AddRazorPages();
-
-        // configure RequestLocalizationOptions
+        // configure supported cultures and localization options
         builder.Services.Configure<RequestLocalizationOptions>(options =>
         {
             var supportedCultures = new[]
             {
-                new CultureInfo("bg-BG"),  // Bulgarian
-                new CultureInfo("en-US")   // English
+                new CultureInfo("bg-BG"),
+                new CultureInfo("en-US")
             };
 
             options.DefaultRequestCulture = new RequestCulture("bg-BG");
@@ -121,6 +123,8 @@ public class Program
             options.SupportedUICultures = supportedCultures;
             options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
         });
+
+        builder.Services.AddRazorPages();
 
         builder.Services.Configure<ApiBehaviorOptions>(options =>
         {

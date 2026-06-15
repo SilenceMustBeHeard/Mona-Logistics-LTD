@@ -1,10 +1,5 @@
-﻿@using Cms.AspNetCore.JsonLocalizer.Interfaces
-@inject ILocalizer Localizer
-
-
-
-@{
-    ViewData["Title"] = Localizer.GetString("HomeTitle")?.Value ?? "Mona Logistics - Доставяме решения, движим бизнеса напред";
+﻿@{
+    ViewData["Title"] = Localizer["HomeTitle"].Value;
 }
 
 <link rel="stylesheet" href="~/css/pages/home.css" asp-append-version="true" />
@@ -15,27 +10,26 @@
         <div class="home-hero-content">
             <div class="home-hero-badge">
                 <span class="home-hero-icon">🚛</span>
-                <span class="home-hero-tag">@Localizer.GetString("OfficialPartner")?.Value</span>
+                <span class="home-hero-tag">@Localizer["OfficialPartner"].Value</span>
             </div>
             <h1 class="home-hero-title">
-                @Localizer.GetString("HeroTitle")?.Value<br>
-                <span class="home-hero-title-accent">@Localizer.GetString("HeroTitleAccent")?.Value</span>
+                @Localizer["HeroTitle"].Value<br>
+                <span class="home-hero-title-accent">@Localizer["HeroTitleAccent"].Value</span>
             </h1>
             <p class="home-hero-description">
-                @Localizer.GetString("HeroDescription")?.Value
+                @Localizer["HeroDescription"].Value
             </p>
             <div class="home-hero-buttons">
                 <a href="/Identity/Account/Register" class="home-hero-btn-primary">
-                    <i class="bi bi-person-plus-fill"></i> @Localizer.GetString("Register")?.Value
+                    <i class="bi bi-person-plus-fill"></i> @Localizer["Register"].Value
                 </a>
                 <a href="/Shipment/Track" class="home-hero-btn-secondary">
-                    <i class="bi bi-search"></i> @Localizer.GetString("TrackShipment")?.Value
+                    <i class="bi bi-search"></i> @Localizer["TrackShipment"].Value
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Decorative elements -->
     <div class="home-hero-glow-1"></div>
     <div class="home-hero-glow-2"></div>
 </section>
@@ -46,19 +40,19 @@
         <div class="home-stats-grid">
             <div class="home-stat-card">
                 <div class="home-stat-number">5000+</div>
-                <div class="home-stat-label">@Localizer.GetString("StatDeliveries")?.Value</div>
+                <div class="home-stat-label">@Localizer["StatDeliveries"].Value</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">98%</div>
-                <div class="home-stat-label">@Localizer.GetString("StatOnTime")?.Value</div>
+                <div class="home-stat-label">@Localizer["StatOnTime"].Value</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">50+</div>
-                <div class="home-stat-label">@Localizer.GetString("StatTrucks")?.Value</div>
+                <div class="home-stat-label">@Localizer["StatTrucks"].Value</div>
             </div>
             <div class="home-stat-card">
                 <div class="home-stat-number">24/7</div>
-                <div class="home-stat-label">@Localizer.GetString("StatSupport")?.Value</div>
+                <div class="home-stat-label">@Localizer["StatSupport"].Value</div>
             </div>
         </div>
     </div>
@@ -68,38 +62,38 @@
 <section class="home-services">
     <div class="container">
         <div class="home-section-header">
-            <span class="home-section-tag">@Localizer.GetString("ServicesTag")?.Value</span>
-            <h2 class="home-section-title">@Localizer.GetString("ServicesTitle")?.Value</h2>
-            <p class="home-section-subtitle">@Localizer.GetString("ServicesSubtitle")?.Value</p>
+            <span class="home-section-tag">@Localizer["ServicesTag"].Value</span>
+            <h2 class="home-section-title">@Localizer["ServicesTitle"].Value</h2>
+            <p class="home-section-subtitle">@Localizer["ServicesSubtitle"].Value</p>
         </div>
 
         <div class="home-services-grid">
             <div class="home-service-card">
                 <div class="home-service-icon">🚚</div>
-                <h3 class="home-service-title">@Localizer.GetString("ServiceTransportTitle")?.Value</h3>
-                <p class="home-service-description">@Localizer.GetString("ServiceTransportDesc")?.Value</p>
-                <a href="/Services/Transport" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceTransportTitle"].Value</h3>
+                <p class="home-service-description">@Localizer["ServiceTransportDesc"].Value</p>
+                <a href="/Services/Transport" class="home-service-link">@Localizer["LearnMore"].Value →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">📦</div>
-                <h3 class="home-service-title">@Localizer.GetString("ServiceWarehouseTitle")?.Value</h3>
-                <p class="home-service-description">@Localizer.GetString("ServiceWarehouseDesc")?.Value</p>
-                <a href="/Services/Warehouse" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceWarehouseTitle"].Value</h3>
+                <p class="home-service-description">@Localizer["ServiceWarehouseDesc"].Value</p>
+                <a href="/Services/Warehouse" class="home-service-link">@Localizer["LearnMore"].Value →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">🛰️</div>
-                <h3 class="home-service-title">@Localizer.GetString("ServiceTrackingTitle")?.Value</h3>
-                <p class="home-service-description">@Localizer.GetString("ServiceTrackingDesc")?.Value</p>
-                <a href="/Services/Tracking" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceTrackingTitle"].Value</h3>
+                <p class="home-service-description">@Localizer["ServiceTrackingDesc"].Value</p>
+                <a href="/Services/Tracking" class="home-service-link">@Localizer["LearnMore"].Value →</a>
             </div>
 
             <div class="home-service-card">
                 <div class="home-service-icon">🌍</div>
-                <h3 class="home-service-title">@Localizer.GetString("ServiceInternationalTitle")?.Value</h3>
-                <p class="home-service-description">@Localizer.GetString("ServiceInternationalDesc")?.Value</p>
-                <a href="/Services/International" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
+                <h3 class="home-service-title">@Localizer["ServiceInternationalTitle"].Value</h3>
+                <p class="home-service-description">@Localizer["ServiceInternationalDesc"].Value</p>
+                <a href="/Services/International" class="home-service-link">@Localizer["LearnMore"].Value →</a>
             </div>
         </div>
     </div>
@@ -110,31 +104,31 @@
     <div class="container">
         <div class="home-whyus-grid">
             <div class="home-whyus-content">
-                <span class="home-whyus-tag">@Localizer.GetString("WhyUsTag")?.Value</span>
-                <h2 class="home-whyus-title">@Localizer.GetString("WhyUsTitle")?.Value</h2>
-                <p class="home-whyus-description">@Localizer.GetString("WhyUsDescription")?.Value</p>
+                <span class="home-whyus-tag">@Localizer["WhyUsTag"].Value</span>
+                <h2 class="home-whyus-title">@Localizer["WhyUsTitle"].Value</h2>
+                <p class="home-whyus-description">@Localizer["WhyUsDescription"].Value</p>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-check-circle-fill home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer.GetString("WhyUsTeam")?.Value</h4>
-                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsTeamDesc")?.Value</p>
+                        <h4>@Localizer["WhyUsTeam"].Value</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsTeamDesc"].Value</p>
                     </div>
                 </div>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-shield-check home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer.GetString("WhyUsInsurance")?.Value</h4>
-                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsInsuranceDesc")?.Value</p>
+                        <h4>@Localizer["WhyUsInsurance"].Value</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsInsuranceDesc"].Value</p>
                     </div>
                 </div>
 
                 <div class="home-whyus-item">
                     <i class="bi bi-clock-history home-whyus-icon"></i>
                     <div>
-                        <h4>@Localizer.GetString("WhyUsSupport")?.Value</h4>
-                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsSupportDesc")?.Value</p>
+                        <h4>@Localizer["WhyUsSupport"].Value</h4>
+                        <p class="home-whyus-item-text">@Localizer["WhyUsSupportDesc"].Value</p>
                     </div>
                 </div>
             </div>
@@ -142,9 +136,9 @@
             <div class="home-testimonial">
                 <div class="home-testimonial-card">
                     <i class="bi bi-quote home-testimonial-quote"></i>
-                    <p class="home-testimonial-text">@Localizer.GetString("TestimonialText")?.Value</p>
-                    <div class="home-testimonial-author">@Localizer.GetString("TestimonialAuthor")?.Value</div>
-                    <div class="home-testimonial-title">@Localizer.GetString("TestimonialTitle")?.Value</div>
+                    <p class="home-testimonial-text">@Localizer["TestimonialText"].Value</p>
+                    <div class="home-testimonial-author">@Localizer["TestimonialAuthor"].Value</div>
+                    <div class="home-testimonial-title">@Localizer["TestimonialTitle"].Value</div>
                 </div>
             </div>
         </div>
@@ -155,8 +149,8 @@
 <section class="home-partners">
     <div class="container">
         <div class="home-partners-header">
-            <h2 class="home-partners-title">@Localizer.GetString("PartnersTitle")?.Value</h2>
-            <p class="home-partners-subtitle">@Localizer.GetString("PartnersSubtitle")?.Value</p>
+            <h2 class="home-partners-title">@Localizer["PartnersTitle"].Value</h2>
+            <p class="home-partners-subtitle">@Localizer["PartnersSubtitle"].Value</p>
         </div>
 
         <div class="home-partners-grid">
@@ -172,14 +166,14 @@
 <!-- CTA Section -->
 <section class="home-cta">
     <div class="container">
-        <h2 class="home-cta-title">@Localizer.GetString("CTATitle")?.Value</h2>
-        <p class="home-cta-description">@Localizer.GetString("CTADescription")?.Value</p>
+        <h2 class="home-cta-title">@Localizer["CTATitle"].Value</h2>
+        <p class="home-cta-description">@Localizer["CTADescription"].Value</p>
         <div class="home-cta-buttons">
             <a href="/Identity/Account/Register" class="home-cta-btn-primary">
-                <i class="bi bi-person-plus-fill"></i> @Localizer.GetString("Register")?.Value
+                <i class="bi bi-person-plus-fill"></i> @Localizer["Register"].Value
             </a>
             <a href="/Contact" class="home-cta-btn-secondary">
-                <i class="bi bi-envelope-fill"></i> @Localizer.GetString("ContactUs")?.Value
+                <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"].Value
             </a>
         </div>
     </div>
