@@ -1,0 +1,479 @@
+/*HOME PAGE STYLES*/
+
+/* Hero Section */
+.home-hero {
+    position: relative;
+    background: linear-gradient(135deg, #0a2a3b 0%, #1a4a6b 50%, #0d1a24 100%);
+    color: white;
+    padding: 100px 0;
+    margin-top: -24px;
+    overflow: hidden;
+}
+
+.home-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    animation: slideUp 0.8s ease;
+}
+
+.home-hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.home-hero-icon {
+    font-size: 48px;
+    animation: truckMove 0.6s ease;
+}
+
+.home-hero-tag {
+    background: var(--secondary);
+    color: var(--dark);
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.home-hero-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.home-hero-title-accent {
+    color: var(--secondary);
+}
+
+.home-hero-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.home-hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.home-hero-btn-primary,
+.home-hero-btn-secondary {
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.home-hero-btn-primary {
+    background: var(--secondary);
+    color: var(--dark);
+}
+
+    .home-hero-btn-primary:hover {
+        background: var(--secondary-dark);
+        transform: translateY(-2px);
+    }
+
+.home-hero-btn-secondary {
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+}
+
+    .home-hero-btn-secondary:hover {
+        background: var(--secondary);
+        color: var(--dark);
+        transform: translateY(-2px);
+    }
+
+/* Decorative Elements */
+.home-hero-glow-1 {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.home-hero-glow-2 {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* Stats Section */
+.home-stats {
+    padding: 60px 0;
+    background: white;
+}
+
+.home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.home-stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--secondary);
+    box-shadow: var(--shadow-sm);
+    animation: slideUp 0.5s ease forwards;
+}
+
+    .home-stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.home-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.home-stat-label {
+    color: var(--gray);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Services Section */
+.home-services {
+    padding: 80px 0;
+    background: var(--light);
+}
+
+.home-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.home-section-tag {
+    color: var(--secondary);
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.home-section-title {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+.home-section-subtitle {
+    color: var(--gray);
+    max-width: 600px;
+    margin: 15px auto 0;
+}
+
+.home-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.home-service-card {
+    background: white;
+    border-radius: 16px;
+    text-align: center;
+    padding: 40px 30px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+    .home-service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.home-service-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.home-service-title {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.home-service-description {
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.home-service-link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+    .home-service-link:hover {
+        color: var(--secondary-dark);
+    }
+
+/* Why Choose Us Section */
+.home-whyus {
+    padding: 80px 0;
+    background: white;
+}
+
+.home-whyus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    align-items: center;
+}
+
+.home-whyus-content {
+    flex: 1;
+}
+
+.home-whyus-tag {
+    color: var(--secondary);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.home-whyus-title {
+    font-size: 36px;
+    margin: 15px 0 20px;
+}
+
+.home-whyus-description {
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.home-whyus-item {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: start;
+}
+
+.home-whyus-icon {
+    color: var(--secondary);
+    font-size: 24px;
+}
+
+.home-whyus-item-title {
+    margin-bottom: 8px;
+}
+
+.home-whyus-item-text {
+    color: var(--gray);
+}
+
+.home-testimonial {
+    position: relative;
+}
+
+.home-testimonial-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    text-align: center;
+}
+
+.home-testimonial-quote {
+    font-size: 48px;
+    color: var(--secondary);
+}
+
+.home-testimonial-text {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.home-testimonial-author {
+    font-weight: 600;
+}
+
+.home-testimonial-title {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Partners Section */
+.home-partners {
+    padding: 60px 0;
+    background: var(--light);
+}
+
+.home-partners-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-partners-title {
+    font-size: 28px;
+}
+
+.home-partners-subtitle {
+    color: var(--gray);
+}
+
+.home-partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0.7;
+}
+
+.home-partner-logo {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: all 0.3s ease;
+}
+
+    .home-partner-logo:hover {
+        color: var(--secondary);
+        opacity: 1;
+    }
+
+/* CTA Section */
+.home-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: white;
+    text-align: center;
+}
+
+.home-cta-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.home-cta-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-cta-btn-primary {
+    background: var(--secondary);
+    color: var(--dark);
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .home-cta-btn-primary:hover {
+        background: var(--secondary-dark);
+        transform: translateY(-2px);
+        color: var(--dark);
+    }
+
+.home-cta-btn-secondary {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .home-cta-btn-secondary:hover {
+        background: white;
+        color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes truckMove {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-hero-title {
+        font-size: 32px;
+    }
+
+    .home-hero {
+        padding: 60px 0;
+    }
+
+    .home-hero-buttons {
+        flex-direction: column;
+    }
+
+    .home-hero-btn-primary,
+    .home-hero-btn-secondary {
+        text-align: center;
+    }
+
+    .home-section-title {
+        font-size: 28px;
+    }
+
+    .home-whyus-title {
+        font-size: 28px;
+    }
+
+    .home-cta-title {
+        font-size: 28px;
+    }
+
+    .home-testimonial-card {
+        padding: 25px;
+    }
+
+    .home-testimonial-text {
+        font-size: 16px;
+    }
+}

@@ -1,148 +1,150 @@
-﻿@{
-    ViewData["Title"] = "Mona Logistics - Доставяме решения, движим бизнеса напред";
+﻿@using Cms.AspNetCore.JsonLocalizer.Interfaces
+@inject ILocalizer Localizer
+
+
+
+@{
+    ViewData["Title"] = Localizer.GetString("HomeTitle")?.Value ?? "Mona Logistics - Доставяме решения, движим бизнеса напред";
 }
 
+<link rel="stylesheet" href="~/css/pages/home.css" asp-append-version="true" />
+
 <!-- Hero Section -->
-<section class="hero" style="position: relative; background: linear-gradient(135deg, #0a2a3b 0%, #1a4a6b 50%, #0d1a24 100%); color: white; padding: 100px 0; margin-top: -24px; overflow: hidden;">
-    <div class="container" style="position: relative; z-index: 2;">
-        <div class="hero-content" style="max-width: 700px; animation: slideUp 0.8s ease;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <span style="font-size: 48px; animation: truckMove 0.6s ease;">🚛</span>
-                <span style="background: var(--secondary); color: var(--dark); padding: 5px 15px; border-radius: 30px; font-size: 14px; font-weight: 600;">Официален партньор 2026</span>
+<section class="home-hero">
+    <div class="container">
+        <div class="home-hero-content">
+            <div class="home-hero-badge">
+                <span class="home-hero-icon">🚛</span>
+                <span class="home-hero-tag">@Localizer.GetString("OfficialPartner")?.Value</span>
             </div>
-            <h1 style="font-size: 48px; margin-bottom: 20px; line-height: 1.2;">
-                Доставяме решения.<br>
-                <span style="color: var(--secondary);">Движим бизнеса напред.</span>
+            <h1 class="home-hero-title">
+                @Localizer.GetString("HeroTitle")?.Value<br>
+                <span class="home-hero-title-accent">@Localizer.GetString("HeroTitleAccent")?.Value</span>
             </h1>
-            <p style="font-size: 18px; margin-bottom: 30px; opacity: 0.9;">
-                Бързи, надеждни и сигурни логистични услуги в цяла България и Европа.
-                С модерен автопарк и професионални шофьори, ние гарантираме, че вашите пратки
-                пристигат навреме и в перфектно състояние.
+            <p class="home-hero-description">
+                @Localizer.GetString("HeroDescription")?.Value
             </p>
-            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <a href="/Identity/Account/Register" class="btn-primary" style="padding: 14px 32px; font-size: 16px; border-radius: 40px;">
-                    <i class="bi bi-person-plus-fill"></i> Регистрация
+            <div class="home-hero-buttons">
+                <a href="/Identity/Account/Register" class="home-hero-btn-primary">
+                    <i class="bi bi-person-plus-fill"></i> @Localizer.GetString("Register")?.Value
                 </a>
-                <a href="/Shipment/Track" class="btn-secondary" style="padding: 14px 32px; font-size: 16px; border-radius: 40px; background: transparent; border: 2px solid var(--secondary); color: var(--secondary);">
-                    <i class="bi bi-search"></i> Проследи пратка
+                <a href="/Shipment/Track" class="home-hero-btn-secondary">
+                    <i class="bi bi-search"></i> @Localizer.GetString("TrackShipment")?.Value
                 </a>
             </div>
         </div>
     </div>
 
     <!-- Decorative elements -->
-    <div style="position: absolute; bottom: -50px; right: -50px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,160,23,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
-    <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(212,160,23,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
+    <div class="home-hero-glow-1"></div>
+    <div class="home-hero-glow-2"></div>
 </section>
 
 <!-- Stats Section -->
-<section style="padding: 60px 0; background: white;">
+<section class="home-stats">
     <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
-            <div class="stat-card" style="animation: slideUp 0.5s ease;">
-                <div class="stat-number">5000+</div>
-                <div class="stat-label">Доставени пратки</div>
+        <div class="home-stats-grid">
+            <div class="home-stat-card">
+                <div class="home-stat-number">5000+</div>
+                <div class="home-stat-label">@Localizer.GetString("StatDeliveries")?.Value</div>
             </div>
-            <div class="stat-card" style="animation: slideUp 0.6s ease;">
-                <div class="stat-number">98%</div>
-                <div class="stat-label">Навременна доставка</div>
+            <div class="home-stat-card">
+                <div class="home-stat-number">98%</div>
+                <div class="home-stat-label">@Localizer.GetString("StatOnTime")?.Value</div>
             </div>
-            <div class="stat-card" style="animation: slideUp 0.7s ease;">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Камиона в автопарка</div>
+            <div class="home-stat-card">
+                <div class="home-stat-number">50+</div>
+                <div class="home-stat-label">@Localizer.GetString("StatTrucks")?.Value</div>
             </div>
-            <div class="stat-card" style="animation: slideUp 0.8s ease;">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Поддръжка</div>
+            <div class="home-stat-card">
+                <div class="home-stat-number">24/7</div>
+                <div class="home-stat-label">@Localizer.GetString("StatSupport")?.Value</div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Services Section -->
-<section style="padding: 80px 0; background: var(--light);">
+<section class="home-services">
     <div class="container">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <span style="color: var(--secondary); font-weight: 600; letter-spacing: 2px;">КАКВО ПРЕДЛАГАМЕ</span>
-            <h2 style="font-size: 36px; margin-top: 10px;">Нашите услуги</h2>
-            <p style="color: var(--gray); max-width: 600px; margin: 15px auto 0;">Комплексни логистични решения за вашия бизнес</p>
+        <div class="home-section-header">
+            <span class="home-section-tag">@Localizer.GetString("ServicesTag")?.Value</span>
+            <h2 class="home-section-title">@Localizer.GetString("ServicesTitle")?.Value</h2>
+            <p class="home-section-subtitle">@Localizer.GetString("ServicesSubtitle")?.Value</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-            <div class="card" style="text-align: center; padding: 40px 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">🚚</div>
-                <h3 style="margin-bottom: 15px;">Автотранспортни услуги</h3>
-                <p style="color: var(--gray);">Доставки с модерен автопарк от товарни автомобили за всякакви размери пратки.</p>
-                <a href="/Services/Transport" style="color: var(--secondary); text-decoration: none; font-weight: 500;">Научи повече →</a>
+        <div class="home-services-grid">
+            <div class="home-service-card">
+                <div class="home-service-icon">🚚</div>
+                <h3 class="home-service-title">@Localizer.GetString("ServiceTransportTitle")?.Value</h3>
+                <p class="home-service-description">@Localizer.GetString("ServiceTransportDesc")?.Value</p>
+                <a href="/Services/Transport" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
             </div>
 
-            <div class="card" style="text-align: center; padding: 40px 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">📦</div>
-                <h3 style="margin-bottom: 15px;">Складова логистика</h3>
-                <p style="color: var(--gray);">Съхранение, обработка и дистрибуция на стоки в нашите модерни складове.</p>
-                <a href="/Services/Warehouse" style="color: var(--secondary); text-decoration: none; font-weight: 500;">Научи повече →</a>
+            <div class="home-service-card">
+                <div class="home-service-icon">📦</div>
+                <h3 class="home-service-title">@Localizer.GetString("ServiceWarehouseTitle")?.Value</h3>
+                <p class="home-service-description">@Localizer.GetString("ServiceWarehouseDesc")?.Value</p>
+                <a href="/Services/Warehouse" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
             </div>
 
-            <div class="card" style="text-align: center; padding: 40px 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">🛰️</div>
-                <h3 style="margin-bottom: 15px;">GPS проследяване</h3>
-                <p style="color: var(--gray);">Реално време на проследяване на вашите пратки от начало до крайна точка.</p>
-                <a href="/Services/Tracking" style="color: var(--secondary); text-decoration: none; font-weight: 500;">Научи повече →</a>
+            <div class="home-service-card">
+                <div class="home-service-icon">🛰️</div>
+                <h3 class="home-service-title">@Localizer.GetString("ServiceTrackingTitle")?.Value</h3>
+                <p class="home-service-description">@Localizer.GetString("ServiceTrackingDesc")?.Value</p>
+                <a href="/Services/Tracking" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
             </div>
 
-            <div class="card" style="text-align: center; padding: 40px 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">🌍</div>
-                <h3 style="margin-bottom: 15px;">Международни доставки</h3>
-                <p style="color: var(--gray);">Транспортни решения за цяла Европа с митническо обслужване.</p>
-                <a href="/Services/International" style="color: var(--secondary); text-decoration: none; font-weight: 500;">Научи повече →</a>
+            <div class="home-service-card">
+                <div class="home-service-icon">🌍</div>
+                <h3 class="home-service-title">@Localizer.GetString("ServiceInternationalTitle")?.Value</h3>
+                <p class="home-service-description">@Localizer.GetString("ServiceInternationalDesc")?.Value</p>
+                <a href="/Services/International" class="home-service-link">@Localizer.GetString("LearnMore")?.Value →</a>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Why Choose Us Section -->
-<section style="padding: 80px 0; background: white;">
+<section class="home-whyus">
     <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
-            <div>
-                <span style="color: var(--secondary); font-weight: 600; letter-spacing: 2px;">ЗАЩО ДА ИЗБЕРЕТЕ НАС</span>
-                <h2 style="font-size: 36px; margin: 15px 0 20px;">Ние сме вашият надежден партньор</h2>
-                <p style="color: var(--gray); margin-bottom: 30px;">
-                    С години опит в логистиката, ние разбираме нуждите на вашия бизнес и предлагаме
-                    персонализирани решения за всяка пратка.
-                </p>
+        <div class="home-whyus-grid">
+            <div class="home-whyus-content">
+                <span class="home-whyus-tag">@Localizer.GetString("WhyUsTag")?.Value</span>
+                <h2 class="home-whyus-title">@Localizer.GetString("WhyUsTitle")?.Value</h2>
+                <p class="home-whyus-description">@Localizer.GetString("WhyUsDescription")?.Value</p>
 
-                <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: start;">
-                    <i class="bi bi-check-circle-fill" style="color: var(--secondary); font-size: 24px;"></i>
+                <div class="home-whyus-item">
+                    <i class="bi bi-check-circle-fill home-whyus-icon"></i>
                     <div>
-                        <h4>Опитен екип</h4>
-                        <p style="color: var(--gray);">Професионални шофьори и логистици с дългогодишен опит.</p>
+                        <h4>@Localizer.GetString("WhyUsTeam")?.Value</h4>
+                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsTeamDesc")?.Value</p>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: start;">
-                    <i class="bi bi-shield-check" style="color: var(--secondary); font-size: 24px;"></i>
+                <div class="home-whyus-item">
+                    <i class="bi bi-shield-check home-whyus-icon"></i>
                     <div>
-                        <h4>Застраховани пратки</h4>
-                        <p style="color: var(--gray);">Пълна застраховка на всички пратки по време на транспорт.</p>
+                        <h4>@Localizer.GetString("WhyUsInsurance")?.Value</h4>
+                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsInsuranceDesc")?.Value</p>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: start;">
-                    <i class="bi bi-clock-history" style="color: var(--secondary); font-size: 24px;"></i>
+                <div class="home-whyus-item">
+                    <i class="bi bi-clock-history home-whyus-icon"></i>
                     <div>
-                        <h4>24/7 Поддръжка</h4>
-                        <p style="color: var(--gray);">Нашите оператори са на разположение по всяко време.</p>
+                        <h4>@Localizer.GetString("WhyUsSupport")?.Value</h4>
+                        <p class="home-whyus-item-text">@Localizer.GetString("WhyUsSupportDesc")?.Value</p>
                     </div>
                 </div>
             </div>
 
-            <div style="position: relative;">
-                <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 20px; padding: 40px; color: white; text-align: center;">
-                    <i class="bi bi-quote" style="font-size: 48px; color: var(--secondary);"></i>
-                    <p style="font-size: 18px; margin: 20px 0;">"Най-доброто логистично решение за нашия бизнес. Навременни, точни и винаги отзивчиви!"</p>
-                    <div style="font-weight: 600;">Иван Петров</div>
-                    <div style="font-size: 14px; opacity: 0.8;">CEO, TechSolutions Ltd.</div>
+            <div class="home-testimonial">
+                <div class="home-testimonial-card">
+                    <i class="bi bi-quote home-testimonial-quote"></i>
+                    <p class="home-testimonial-text">@Localizer.GetString("TestimonialText")?.Value</p>
+                    <div class="home-testimonial-author">@Localizer.GetString("TestimonialAuthor")?.Value</div>
+                    <div class="home-testimonial-title">@Localizer.GetString("TestimonialTitle")?.Value</div>
                 </div>
             </div>
         </div>
@@ -150,42 +152,39 @@
 </section>
 
 <!-- Partners Section -->
-<section style="padding: 60px 0; background: var(--light);">
+<section class="home-partners">
     <div class="container">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 28px;">Доверени от водещи компании</h2>
-            <p style="color: var(--gray);">Работим с най-големите брандове в България и Европа</p>
+        <div class="home-partners-header">
+            <h2 class="home-partners-title">@Localizer.GetString("PartnersTitle")?.Value</h2>
+            <p class="home-partners-subtitle">@Localizer.GetString("PartnersSubtitle")?.Value</p>
         </div>
 
-        <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; opacity: 0.7;">
-            <span style="font-size: 32px; font-weight: 600; color: var(--gray);">FANTASTICO</span>
-            <span style="font-size: 32px; font-weight: 600; color: var(--gray);">METRO</span>
-            <span style="font-size: 32px; font-weight: 600; color: var(--gray);">LIDL</span>
-            <span style="font-size: 32px; font-weight: 600; color: var(--gray);">BILLA</span>
-            <span style="font-size: 32px; font-weight: 600; color: var(--gray);">KAUFLAND</span>
+        <div class="home-partners-grid">
+            <span class="home-partner-logo">FANTASTICO</span>
+            <span class="home-partner-logo">METRO</span>
+            <span class="home-partner-logo">LIDL</span>
+            <span class="home-partner-logo">BILLA</span>
+            <span class="home-partner-logo">KAUFLAND</span>
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section style="padding: 80px 0; background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; text-align: center;">
+<section class="home-cta">
     <div class="container">
-        <h2 style="font-size: 36px; margin-bottom: 20px;">Готови ли сте да започнете?</h2>
-        <p style="font-size: 18px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Регистрирайте се днес и получете 10% отстъпка за първата си пратка!
-        </p>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <a href="/Identity/Account/Register" class="btn-primary" style="background: var(--secondary); color: var(--dark); padding: 14px 32px; border-radius: 40px;">
-                <i class="bi bi-person-plus-fill"></i> Регистрация
+        <h2 class="home-cta-title">@Localizer.GetString("CTATitle")?.Value</h2>
+        <p class="home-cta-description">@Localizer.GetString("CTADescription")?.Value</p>
+        <div class="home-cta-buttons">
+            <a href="/Identity/Account/Register" class="home-cta-btn-primary">
+                <i class="bi bi-person-plus-fill"></i> @Localizer.GetString("Register")?.Value
             </a>
-            <a href="/Contact" class="btn-secondary" style="border: 2px solid white; background: transparent; color: white; padding: 14px 32px; border-radius: 40px;">
-                <i class="bi bi-envelope-fill"></i> Свържете се с нас
+            <a href="/Contact" class="home-cta-btn-secondary">
+                <i class="bi bi-envelope-fill"></i> @Localizer.GetString("ContactUs")?.Value
             </a>
         </div>
     </div>
 </section>
 
-<!-- Add page transition class -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('page-transition');

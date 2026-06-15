@@ -98,7 +98,7 @@ public class Program
         });
 
         // add JSON Localizer
-        builder.Services.AddJsonLocalizer(Path.Combine(Directory.GetCurrentDirectory(), "Resources"));
+        builder.Services.AddJsonLocalizer(Directory.GetCurrentDirectory());
 
         // MVC with localization
         builder.Services.AddControllersWithViews()
