@@ -46,5 +46,19 @@
   "ContactUs": "Contact Us",
   "OurSolutions": "Our Transport Solutions",
   "FreightForwarder": "Freight Forwarder",
-  "LogisticsPartner": "Logistics Partner"
+  "LogisticsPartner": "Logistics Partner",
+  "WelcomeText": "Welcome to MONA Logistics",
+  "MyProfile": "My Profile",
+  "MyShipments": "My Shipments",
+  "Messages": "Messages",
+  "AdminDashboard": "Admin Dashboard",
+  "UserManagement": "User Management",
+  "SystemMessages": "System Messages",
+  "ManagerDashboard": "Manager Dashboard",
+  "ManageShipments": "Manage Shipments",
+  "Dashboard": "Dashboard",
+  "Shipments": "Shipments",
+  "CarrierNetwork": "Carrier Network",
+  "Broadcast": "Broadcast",
+  "TransportPartners": "Transport Partners"
 }

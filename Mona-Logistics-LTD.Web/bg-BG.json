@@ -34,7 +34,7 @@
   "WhyUsTeam": "Транспортни партньори",
   "WhyUsTeamDesc": "Работим с доверена мрежа от верифицирани превозвачи, осигуряващи надеждност и гъвкавост.",
 
- 
+
   "WhyUsSupport": "24/7 Поддръжка",
   "WhyUsSupportDesc": "Нашите оператори са на разположение по всяко време.",
   "TestimonialText": "\"Най-доброто логистично решение за нашия бизнес. Навременни, точни и винаги отзивчиви!\"",
@@ -47,5 +47,19 @@
   "ContactUs": "Свържете се с нас",
   "OurSolutions": "Нашите транспортни решения",
   "FreightForwarder": "Спедитор",
-  "LogisticsPartner": "Логистичен партньор"
+  "LogisticsPartner": "Логистичен партньор",
+  "WelcomeText": "Добре дошли в MONA Logistics",
+  "MyProfile": "Моят профил",
+  "MyShipments": "Моите пратки",
+  "Messages": "Съобщения",
+  "AdminDashboard": "Админ панел",
+  "UserManagement": "Управление на потребители",
+  "SystemMessages": "Системни съобщения",
+  "ManagerDashboard": "Мениджър панел",
+  "ManageShipments": "Управление на пратки",
+  "Dashboard": "Табло",
+  "Shipments": "Пратки",
+  "CarrierNetwork": "Мрежа от превозвачи",
+  "Broadcast": "Известия",
+  "TransportPartners": "Транспортни партньори"
 }
