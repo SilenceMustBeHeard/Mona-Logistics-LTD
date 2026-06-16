@@ -17,9 +17,8 @@
 </div>
 
 <script>
-    function setLanguage(culture) {
-        document.cookie = `.AspNetCore.Culture=c=${culture}|uic=${culture}; path=/; max-age=${365*24*60*60}`;
-        location.reload();
+       function setLanguage(culture) {
+        window.location.href = `/Home/SetLanguage?culture=${culture}&returnUrl=${encodeURIComponent(window.location.pathname)}`;
     }
 </script>
 

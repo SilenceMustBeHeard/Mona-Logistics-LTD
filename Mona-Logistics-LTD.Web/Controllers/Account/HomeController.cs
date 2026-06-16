@@ -21,6 +21,25 @@ public class HomeController : Controller
     {
         return View();
     }
+    [HttpGet]
+    public IActionResult SetLanguage(string culture, string returnUrl)
+    {
+        if (!string.IsNullOrEmpty(culture))
+        {
+            Response.Cookies.Append(".AspNetCore.Culture",
+                $"c={culture}|uic={culture}",
+                new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1),
+                    IsEssential = true,
+                    HttpOnly = false,  
+                    SameSite = SameSiteMode.Lax,
+                    Path = "/"
+                });
+        }
+
+        return LocalRedirect(string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
