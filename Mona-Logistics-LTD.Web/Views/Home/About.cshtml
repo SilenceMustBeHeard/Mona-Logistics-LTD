@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "За нас - Mona Logistics";
+    ViewData["Title"] = Localizer["AboutTitle"];
 }
 
 <div class="about-page">
@@ -8,11 +8,10 @@
         <div class="container">
             <div class="about-hero-content">
                 <div class="hero-badge">Mona Logistics LTD</div>
-                <h1 class="about-hero-title">Превозваме доверието<br>от точка А до точка Б</h1>
+                <h1 class="about-hero-title">@Localizer["AboutHeroTitle"]</h1>
                 <div class="about-hero-line"></div>
                 <p class="about-hero-subtitle">
-                    Нашата мисия е да превърнем транспорта от обикновена услуга<br>
-                    в сигурно и предвидимо бизнес решение.
+                    @Localizer["AboutHeroSubtitle"]
                 </p>
             </div>
         </div>
@@ -23,8 +22,7 @@
         <div class="container">
             <div class="mission-quote">
                 <p class="quote-text">
-                    "Чрез прецизна организация, навременна реакция и постоянен контрол<br>
-                    по време на целия процес ние гарантираме спокойствие и увереност на нашите клиенти."
+                    @Localizer["AboutMissionQuote"]
                 </p>
             </div>
         </div>
@@ -38,35 +36,33 @@
                     <div class="commitment-image">
                         <div class="image-placeholder">
                             <div class="placeholder-content">
-                                <span>Доверие</span>
-                                <span>Професионализъм</span>
-                                <span>Последователност</span>
+                                <span>@Localizer["AboutPillar1"]</span>
+                                <span>@Localizer["AboutPillar2"]</span>
+                                <span>@Localizer["AboutPillar3"]</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <div class="commitment-content">
-                        <span class="section-tag">Нашият ангажимент</span>
-                        <h2 class="section-title">Изграждаме върху <span class="highlight">три стълба</span></h2>
+                        <span class="section-tag">@Localizer["AboutCommitmentTag"]</span>
+                        <h2 class="section-title">@Localizer["AboutCommitmentTitle"] <span class="highlight">@Localizer["AboutCommitmentHighlight"]</span></h2>
                         <div class="section-line"></div>
                         <p class="commitment-text">
-                            В Мона Лоджистикс вярваме, че качествената логистика се изгражда върху доверие,
-                            професионализъм и последователност. Всеки транспорт е различен, затова подхождаме
-                            индивидуално към всяко запитване, за да предложим най-ефективното решение.
+                            @Localizer["AboutCommitmentText"]
                         </p>
                         <div class="pillars">
                             <div class="pillar">
                                 <span class="pillar-number">01</span>
-                                <span class="pillar-name">Доверие</span>
+                                <span class="pillar-name">@Localizer["AboutPillar1"]</span>
                             </div>
                             <div class="pillar">
                                 <span class="pillar-number">02</span>
-                                <span class="pillar-name">Професионализъм</span>
+                                <span class="pillar-name">@Localizer["AboutPillar2"]</span>
                             </div>
                             <div class="pillar">
                                 <span class="pillar-number">03</span>
-                                <span class="pillar-name">Последователност</span>
+                                <span class="pillar-name">@Localizer["AboutPillar3"]</span>
                             </div>
                         </div>
                     </div>
@@ -79,30 +75,30 @@
     <section class="why-section">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="section-tag">Защо ние</span>
-                <h2 class="section-title">Мона Лоджистикс – <span class="highlight">надежден логистичен партньор</span><br>който движи бизнеса напред</h2>
+                <span class="section-tag">@Localizer["AboutWhyTag"]</span>
+                <h2 class="section-title">@Localizer["AboutWhyTitle"] <span class="highlight">@Localizer["AboutWhyHighlight"]</span><br>@Localizer["AboutWhySubtitle"]</h2>
                 <div class="section-line mx-auto"></div>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="why-card">
                         <div class="why-number">01</div>
-                        <h3>Прецизна организация</h3>
-                        <p>Всеки детайл е планиран и изпълнен с внимание, за да няма изненади по време на транспорта.</p>
+                        <h3>@Localizer["AboutWhy1Title"]</h3>
+                        <p>@Localizer["AboutWhy1Desc"]</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="why-card">
                         <div class="why-number">02</div>
-                        <h3>Навременна реакция</h3>
-                        <p>Адаптираме се бързо към промените и предизвикателствата, за да запазим сроковете.</p>
+                        <h3>@Localizer["AboutWhy2Title"]</h3>
+                        <p>@Localizer["AboutWhy2Desc"]</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="why-card">
                         <div class="why-number">03</div>
-                        <h3>Постоянен контрол</h3>
-                        <p>Мониторираме всяка пратка в реално време, от натоварването до финалната доставка.</p>
+                        <h3>@Localizer["AboutWhy3Title"]</h3>
+                        <p>@Localizer["AboutWhy3Desc"]</p>
                     </div>
                 </div>
             </div>
@@ -116,12 +112,11 @@
                 <div class="row align-items-center">
                     <div class="col-lg-8">
                         <p class="closing-text">
-                            Мона Лоджистикс – надежден логистичен партньор,<br>
-                            който движи бизнеса напред.
+                            @Localizer["AboutClosingText"]
                         </p>
                     </div>
                     <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                        <a href="/Contact" class="btn-closing">Свържете се с нас</a>
+                        <a href="/Contact" class="btn-closing">@Localizer["AboutContactBtn"]</a>
                     </div>
                 </div>
             </div>
