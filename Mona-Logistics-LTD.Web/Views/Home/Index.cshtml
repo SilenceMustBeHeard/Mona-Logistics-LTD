@@ -20,10 +20,10 @@
                 @Localizer["HeroDescription"]
             </p>
             <div class="home-hero-buttons">
-                <a href="/Identity/Account/Register" class="home-hero-btn-primary">
+                <a asp-controller="Account" asp-action="Register" class="home-hero-btn-primary">
                     <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
                 </a>
-                <a href="/Shipment/Track" class="home-hero-btn-secondary">
+                <a asp-controller="Shipment" asp-action="Track" class="home-hero-btn-secondary">
                     <i class="bi bi-search"></i> @Localizer["TrackShipment"]
                 </a>
             </div>
@@ -139,12 +139,12 @@
         <h2 class="home-cta-title">@Localizer["CTATitle"]</h2>
         <p class="home-cta-description">@Localizer["CTADescription"]</p>
         <div class="home-cta-buttons">
-            <a href="/Identity/Account/Register" class="home-cta-btn-primary">
+            <a asp-controller="Account" asp-action="Register" class="home-cta-btn-primary">
                 <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
             </a>
-            <a href="/Contact" class="home-cta-btn-secondary">
+        @*     <a href="/Contact" class="home-cta-btn-secondary">
                 <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"]
-            </a>
+            </a> *@
         </div>
     </div>
 </section>
