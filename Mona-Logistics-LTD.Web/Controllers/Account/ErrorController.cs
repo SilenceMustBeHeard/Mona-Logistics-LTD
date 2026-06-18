@@ -2,7 +2,6 @@
 
 namespace Mona_Logistics_LTD.Web.Controllers.Account;
 
-
 public class ErrorController : Controller
 {
     // Handles errors (not found or not developed features)
@@ -24,6 +23,16 @@ public class ErrorController : Controller
     {
         ViewBag.ErrorCode = 403;
         Response.StatusCode = 403;
+        return View();
+    }
+
+    // Handles unauthorized access (not logged in)
+    [Route("Error/Unauthorized")]
+    [Route("Error/401")]
+    public IActionResult Unauthorized()
+    {
+        ViewBag.ErrorCode = 401;
+        Response.StatusCode = 401;
         return View();
     }
 
@@ -66,8 +75,9 @@ public class ErrorController : Controller
 
         return statusCode switch
         {
-            404 => View("NotFound"),
+            401 => View("Unauthorized"),
             403 => View("NotAllowed"),
+            404 => View("NotFound"),
             400 => View("BadRequest"),
             501 => View("NotImplemented"),
             500 => View("ServerError"),

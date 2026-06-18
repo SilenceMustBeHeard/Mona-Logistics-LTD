@@ -104,5 +104,8 @@
   "AutoRescueText": "Attempting automatic recovery...",
   "TryAgain": "Try Again",
   "ReturnHome": "Return to Home",
-  "GoBack": "Go Back"
+  "GoBack": "Go Back",
+  "UnauthorizedTitle": "Not Authenticated",
+  "UnauthorizedBadge": "Not Authenticated",
+  "UnauthorizedDesc": "You need to log in to access this page. Please log in or register to continue."
 }
