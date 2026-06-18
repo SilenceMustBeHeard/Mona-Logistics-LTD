@@ -1,0 +1,107 @@
+/* Error Pages */
+.error-page-wrapper {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.error-card {
+    background: var(--logistics-primary-dark);
+    border: 1px solid rgba(212, 160, 23, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.error-icon {
+    line-height: 1;
+}
+
+.badge-logistics {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid rgba(212, 160, 23, 0.2);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--logistics-accent);
+    background: rgba(212, 160, 23, 0.08);
+}
+
+.error-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 10px;
+    color: white;
+}
+
+.error-description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    max-width: 400px;
+    margin: 10px auto 0;
+}
+
+.btn-logistics-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--logistics-accent);
+    color: var(--logistics-primary-dark);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-logistics-primary:hover {
+        background: var(--logistics-accent-dark);
+        transform: translateY(-2px);
+        color: var(--logistics-primary-dark);
+    }
+
+.btn-logistics-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: transparent;
+    border: 2px solid var(--logistics-accent);
+    color: var(--logistics-accent);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-logistics-outline:hover {
+        background: var(--logistics-accent);
+        color: var(--logistics-primary-dark);
+        transform: translateY(-2px);
+    }
+
+/* Responsive */
+@media (max-width: 576px) {
+    .error-card {
+        padding: 2rem !important;
+    }
+
+    .error-title {
+        font-size: 1.4rem;
+    }
+
+    .btn-logistics-primary,
+    .btn-logistics-outline {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
