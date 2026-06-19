@@ -1,0 +1,58 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages
+@model SystemMessageViewModel
+
+@{
+    ViewData["Title"] = Localizer["SystemMessageTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <a asp-controller="Profile" asp-action="Index" class="btn-logistics-outline mb-4" style="padding: 8px 20px;">
+                <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToProfile"]
+            </a>
+
+            <div class="logistics-card p-4">
+                <div class="text-center mb-4">
+                    <i class="bi bi-megaphone display-3" style="color: var(--logistics-accent);"></i>
+                    <div class="accent-line mx-auto"></div>
+                    <div class="mt-2">
+                        @if (!Model.IsRead)
+                        {
+                            <span class="badge" style="background: var(--logistics-accent); color: var(--logistics-primary-dark);">@Localizer["New"]</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="message-header text-center mb-4">
+                    <h1 class="display-5 fw-bold" style="color: white;">@Model.Title</h1>
+                    <p style="color: rgba(255,255,255,0.4);">
+                        <i class="bi bi-calendar-heart me-1"></i>
+                        @Model.CreatedOn.ToLocalTime().ToString("dddd, dd MMMM yyyy")
+                    </p>
+                </div>
+
+                <div class="message-body" style="font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.85);">
+                    <p>@Model.Description</p>
+                </div>
+
+                <div class="message-footer text-center mt-5 pt-3">
+                    <div class="accent-line mx-auto"></div>
+                    <p class="small mt-3" style="color: rgba(255,255,255,0.3);">
+                        <i class="bi bi-truck" style="color: var(--logistics-accent);"></i>
+                        @Localizer["FooterMessage"]
+                    </p>
+                </div>
+
+                <hr class="my-4" style="border-color: rgba(212, 160, 23, 0.15);">
+
+                <div class="d-flex justify-content-center">
+                    <a asp-controller="Profile" asp-action="Index" class="btn-logistics-primary">
+                        <i class="bi bi-person-badge me-1"></i> @Localizer["BackToProfile"]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
