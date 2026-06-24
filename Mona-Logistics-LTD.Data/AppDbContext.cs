@@ -23,6 +23,12 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
     public DbSet<Truck> Trucks { get; set; } = null!;
 
+    public DbSet<LoadRequest> LoadRequests { get; set; } = null!;
+
+    public DbSet<LoadRequestDocument> LoadRequestDocuments { get; set; } = null!;
+    public DbSet<Offer> Offers { get; set; } = null!;
+
+
     public DbSet<Driver> Drivers { get; set; } = null!;
 
     public DbSet<Route> Routes { get; set; } = null!;
@@ -53,5 +59,8 @@ public class AppDbContext : IdentityDbContext<AppUser>
 
         builder.Entity<Truck>().HasQueryFilter(t => !t.IsDeleted);
         builder.Entity<Driver>().HasQueryFilter(d => !d.IsDeleted);
+        builder.Entity<LoadRequest>().HasQueryFilter(lr => !lr.IsDeleted);
+        builder.Entity<LoadRequestDocument>().HasQueryFilter(lrd => !lrd.IsDeleted);
+        builder.Entity<Offer>().HasQueryFilter(o => !o.IsDeleted);
     }
 }

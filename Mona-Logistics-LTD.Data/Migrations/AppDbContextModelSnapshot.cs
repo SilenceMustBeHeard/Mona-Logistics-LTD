@@ -17,7 +17,7 @@ namespace Mona_Logistics_LTD.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.8")
+                .HasAnnotation("ProductVersion", "10.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -331,6 +331,227 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.HasIndex("ShipmentId");
 
                     b.ToTable("Cargos");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CargoDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CargoName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeliveryAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFragile")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("MaxWeightCapacityKg")
+                        .HasColumnType("float");
+
+                    b.Property<double>("MinCargoSpaceM3")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PickupAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PreferredDeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PreferredPickupDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PreferredVehicleType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("RequiresCooling")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("VolumeM3")
+                        .HasColumnType("float");
+
+                    b.Property<double>("WeightKg")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("PreferredPickupDate");
+
+                    b.HasIndex("Status");
+
+                    b.ToTable("LoadRequests", t =>
+                        {
+                            t.HasCheckConstraint("CK_LoadRequest_VolumeM3", "VolumeM3 > 0");
+
+                            t.HasCheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0");
+                        });
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.LoadRequestDocument", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("LoadRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LoadRequestId");
+
+                    b.ToTable("LoadRequestDocuments");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.Offer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("AcceptedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("LoadRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("RejectedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("TruckId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ValidUntil")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LoadRequestId")
+                        .IsUnique();
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("ValidUntil");
+
+                    b.ToTable("Offers", t =>
+                        {
+                            t.HasCheckConstraint("CK_Offer_Discount", "Discount >= 0 AND Discount <= Price");
+
+                            t.HasCheckConstraint("CK_Offer_Price", "Price >= 0");
+                        });
                 });
 
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.Shipment", b =>
@@ -791,6 +1012,47 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Navigation("Shipment");
                 });
 
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", b =>
+                {
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Base.AppUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.LoadRequestDocument", b =>
+                {
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", "LoadRequest")
+                        .WithMany("Documents")
+                        .HasForeignKey("LoadRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LoadRequest");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.Offer", b =>
+                {
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Base.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", "LoadRequest")
+                        .WithOne("Offer")
+                        .HasForeignKey("Mona_Logistics_LTD.Data.Models.Loads.Offer", "LoadRequestId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("LoadRequest");
+                });
+
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.Shipment", b =>
                 {
                     b.HasOne("Mona_Logistics_LTD.Data.Models.Base.AppUser", "Client")
@@ -891,6 +1153,13 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Navigation("SentSystemMessages");
 
                     b.Navigation("Shipments");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", b =>
+                {
+                    b.Navigation("Documents");
+
+                    b.Navigation("Offer");
                 });
 
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.Shipment", b =>
