@@ -10,5 +10,6 @@ public enum VehicleType
     RefrigeratedTruck = 1,
     Van = 2,
     ContainerTruck = 3,
-    FlatbedTruck = 4
+    FlatbedTruck = 4,
+    Trailer = 5
 }
