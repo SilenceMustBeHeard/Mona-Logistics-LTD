@@ -3,10 +3,9 @@ using Mona_Logistics_LTD.Data.Common.Enums;
 using Mona_Logistics_LTD.Data.Models.Loads;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Loads;
 using Mona_Logistics_LTD.Services.User.Interfaces.Loads;
-using Mona_Logistics_LTD.Services.User.Interfaces.Loads;
-using Mona_Logistics_LTD.Web.ViewModels.User.LoadRequest;
+using Mona_Logistics_LTD.Web.ViewModels.User.Loads;
 
-namespace Mona_Logistics_LTD.Services.User.Implementations.Loads;
+namespace Mona_Logistics_LTD.Services.Client.Implementations.Loads;
 
 public class LoadRequestClientService : ILoadRequestClientService
 {
@@ -63,7 +62,7 @@ public class LoadRequestClientService : ILoadRequestClientService
     public async Task<bool> UpdateRequestAsync(Guid id, LoadRequestUpdateViewModel model, string clientId)
     {
         var request = await GetRequestByIdAsync(id, clientId);
-        if (request == null || request.Status != LoadRequestStatus.Pending)
+        if (request == null || !CanEditRequest(request))
             return false;
 
         request.CargoName = model.CargoName;
@@ -91,7 +90,7 @@ public class LoadRequestClientService : ILoadRequestClientService
     public async Task<bool> CancelRequestAsync(Guid id, string clientId)
     {
         var request = await GetRequestByIdAsync(id, clientId);
-        if (request == null || request.Status == LoadRequestStatus.Completed)
+        if (request == null || request.Status == LoadRequestStatus.Completed || request.Status == LoadRequestStatus.Cancelled)
             return false;
 
         request.Status = LoadRequestStatus.Cancelled;
@@ -106,5 +105,16 @@ public class LoadRequestClientService : ILoadRequestClientService
     public async Task<int> GetPendingCountAsync()
     {
         return await _loadRequestRepository.GetPendingCountAsync();
+    }
+
+    public LoadRequestCreateViewModel PreparePreview(LoadRequestCreateViewModel model)
+    {
+        model.IsReviewMode = true;
+        return model;
+    }
+
+    public bool CanEditRequest(LoadRequest request)
+    {
+        return request.Status == LoadRequestStatus.Pending || request.Status == LoadRequestStatus.UnderReview;
     }
 }
