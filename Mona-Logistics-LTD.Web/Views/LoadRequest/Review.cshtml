@@ -1,0 +1,129 @@
+﻿@using Mona_Logistics_LTD.Web.ViewModels.User.Loads
+@model LoadRequestCreateViewModel
+
+@{
+    ViewData["Title"] = Localizer["ReviewRequestTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="logistics-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-check-circle display-4" style="color: var(--logistics-accent);"></i>
+                    <h1 class="h2 mt-3" style="color: white;">@Localizer["ReviewRequestTitle"]</h1>
+                    <p style="color: rgba(255,255,255,0.6);">@Localizer["ReviewRequestSubtitle"]</p>
+                    <div class="accent-line mx-auto"></div>
+                </div>
+
+                <div class="review-section">
+                    <!-- Cargo Info -->
+                    <div class="review-group mb-4">
+                        <h6 class="text-accent mb-3">@Localizer["CargoInfoTitle"]</h6>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["CargoName"]</span>
+                            <span class="review-value">@Model.CargoName</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["CargoDescription"]</span>
+                            <span class="review-value">@Model.CargoDescription</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["WeightKg"]</span>
+                            <span class="review-value">@Model.WeightKg kg</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["VolumeM3"]</span>
+                            <span class="review-value">@Model.VolumeM3 m³</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["IsFragile"]</span>
+                            <span class="review-value">@(Model.IsFragile ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["RequiresCooling"]</span>
+                            <span class="review-value">@(Model.RequiresCooling ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                    </div>
+
+                    <!-- Transport Details -->
+                    <div class="review-group mb-4">
+                        <h6 class="text-accent mb-3">@Localizer["TransportDetailsTitle"]</h6>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["PickupAddress"]</span>
+                            <span class="review-value">@Model.PickupAddress</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["DeliveryAddress"]</span>
+                            <span class="review-value">@Model.DeliveryAddress</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["PreferredPickupDate"]</span>
+                            <span class="review-value">@Model.PreferredPickupDate.ToString("dd MMM yyyy HH:mm")</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["PreferredDeliveryDate"]</span>
+                            <span class="review-value">@(Model.PreferredDeliveryDate?.ToString("dd MMM yyyy HH:mm") ?? Localizer["NotSpecified"])</span>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Requirements -->
+                    <div class="review-group mb-4">
+                        <h6 class="text-accent mb-3">@Localizer["VehicleRequirementsTitle"]</h6>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["PreferredVehicleType"]</span>
+                            <span class="review-value">@Model.VehicleTypeDisplay</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["MinCargoSpaceM3"]</span>
+                            <span class="review-value">@Model.MinCargoSpaceM3 m³</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">@Localizer["MaxWeightCapacityKg"]</span>
+                            <span class="review-value">@Model.MaxWeightCapacityKg kg</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Notes))
+                        {
+                            <div class="review-item">
+                                <span class="review-label">@Localizer["Notes"]</span>
+                                <span class="review-value">@Model.Notes</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <button type="submit" form="submitForm" class="btn-logistics-primary flex-fill">
+                        <i class="bi bi-check-circle me-2"></i> @Localizer["SubmitRequest"]
+                    </button>
+                    <a asp-action="Create" class="btn-logistics-outline flex-fill">
+                        <i class="bi bi-pencil me-2"></i> @Localizer["EditRequest"]
+                    </a>
+                    <a asp-controller="Home" asp-action="Index" class="btn-logistics-outline flex-fill">
+                        <i class="bi bi-x-circle me-2"></i> @Localizer["Cancel"]
+                    </a>
+                </div>
+
+                <form id="submitForm" asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="submit" />
+                    <input type="hidden" asp-for="CargoName" />
+                    <input type="hidden" asp-for="CargoDescription" />
+                    <input type="hidden" asp-for="WeightKg" />
+                    <input type="hidden" asp-for="VolumeM3" />
+                    <input type="hidden" asp-for="IsFragile" />
+                    <input type="hidden" asp-for="RequiresCooling" />
+                    <input type="hidden" asp-for="PickupAddress" />
+                    <input type="hidden" asp-for="DeliveryAddress" />
+                    <input type="hidden" asp-for="PreferredPickupDate" />
+                    <input type="hidden" asp-for="PreferredDeliveryDate" />
+                    <input type="hidden" asp-for="PreferredVehicleType" />
+                    <input type="hidden" asp-for="MinCargoSpaceM3" />
+                    <input type="hidden" asp-for="MaxWeightCapacityKg" />
+                    <input type="hidden" asp-for="Notes" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
