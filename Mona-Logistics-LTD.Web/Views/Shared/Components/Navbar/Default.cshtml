@@ -36,6 +36,12 @@
         }
         else
         {
+            @if (Model.CanCreateLoadRequest)
+            {
+                <a class="nav-link-logistics btn-create-request" asp-controller="LoadRequest" asp-action="Create">
+                    <i class="bi bi-plus-circle me-1"></i> @Localizer["NewLoadRequest"]
+                </a>
+            }
             <a class="nav-link-logistics" asp-controller="Shipment" asp-action="MyShipments">
                 <i class="bi bi-box-seam me-1"></i> @Localizer["MyShipments"]
             </a>

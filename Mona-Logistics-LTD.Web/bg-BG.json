@@ -207,6 +207,7 @@
   "Rejected": "Отхвърлена",
   "Truck": "Камион",
   "Van": "Бус",
-  "Trailer": "Реморке"
+  "Trailer": "Реморке",
+  "NewLoadRequest": "Нова заявка"
 }
 

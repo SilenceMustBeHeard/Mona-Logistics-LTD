@@ -206,6 +206,7 @@
   "Rejected": "Rejected",
   "Truck": "Truck",
   "Van": "Van",
-  "Trailer": "Trailer"
+  "Trailer": "Trailer",
+  "NewLoadRequest": "New Request"
 }
 
