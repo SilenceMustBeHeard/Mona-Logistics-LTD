@@ -1,0 +1,142 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Data.Models.Loads
+@model LoadRequest
+
+@{
+    ViewData["Title"] = Localizer["RequestDetailsTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="d-flex gap-3 mb-4 flex-wrap">
+                <a asp-action="MyRequests" class="btn-logistics-outline" style="padding: 8px 20px;">
+                    <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToRequests"]
+                </a>
+                @if (Model.Status == LoadRequestStatus.Pending || Model.Status == LoadRequestStatus.UnderReview)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-logistics-outline" style="padding: 8px 20px;">
+                        <i class="bi bi-pencil me-1"></i> @Localizer["Edit"]
+                    </a>
+                    <form asp-action="Cancel" asp-route-id="@Model.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn-logistics-outline" style="padding: 8px 20px; border-color: #e63946; color: #e63946;" onclick="return confirm('@Localizer["CancelConfirm"]')">
+                            <i class="bi bi-x-lg me-1"></i> @Localizer["Cancel"]
+                        </button>
+                    </form>
+                }
+                @if (Model.Status == LoadRequestStatus.Offered)
+                {
+                    <a asp-controller="Offer" asp-action="Index" asp-route-requestId="@Model.Id" class="btn-logistics-primary" style="padding: 8px 20px;">
+                        <i class="bi bi-file-earmark-text me-1"></i> @Localizer["ViewOffers"]
+                    </a>
+                }
+            </div>
+
+            <div class="logistics-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-start mb-4">
+                    <div>
+                        <h1 style="color: white;">@Model.CargoName</h1>
+                        <p style="color: rgba(255,255,255,0.5);">
+                            <i class="bi bi-calendar3 me-1"></i>
+                            @Localizer["CreatedOn"]: @Model.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")
+                        </p>
+                    </div>
+                    <span class="status-badge @(Model.Status switch
+                    {
+                        LoadRequestStatus.Pending => "status-pending",
+                        LoadRequestStatus.UnderReview => "status-underreview",
+                        LoadRequestStatus.Offered => "status-offered",
+                        LoadRequestStatus.Accepted => "status-accepted",
+                        LoadRequestStatus.InProgress => "status-inprogress",
+                        LoadRequestStatus.Completed => "status-completed",
+                        LoadRequestStatus.Cancelled => "status-cancelled",
+                        _ => ""
+                    })" style="font-size: 1rem; padding: 6px 16px;">
+                        @(Model.Status switch
+                        {
+                            LoadRequestStatus.Pending => Localizer["Pending"],
+                            LoadRequestStatus.UnderReview => Localizer["UnderReview"],
+                            LoadRequestStatus.Offered => Localizer["Offered"],
+                            LoadRequestStatus.Accepted => Localizer["Accepted"],
+                            LoadRequestStatus.InProgress => Localizer["InProgress"],
+                            LoadRequestStatus.Completed => Localizer["Completed"],
+                            LoadRequestStatus.Cancelled => Localizer["Cancelled"],
+                            _ => Model.Status.ToString()
+                        })
+                    </span>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="text-accent">@Localizer["CargoInfoTitle"]</h6>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["CargoName"]</span>
+                            <span class="detail-value">@Model.CargoName</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["CargoDescription"]</span>
+                            <span class="detail-value">@Model.CargoDescription</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["WeightKg"]</span>
+                            <span class="detail-value">@Model.WeightKg kg</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["VolumeM3"]</span>
+                            <span class="detail-value">@Model.VolumeM3 m³</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["IsFragile"]</span>
+                            <span class="detail-value">@(Model.IsFragile ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["RequiresCooling"]</span>
+                            <span class="detail-value">@(Model.RequiresCooling ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="text-accent">@Localizer["TransportDetailsTitle"]</h6>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["PickupAddress"]</span>
+                            <span class="detail-value">@Model.PickupAddress</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["DeliveryAddress"]</span>
+                            <span class="detail-value">@Model.DeliveryAddress</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["PreferredPickupDate"]</span>
+                            <span class="detail-value">@Model.PreferredPickupDate.ToString("dd MMM yyyy HH:mm")</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["PreferredDeliveryDate"]</span>
+                            <span class="detail-value">@(Model.PreferredDeliveryDate?.ToString("dd MMM yyyy HH:mm") ?? Localizer["NotSpecified"])</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["PreferredVehicleType"]</span>
+                            <span class="detail-value">@(Model.PreferredVehicleType switch
+                            {
+                                VehicleType.ContainerTruck => Localizer["ContainerTruck"],
+                                    VehicleType.FlatbedTruck => Localizer["FlatbedTruck"],
+                                    VehicleType.RefrigeratedTruck => Localizer["RefrigeratedTruck"],
+                                    VehicleType.StandardTruck => Localizer["StandardTruck"],
+                                VehicleType.Van => Localizer["Van"],
+                                VehicleType.Trailer => Localizer["Trailer"],
+                                _ => Model.PreferredVehicleType.ToString()
+                            })</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Notes))
+                        {
+                            <div class="detail-item">
+                                <span class="detail-label">@Localizer["Notes"]</span>
+                                <span class="detail-value">@Model.Notes</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
