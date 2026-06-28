@@ -34,6 +34,10 @@ public static class IdentitySeeder
         {
             admin = new AppUser
             {
+                FirstName = "Admin",
+                LastName = "Administrator",
+
+
                 UserName = adminEmail,
                 Email = adminEmail,
                 AlternateEmail = adminAlternateEmail,
@@ -57,6 +61,8 @@ public static class IdentitySeeder
         {
             manager = new AppUser
             {
+                FirstName = "Manager",
+                LastName = "Manager",
                 UserName = managerEmail,
                 Email = managerEmail,
                 AlternateEmail = managerAlternateEmail,

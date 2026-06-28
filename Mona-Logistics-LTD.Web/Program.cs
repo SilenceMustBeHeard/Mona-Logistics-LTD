@@ -15,10 +15,10 @@ using Mona_Logistics_LTD.Services.User.Implementations.Message;
 using Mona_Logistics_LTD.Services.User.Interfaces.Account;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
-
 using Mona_Logistics_LTD.Web.ViewComponents;
 using SendGrid;
 using System.Globalization;
+using Mona_Logistics_LTD.Data.Seeding;  
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -93,12 +93,9 @@ public class Program
         builder.Services.AddScoped<IEmailService, EmailService>();
 
         //  LOCALIZATION  
-        // Register our simple JSON localizer
-        builder.Services.AddMemoryCache(); 
-      
+        builder.Services.AddMemoryCache();
         builder.Services.AddSingleton<IJsonLocalizer, JsonLocalizerService>();
 
-        // Configure supported cultures for request localization
         builder.Services.Configure<RequestLocalizationOptions>(options =>
         {
             var supportedCultures = new[]
@@ -123,6 +120,8 @@ public class Program
 
         var app = builder.Build();
 
+       
+       
         using (var scope = app.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -130,6 +129,10 @@ public class Program
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
             await context.Database.MigrateAsync();
+
+            await IdentitySeeder.SeedRolesAsync(roleManager);
+            await IdentitySeeder.SeedAdminAsync(userManager);
+            await IdentitySeeder.SeedManagerAsync(userManager);
         }
 
         var provider = new FileExtensionContentTypeProvider();
@@ -155,8 +158,6 @@ public class Program
         });
 
         app.UseRouting();
-
-        // Important: UseRequestLocalization must be called before UseAuthentication
         app.UseRequestLocalization();
         app.UseAuthentication();
         app.UseAuthorization();
