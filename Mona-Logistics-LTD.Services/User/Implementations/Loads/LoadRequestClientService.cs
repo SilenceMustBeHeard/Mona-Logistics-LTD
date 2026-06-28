@@ -25,7 +25,7 @@ public class LoadRequestClientService : ILoadRequestClientService
             CargoName = model.CargoName,
             CargoDescription = model.CargoDescription,
             WeightKg = model.WeightKg,
-            VolumeM3 = model.VolumeM3,
+            LinearMeters = model.LinearMeters,
             IsFragile = model.IsFragile,
             RequiresCooling = model.RequiresCooling,
             PickupAddress = model.PickupAddress,
@@ -68,7 +68,7 @@ public class LoadRequestClientService : ILoadRequestClientService
         request.CargoName = model.CargoName;
         request.CargoDescription = model.CargoDescription;
         request.WeightKg = model.WeightKg;
-        request.VolumeM3 = model.VolumeM3;
+        request.LinearMeters = model.LinearMeters;
         request.IsFragile = model.IsFragile;
         request.RequiresCooling = model.RequiresCooling;
         request.PickupAddress = model.PickupAddress;

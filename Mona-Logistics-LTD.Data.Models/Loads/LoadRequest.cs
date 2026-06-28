@@ -15,7 +15,7 @@ public class LoadRequest : BaseDeletableEntity
 
     public string CargoDescription { get; set; } = null!;
     public double WeightKg { get; set; }
-    public double VolumeM3 { get; set; }
+    public double LinearMeters { get; set; }
     public bool IsFragile { get; set; }
     public bool RequiresCooling { get; set; }
 

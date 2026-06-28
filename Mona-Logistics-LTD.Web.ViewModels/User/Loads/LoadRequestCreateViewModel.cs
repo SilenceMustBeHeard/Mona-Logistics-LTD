@@ -17,9 +17,8 @@ public class LoadRequestCreateViewModel
     [Range(0.1, 100000, ErrorMessage = "Weight must be between 0.1 and 100,000 kg")]
     public double WeightKg { get; set; }
 
-    [Range(0.01, 1000, ErrorMessage = "Volume must be between 0.01 and 1,000 m³")]
-    public double VolumeM3 { get; set; }
-
+    [Range(0.01, 20, ErrorMessage = "Linear meters must be between 0.01 and 20 (standard truck capacity)")]
+    public double LinearMeters { get; set; }
     public bool IsFragile { get; set; }
     public bool RequiresCooling { get; set; }
 

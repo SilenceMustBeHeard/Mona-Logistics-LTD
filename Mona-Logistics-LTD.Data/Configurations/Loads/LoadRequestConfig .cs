@@ -37,6 +37,6 @@ public class LoadRequestConfig : IEntityTypeConfiguration<LoadRequest>
 
         // Check constraints for numeric fields
         builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0"));
-        builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_VolumeM3", "VolumeM3 > 0"));
+        builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_LinearMeters", "LinearMeters > 0"));
     }
 }
