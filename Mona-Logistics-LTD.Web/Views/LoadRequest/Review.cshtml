@@ -32,10 +32,12 @@
                             <span class="review-label">@Localizer["WeightKg"]</span>
                             <span class="review-value">@Model.WeightKg kg</span>
                         </div>
+
                         <div class="review-item">
-                            <span class="review-label">@Localizer["VolumeM3"]</span>
-                            <span class="review-value">@Model.VolumeM3 m³</span>
+                            <span class="review-label">@Localizer["LinearMeters"]</span>
+                            <span class="review-value">@Model.LinearMeters.ToString("F2") lm</span>
                         </div>
+
                         <div class="review-item">
                             <span class="review-label">@Localizer["IsFragile"]</span>
                             <span class="review-value">@(Model.IsFragile ? "✅ Yes" : "❌ No")</span>
@@ -111,7 +113,7 @@
                     <input type="hidden" asp-for="CargoName" />
                     <input type="hidden" asp-for="CargoDescription" />
                     <input type="hidden" asp-for="WeightKg" />
-                    <input type="hidden" asp-for="VolumeM3" />
+                    <input type="hidden" asp-for="LinearMeters" />
                     <input type="hidden" asp-for="IsFragile" />
                     <input type="hidden" asp-for="RequiresCooling" />
                     <input type="hidden" asp-for="PickupAddress" />

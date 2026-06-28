@@ -44,9 +44,10 @@
                                 <span asp-validation-for="WeightKg" class="text-danger small"></span>
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="VolumeM3" class="form-label">@Localizer["VolumeM3"]</label>
-                                <input asp-for="VolumeM3" class="form-control logistics-input" type="number" step="0.01" />
-                                <span asp-validation-for="VolumeM3" class="text-danger small"></span>
+                                <label asp-for="LinearMeters" class="form-label">@Localizer["LinearMeters"]</label>
+                                <input asp-for="LinearMeters" class="form-control logistics-input" type="number" step="0.01" />
+                                <span asp-validation-for="LinearMeters" class="text-danger small"></span>
+                                <small style="color: rgba(255,255,255,0.3);">@Localizer["LinearMetersHelp"]</small>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-check">

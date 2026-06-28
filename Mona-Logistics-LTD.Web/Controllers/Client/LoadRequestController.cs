@@ -105,7 +105,7 @@ public class LoadRequestController : Controller
             CargoName = request.CargoName,
             CargoDescription = request.CargoDescription,
             WeightKg = request.WeightKg,
-            VolumeM3 = request.VolumeM3,
+            LinearMeters = request.LinearMeters,
             IsFragile = request.IsFragile,
             RequiresCooling = request.RequiresCooling,
             PickupAddress = request.PickupAddress,

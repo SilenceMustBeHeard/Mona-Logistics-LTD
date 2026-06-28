@@ -372,6 +372,9 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<bool>("IsFragile")
                         .HasColumnType("bit");
 
+                    b.Property<double>("LinearMeters")
+                        .HasColumnType("float");
+
                     b.Property<double>("MaxWeightCapacityKg")
                         .HasColumnType("float");
 
@@ -408,9 +411,6 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("VolumeM3")
-                        .HasColumnType("float");
-
                     b.Property<double>("WeightKg")
                         .HasColumnType("float");
 
@@ -424,7 +424,7 @@ namespace Mona_Logistics_LTD.Data.Migrations
 
                     b.ToTable("LoadRequests", t =>
                         {
-                            t.HasCheckConstraint("CK_LoadRequest_VolumeM3", "VolumeM3 > 0");
+                            t.HasCheckConstraint("CK_LoadRequest_LinearMeters", "LinearMeters > 0");
 
                             t.HasCheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0");
                         });
