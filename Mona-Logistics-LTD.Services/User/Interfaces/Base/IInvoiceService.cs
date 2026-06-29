@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mona_Logistics_LTD.Services.User.Interfaces.Base;
+﻿namespace Mona_Logistics_LTD.Services.User.Interfaces.Base;
 
 public interface IInvoiceService
 {

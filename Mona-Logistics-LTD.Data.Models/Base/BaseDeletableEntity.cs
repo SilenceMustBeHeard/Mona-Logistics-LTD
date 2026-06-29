@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mona_Logistics_LTD.Data.Models.Base;
+﻿namespace Mona_Logistics_LTD.Data.Models.Base;
 
 public abstract class BaseDeletableEntity : BaseEntity
 {

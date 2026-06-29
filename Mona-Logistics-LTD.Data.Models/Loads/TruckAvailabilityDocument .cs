@@ -2,19 +2,14 @@
 
 namespace Mona_Logistics_LTD.Data.Models.Loads;
 
-public class LoadRequestDocument : BaseDeletableEntity
+public class TruckAvailabilityDocument : BaseDeletableEntity
 {
-    public Guid LoadRequestId { get; set; }
-    public virtual LoadRequest LoadRequest { get; set; } = null!;
+    public Guid TruckAvailabilityId { get; set; }
+    public virtual TruckAvailability TruckAvailability { get; set; } = null!;
 
     public string FileName { get; set; } = null!;
     public string FilePath { get; set; } = null!;
-
-    // e.g., "pdf", "jpg", "png"
     public string FileType { get; set; } = null!;
-
-    // in bytes
     public long FileSize { get; set; }
-
     public string? Description { get; set; }
 }

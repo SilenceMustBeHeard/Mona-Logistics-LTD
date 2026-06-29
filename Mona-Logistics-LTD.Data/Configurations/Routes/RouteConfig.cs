@@ -8,6 +8,5 @@ public class RouteConfig : IEntityTypeConfiguration<Route>
 {
     public void Configure(EntityTypeBuilder<Route> builder)
     {
-       
     }
 }

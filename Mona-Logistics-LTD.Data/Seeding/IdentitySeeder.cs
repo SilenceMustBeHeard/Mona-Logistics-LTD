@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Mona_Logistics_LTD.Data.Models.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Seeding;
-
 
 public static class IdentitySeeder
 {
@@ -36,7 +32,6 @@ public static class IdentitySeeder
             {
                 FirstName = "Admin",
                 LastName = "Administrator",
-
 
                 UserName = adminEmail,
                 Email = adminEmail,

@@ -8,7 +8,6 @@ public class TruckConfig : IEntityTypeConfiguration<Truck>
 {
     public void Configure(EntityTypeBuilder<Truck> builder)
     {
-       
         builder.HasIndex(t => t.RegistrationNumber).IsUnique();
     }
 }

@@ -1,9 +1,6 @@
-﻿using Mona_Logistics_LTD.Data.Repositories.Interfaces.Messages;
+﻿using Microsoft.EntityFrameworkCore;
+using Mona_Logistics_LTD.Data.Repositories.Interfaces.Messages;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
 
 namespace Mona_Logistics_LTD.Services.User.Implementations.Message;
@@ -16,7 +13,6 @@ public class SystemMessageClientService : ISystemMessageClientService
     {
         _systemMessageRepository = systemMessageRepository;
     }
-
 
     public async Task<List<SystemMessageViewModel>> GetUserMessagesAsync(string userId)
     {

@@ -6,9 +6,10 @@ using Mona_Logistics_LTD.Data.Repositories.Interfaces.Loads;
 
 namespace Mona_Logistics_LTD.Data.Repositories.Implementations.Loads;
 
-public class LoadRequestRepository : RepositoryAsync<LoadRequest, Guid>, ILoadRequestRepository
+public class LoadRequestRepository
+    : RepositoryAsync<LoadRequest, Guid>, ILoadRequestRepository
 {
-    public LoadRequestRepository(AppDbContext context) 
+    public LoadRequestRepository(AppDbContext context)
         : base(context)
     {
     }

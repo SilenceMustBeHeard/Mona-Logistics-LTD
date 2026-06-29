@@ -8,6 +8,5 @@ public class CargoConfig : IEntityTypeConfiguration<Cargo>
 {
     public void Configure(EntityTypeBuilder<Cargo> builder)
     {
-        
     }
 }

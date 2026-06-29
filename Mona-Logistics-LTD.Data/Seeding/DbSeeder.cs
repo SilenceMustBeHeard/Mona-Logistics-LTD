@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Models.Trucks;
-using Mona_Logistics_LTD.Data.Models.Routes;
-using Mona_Logistics_LTD.Data.Models.Loads;
 using System.Text.Json;
 
 namespace Mona_Logistics_LTD.Data.Seeding;
@@ -165,7 +163,6 @@ public static class LogisticsSeeder
         await SeedTrucksAsync(context);
         await SeedDriversAsync(context);
         await SeedRoutesAsync(context);
-
 
         Console.WriteLine("✅ Logistics seeding completed!");
     }

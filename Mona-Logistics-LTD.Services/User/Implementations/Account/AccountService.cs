@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Logging;
 using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Services.User.Interfaces.Account;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Mona_Logistics_LTD.Web.ViewModels.User.Account.Profile;
 
 namespace Mona_Logistics_LTD.Services.User.Implementations.Account;
-
 
 public class AccountService : IAccountService
 {

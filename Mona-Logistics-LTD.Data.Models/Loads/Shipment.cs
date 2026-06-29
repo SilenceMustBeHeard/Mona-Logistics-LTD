@@ -1,15 +1,11 @@
 ﻿using Mona_Logistics_LTD.Data.Common.Enums;
 using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Data.Models.Routes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Loads;
 
 public class Shipment : BaseDeletableEntity
 {
-
     public string TrackingNumber { get; set; } = null!;
 
     public string PickupAddress { get; set; } = null!;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mona_Logistics_LTD.Services.User.Interfaces.Account;
+﻿namespace Mona_Logistics_LTD.Services.User.Interfaces.Account;
 
 public interface IEmailService
 {

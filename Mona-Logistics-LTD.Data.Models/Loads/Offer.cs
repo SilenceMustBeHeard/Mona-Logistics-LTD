@@ -9,14 +9,15 @@ public class Offer : BaseDeletableEntity
     public virtual LoadRequest LoadRequest { get; set; } = null!;
 
     // optional, if assigning specific truck
-    public string? TruckId { get; set; } 
+    public string? TruckId { get; set; }
 
     public decimal Price { get; set; }
     public decimal? Discount { get; set; }
     public decimal FinalPrice => Price - (Discount ?? 0);
 
     public string? Notes { get; set; }
-    public OfferStatus Status { get; set; } 
+
+    public OfferStatus Status { get; set; }
         = OfferStatus.Pending;
 
     public DateTime ValidUntil { get; set; }

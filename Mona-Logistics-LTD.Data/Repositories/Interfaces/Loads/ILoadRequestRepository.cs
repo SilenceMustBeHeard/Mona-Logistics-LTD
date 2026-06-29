@@ -7,7 +7,10 @@ namespace Mona_Logistics_LTD.Data.Repositories.Interfaces.Loads;
 public interface ILoadRequestRepository : IFullRepositoryAsync<LoadRequest, Guid>
 {
     Task<IEnumerable<LoadRequest>> GetClientRequestsAsync(string clientId);
+
     Task<IEnumerable<LoadRequest>> GetPendingRequestsAsync();
+
     Task<IEnumerable<LoadRequest>> GetRequestsByStatusAsync(LoadRequestStatus status);
+
     Task<int> GetPendingCountAsync();
 }

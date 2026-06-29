@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 using Mona_Logistics_LTD.Services.User.Interfaces.Account;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Services.User.Implementations.Account;
 
@@ -31,10 +28,8 @@ public class ViewRenderService : IViewRenderService
         _serviceProvider = serviceProvider;
     }
 
-
     public async Task<string> RenderToStringAsync(string viewName, object model, ViewDataDictionary? viewData = null)
     {
-
         // Create a fake ActionContext to render the view outside of a controller
         var httpContext = new DefaultHttpContext { RequestServices = _serviceProvider };
 
@@ -42,7 +37,6 @@ public class ViewRenderService : IViewRenderService
         var actionContext = new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
 
         using var stringWriter = new StringWriter();
-
 
         // Find the view using the Razor view engine
         var viewResult = _razorViewEngine.FindView(actionContext, viewName, false);
@@ -52,11 +46,9 @@ public class ViewRenderService : IViewRenderService
             throw new ArgumentNullException($"{viewName} view not found.");
         }
 
-
         // Create a ViewDataDictionary to pass the model and any additional data to the view
         var viewDictionary = viewData ?? new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
         viewDictionary.Model = model;
-
 
         // Create a TempDataDictionary to pass temporary data to the view
         var tempData = new TempDataDictionary(httpContext, _tempDataProvider);

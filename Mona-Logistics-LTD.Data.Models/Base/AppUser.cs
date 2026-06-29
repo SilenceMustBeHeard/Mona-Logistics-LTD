@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Models.Loads;
 using Mona_Logistics_LTD.Data.Models.Messages;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Base;
 
@@ -26,6 +23,7 @@ public class AppUser : IdentityUser
 
     public ICollection<Shipment> Shipments { get; set; }
     = new HashSet<Shipment>();
+
     // Navigation properties for messages
     public virtual ICollection<SystemMessage> ReceivedSystemMessages { get; set; }
         = new HashSet<SystemMessage>();

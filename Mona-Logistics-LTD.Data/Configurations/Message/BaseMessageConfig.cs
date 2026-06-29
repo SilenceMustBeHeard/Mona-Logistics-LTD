@@ -9,6 +9,5 @@ public abstract class BaseMessageConfig<T> : IEntityTypeConfiguration<T> where T
     public virtual void Configure(EntityTypeBuilder<T> builder)
     {
         builder.HasKey(m => m.Id);
-
     }
 }

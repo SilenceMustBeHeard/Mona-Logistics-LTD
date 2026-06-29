@@ -1,14 +1,10 @@
 ﻿using Mona_Logistics_LTD.Data.Models.Loads;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Base;
 
 public class Invoice : BaseDeletableEntity
 {
-
     [Column(TypeName = "decimal(18,2)")]
     public decimal Amount { get; set; }
 

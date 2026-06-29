@@ -607,6 +607,136 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.ToTable("Shipments");
                 });
 
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailability", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AvailableFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("AvailableLinearMeters")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("AvailableUntil")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("AvailableVolumeM3")
+                        .HasColumnType("float");
+
+                    b.Property<double>("AvailableWeightKg")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CurrentLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DriverId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DriverId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("HasCooling")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasTailLift")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("MatchedLoadRequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("TruckId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VehicleType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverId1");
+
+                    b.HasIndex("MatchedLoadRequestId");
+
+                    b.HasIndex("TruckId");
+
+                    b.ToTable("TruckAvailabilities");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailabilityDocument", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("TruckAvailabilityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TruckAvailabilityId");
+
+                    b.ToTable("TruckAvailabilityDocuments");
+                });
+
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Messages.ContactMessage", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1064,6 +1194,38 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailability", b =>
+                {
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Trucks.Driver", "Driver")
+                        .WithMany()
+                        .HasForeignKey("DriverId1");
+
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Loads.LoadRequest", "MatchedLoadRequest")
+                        .WithMany()
+                        .HasForeignKey("MatchedLoadRequestId");
+
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Trucks.Truck", "Truck")
+                        .WithMany()
+                        .HasForeignKey("TruckId");
+
+                    b.Navigation("Driver");
+
+                    b.Navigation("MatchedLoadRequest");
+
+                    b.Navigation("Truck");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailabilityDocument", b =>
+                {
+                    b.HasOne("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailability", "TruckAvailability")
+                        .WithMany("Documents")
+                        .HasForeignKey("TruckAvailabilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TruckAvailability");
+                });
+
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Messages.ContactMessage", b =>
                 {
                     b.HasOne("Mona_Logistics_LTD.Data.Models.Base.AppUser", "Receiver")
@@ -1167,6 +1329,11 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Navigation("CargoItems");
 
                     b.Navigation("Trips");
+                });
+
+            modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Loads.TruckAvailability", b =>
+                {
+                    b.Navigation("Documents");
                 });
 
             modelBuilder.Entity("Mona_Logistics_LTD.Data.Models.Routes.Route", b =>

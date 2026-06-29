@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mona_Logistics_LTD.Data.Repositories.Interfaces.CRUD;
+﻿namespace Mona_Logistics_LTD.Data.Repositories.Interfaces.CRUD;
 
 //  combines all the CRUD operations into a single interface for convenience
 public interface IFullRepositoryAsync<TEntity, TKey> :

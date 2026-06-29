@@ -1,16 +1,11 @@
 ﻿using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Data.Models.Loads;
 using Mona_Logistics_LTD.Data.Models.Trucks;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mona_Logistics_LTD.Data.Models.Routes;
 
 public class Trip : BaseDeletableEntity
 {
-   
-
     public Guid TruckId { get; set; }
 
     public Truck Truck { get; set; } = null!;

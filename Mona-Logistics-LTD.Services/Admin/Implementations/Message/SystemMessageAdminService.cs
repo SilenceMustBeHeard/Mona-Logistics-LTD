@@ -115,7 +115,6 @@ public class SystemMessageAdminService : ISystemMessageAdminService
         SystemMessageCreateViewModel model,
         string adminId)
     {
-
         if (string.IsNullOrEmpty(model.ReceiverId))
         {
             return (false, "Please select a receiver.");
@@ -144,6 +143,7 @@ public class SystemMessageAdminService : ISystemMessageAdminService
 
         return (true, string.Empty);
     }
+
     public async Task MarkMessageAsReadAsync(Guid messageId, string userId)
     {
         var message = await _messageRepository

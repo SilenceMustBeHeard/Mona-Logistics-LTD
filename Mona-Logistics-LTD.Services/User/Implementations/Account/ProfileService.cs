@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Data.Repositories.Interfaces.Account;
+using Mona_Logistics_LTD.Services.Admin.Interfaces.Message;
 using Mona_Logistics_LTD.Services.User.Interfaces.Account;
 using Mona_Logistics_LTD.Services.User.Interfaces.Message;
 using Mona_Logistics_LTD.Web.ViewModels.Admin.Messages;
-using Mona_Logistics_LTD.Web.ViewModels.User.Account.Profile;
-using Microsoft.EntityFrameworkCore;
 using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages;
-using Mona_Logistics_LTD.Services.Admin.Interfaces.Message;
+using Mona_Logistics_LTD.Web.ViewModels.User.Account.Profile;
 
 namespace Mona_Logistics_LTD.Services.User.Implementations.Account;
 

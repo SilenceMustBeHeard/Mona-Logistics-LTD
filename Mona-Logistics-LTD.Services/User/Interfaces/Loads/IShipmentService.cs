@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mona_Logistics_LTD.Services.User.Interfaces.Loads;
+﻿namespace Mona_Logistics_LTD.Services.User.Interfaces.Loads;
 
 public interface IShipmentService
 {

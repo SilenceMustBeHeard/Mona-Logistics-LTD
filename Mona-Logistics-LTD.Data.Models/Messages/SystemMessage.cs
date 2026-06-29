@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Mona_Logistics_LTD.Data.Models.Messages;
-
 
 public class SystemMessage : BaseMessage
 {
     [Required]
     [MinLength(5, ErrorMessage = "Title must be at least 5 characters long.")]
     [MaxLength(200, ErrorMessage = "Title cannot exceed 200 characters.")]
-    public required string Title { get; set; }
+    public string Title { get; set; }
 
     [Required]
     [MinLength(20, ErrorMessage = "Description must be at least 20 characters long.")]
     [MaxLength(2000, ErrorMessage = "Description cannot exceed 2000 characters.")]
-    public required string Description { get; set; }
+    public string Description { get; set; }
 
     [Url(ErrorMessage = "Action URL must be a valid URL.")]
     public string? ActionUrl { get; set; }
