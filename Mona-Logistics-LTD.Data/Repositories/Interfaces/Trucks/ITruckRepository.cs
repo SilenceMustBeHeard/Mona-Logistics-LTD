@@ -5,4 +5,5 @@ namespace Mona_Logistics_LTD.Data.Repositories.Interfaces.Trucks;
 
 public interface ITruckRepository : IFullRepositoryAsync<Truck, Guid>
 {
+    Task<IEnumerable<Truck>> GetAllAsync();
 }
