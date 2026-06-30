@@ -1,0 +1,135 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Data.Models.Loads
+@model TruckAvailability
+
+@{
+    ViewData["Title"] = Localizer["TruckListingDetailsTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="d-flex gap-3 mb-4 flex-wrap">
+                <a asp-action="MyListings" class="btn-logistics-outline" style="padding: 8px 20px;">
+                    <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToListings"]
+                </a>
+                @if (Model.Status == TruckAvailabilityStatus.Available || Model.Status == TruckAvailabilityStatus.Reserved)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-logistics-outline" style="padding: 8px 20px;">
+                        <i class="bi bi-pencil me-1"></i> @Localizer["Edit"]
+                    </a>
+                    <form asp-action="Cancel" asp-route-id="@Model.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn-logistics-outline" style="padding: 8px 20px; border-color: #e63946; color: #e63946;" onclick="return confirm('@Localizer["CancelListingConfirm"]')">
+                            <i class="bi bi-x-lg me-1"></i> @Localizer["Cancel"]
+                        </button>
+                    </form>
+                }
+            </div>
+
+            <div class="logistics-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-start mb-4">
+                    <div>
+                        <h1 style="color: white;">@Localizer["TruckListingDetailsTitle"]</h1>
+                        <p style="color: rgba(255,255,255,0.5);">
+                            <i class="bi bi-calendar3 me-1"></i>
+                            @Localizer["CreatedOn"]: @Model.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")
+                        </p>
+                    </div>
+                    <span class="status-badge @(Model.Status switch
+                          {
+                              TruckAvailabilityStatus.Available => "status-available",
+                              TruckAvailabilityStatus.Reserved => "status-reserved",
+                              TruckAvailabilityStatus.Matched => "status-matched",
+                              TruckAvailabilityStatus.Expired => "status-expired",
+                              TruckAvailabilityStatus.Cancelled => "status-cancelled",
+                              _ => ""
+                          })" style="font-size: 1rem; padding: 6px 16px;">
+                        @(Model.Status switch
+                        {
+                            TruckAvailabilityStatus.Available => Localizer["Available"],
+                            TruckAvailabilityStatus.Reserved => Localizer["Reserved"],
+                            TruckAvailabilityStatus.Matched => Localizer["Matched"],
+                            TruckAvailabilityStatus.Expired => Localizer["Expired"],
+                            TruckAvailabilityStatus.Cancelled => Localizer["Cancelled"],
+                            _ => Model.Status.ToString()
+                        })
+                    </span>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="text-accent">@Localizer["TruckDetailsTitle"]</h6>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["Truck"]</span>
+                            <span class="detail-value">@(Model.Truck?.RegistrationNumber ?? "N/A")</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["AvailableWeightKg"]</span>
+                            <span class="detail-value">@Model.AvailableWeightKg kg</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["AvailableLinearMeters"]</span>
+                            <span class="detail-value">@Model.AvailableLinearMeters.ToString("F2") lm</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["AvailableVolumeM3"]</span>
+                            <span class="detail-value">@Model.AvailableVolumeM3 m³</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["VehicleType"]</span>
+                            <span class="detail-value">
+                                @(Model.VehicleType switch
+                                {
+                                    VehicleType.StandardTruck => Localizer["StandardTruck"],
+                                    VehicleType.RefrigeratedTruck => Localizer["RefrigeratedTruck"],
+                                    VehicleType.FlatbedTruck => Localizer["FlatbedTruck"],
+                                    VehicleType.ContainerTruck => Localizer["ContainerTruck"],
+                                   
+                                    VehicleType.Van => Localizer["Van"],
+                                    VehicleType.Trailer => Localizer["Trailer"],
+                                    _ => Model.VehicleType.ToString()
+                                })
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="text-accent">@Localizer["RouteDetailsTitle"]</h6>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["CurrentLocation"]</span>
+                            <span class="detail-value">@Model.CurrentLocation</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["Destination"]</span>
+                            <span class="detail-value">@(Model.Destination ?? Localizer["NotSpecified"])</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["AvailableFrom"]</span>
+                            <span class="detail-value">@Model.AvailableFrom.ToString("dd MMM yyyy HH:mm")</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["AvailableUntil"]</span>
+                            <span class="detail-value">@(Model.AvailableUntil?.ToString("dd MMM yyyy HH:mm") ?? Localizer["NotSpecified"])</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["HasCooling"]</span>
+                            <span class="detail-value">@(Model.HasCooling ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">@Localizer["HasTailLift"]</span>
+                            <span class="detail-value">@(Model.HasTailLift ? "✅ Yes" : "❌ No")</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Notes))
+                        {
+                            <div class="detail-item">
+                                <span class="detail-label">@Localizer["Notes"]</span>
+                                <span class="detail-value">@Model.Notes</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

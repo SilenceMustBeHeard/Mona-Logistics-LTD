@@ -81,9 +81,12 @@
                         <div class="col-md-6">
                             <label asp-for="PreferredVehicleType" class="form-label">@Localizer["PreferredVehicleType"]</label>
                             <select asp-for="PreferredVehicleType" class="form-select logistics-input">
-                                <option value="0">@Localizer["Truck"]</option>
-                                <option value="1">@Localizer["Van"]</option>
-                                <option value="2">@Localizer["Trailer"]</option>
+                                <option value="0">@Localizer["StandardTruck"]</option>
+                                <option value="1">@Localizer["RefrigeratedTruck"]</option>
+                                <option value="2">@Localizer["FlatbedTruck"]</option>
+                                <option value="3">@Localizer["ContainerTruck"]</option>
+                                <option value="4">@Localizer["Van"]</option>
+                                <option value="5">@Localizer["Trailer"]</option>
                             </select>
                         </div>
                         <div class="col-md-6">
