@@ -205,7 +205,10 @@
   "OfferWaitingMessage": "Offer awaiting your decision.",
   "Expired": "Expired",
   "Rejected": "Rejected",
-  "Truck": "Truck",
+  "StandardTruck": "Standard Truck",
+  "RefrigeratedTruck": "Refrigerated Truck",
+  "FlatbedTruck": "Flatbed Truck",
+  "ContainerTruck": "Container Truck",
   "Van": "Van",
   "Trailer": "Trailer",
   "NewLoadRequest": "New Request"

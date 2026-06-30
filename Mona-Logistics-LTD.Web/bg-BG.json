@@ -206,9 +206,12 @@
   "OfferWaitingMessage": "Офертата чака вашето решение.",
   "Expired": "Изтекла",
   "Rejected": "Отхвърлена",
-  "Truck": "Камион",
+  "StandardTruck": "Стандартен камион",
+  "RefrigeratedTruck": "Охлаждан камион",
+  "FlatbedTruck": "Платформен камион",
+  "ContainerTruck": "Контейнерен камион",
   "Van": "Бус",
-  "Trailer": "Реморке",
+  "Trailer": "Ремaрке",
   "NewLoadRequest": "Нова заявка"
 }
 
