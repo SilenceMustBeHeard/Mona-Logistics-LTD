@@ -1,0 +1,146 @@
+﻿@using Mona_Logistics_LTD.Data.Models.Trucks
+@using Mona_Logistics_LTD.Web.ViewModels.Client.TruckAvailability
+@model TruckAvailabilityCreateViewModel
+
+@{
+    ViewData["Title"] = Localizer["CreateTruckListingTitle"];
+    var trucks = ViewBag.Trucks as IEnumerable<Truck> ?? new List<Truck>();
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="logistics-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-truck display-4" style="color: var(--logistics-accent);"></i>
+                    <h1 class="h2 mt-3" style="color: white;">@Localizer["CreateTruckListingTitle"]</h1>
+                    <p style="color: rgba(255,255,255,0.6);">@Localizer["CreateTruckListingSubtitle"]</p>
+                    <div class="accent-line mx-auto"></div>
+                </div>
+
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="IsReviewMode" />
+
+                    <!-- Step 1: Truck Details -->
+                    <div class="step-section mb-4">
+                        <div class="step-header mb-3">
+                            <span class="step-number">01</span>
+                            <h5 class="mb-0" style="color: white;">@Localizer["TruckDetailsTitle"]</h5>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label asp-for="TruckId" class="form-label">@Localizer["SelectTruck"]</label>
+                                <select asp-for="TruckId" class="form-select logistics-input">
+                                    <option value="">@Localizer["SelectTruckPlaceholder"]</option>
+                                    @foreach (var truck in trucks)
+                                    {
+                                        <option value="@truck.Id">@truck.RegistrationNumber - @truck.Brand @truck.Model</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="TruckId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="AvailableWeightKg" class="form-label">@Localizer["AvailableWeightKg"]</label>
+                                <input asp-for="AvailableWeightKg" class="form-control logistics-input" type="number" step="0.1" />
+                                <span asp-validation-for="AvailableWeightKg" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="AvailableLinearMeters" class="form-label">@Localizer["AvailableLinearMeters"]</label>
+                                <input asp-for="AvailableLinearMeters" class="form-control logistics-input" type="number" step="0.01" />
+                                <span asp-validation-for="AvailableLinearMeters" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="AvailableVolumeM3" class="form-label">@Localizer["AvailableVolumeM3"]</label>
+                                <input asp-for="AvailableVolumeM3" class="form-control logistics-input" type="number" step="0.01" />
+                                <span asp-validation-for="AvailableVolumeM3" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Route Details -->
+                    <div class="step-section mb-4">
+                        <div class="step-header mb-3">
+                            <span class="step-number">02</span>
+                            <h5 class="mb-0" style="color: white;">@Localizer["RouteDetailsTitle"]</h5>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label asp-for="CurrentLocation" class="form-label">@Localizer["CurrentLocation"]</label>
+                                <input asp-for="CurrentLocation" class="form-control logistics-input" placeholder="@Localizer["CurrentLocationPlaceholder"]" />
+                                <span asp-validation-for="CurrentLocation" class="text-danger small"></span>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Destination" class="form-label">@Localizer["Destination"]</label>
+                                <input asp-for="Destination" class="form-control logistics-input" placeholder="@Localizer["DestinationPlaceholder"]" />
+                                <span asp-validation-for="Destination" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="AvailableFrom" class="form-label">@Localizer["AvailableFrom"]</label>
+                                <input asp-for="AvailableFrom" class="form-control logistics-input" type="datetime-local" />
+                                <span asp-validation-for="AvailableFrom" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="AvailableUntil" class="form-label">@Localizer["AvailableUntil"]</label>
+                                <input asp-for="AvailableUntil" class="form-control logistics-input" type="datetime-local" />
+                                <span asp-validation-for="AvailableUntil" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Vehicle Features -->
+                    <div class="step-section mb-4">
+                        <div class="step-header mb-3">
+                            <span class="step-number">03</span>
+                            <h5 class="mb-0" style="color: white;">@Localizer["VehicleFeaturesTitle"]</h5>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label asp-for="VehicleType" class="form-label">@Localizer["VehicleType"]</label>
+                                <select asp-for="VehicleType" class="form-select logistics-input">
+                                    <option value="0">@Localizer["Truck"]</option>
+                                    <option value="1">@Localizer["Van"]</option>
+                                    <option value="2">@Localizer["Trailer"]</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mt-4">
+                                    <input asp-for="HasCooling" class="form-check-input logistics-check" />
+                                    <label asp-for="HasCooling" class="form-check-label" style="color: rgba(255,255,255,0.7);">@Localizer["HasCooling"]</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input asp-for="HasTailLift" class="form-check-input logistics-check" />
+                                    <label asp-for="HasTailLift" class="form-check-label" style="color: rgba(255,255,255,0.7);">@Localizer["HasTailLift"]</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label asp-for="Notes" class="form-label">@Localizer["Notes"]</label>
+                                <textarea asp-for="Notes" class="form-control logistics-input" rows="2" placeholder="@Localizer["NotesPlaceholder"]"></textarea>
+                                <span asp-validation-for="Notes" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="d-flex gap-3 flex-wrap">
+                        <button type="submit" name="action" value="preview" class="btn-logistics-primary flex-fill">
+                            <i class="bi bi-eye me-2"></i> @Localizer["PreviewListing"]
+                        </button>
+                        <a asp-controller="Home" asp-action="Index" class="btn-logistics-outline flex-fill">
+                            <i class="bi bi-x-circle me-2"></i> @Localizer["Cancel"]
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
