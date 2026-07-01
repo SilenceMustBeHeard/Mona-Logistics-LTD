@@ -213,8 +213,8 @@
   "Trailer": "Trailer",
   "NewLoadRequest": "New Request",
 
-  "CreateTruckListingTitle": "Post Available Truck",
-  "CreateTruckListingSubtitle": "Fill in the details of your available truck and route",
+  "CreateTruckListingTitle": "Ask for a Truck",
+  "CreateTruckListingSubtitle": "Fill in the details of needed truck and route",
   "TruckDetailsTitle": "Truck Details",
   "RouteDetailsTitle": "Route Details",
   "VehicleFeaturesTitle": "Vehicle Features",

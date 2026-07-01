@@ -214,8 +214,8 @@
   "Trailer": "Ремaрке",
   "NewLoadRequest": "Нова заявка",
 
-  "CreateTruckListingTitle": "Обяви свободен камион",
-  "CreateTruckListingSubtitle": "Попълнете данните за свободния камион и маршрута",
+  "CreateTruckListingTitle": "Запитване за камион",
+  "CreateTruckListingSubtitle": "Попълнете данните за  камиона и маршрута",
   "TruckDetailsTitle": "Информация за камиона",
   "RouteDetailsTitle": "Информация за маршрута",
   "VehicleFeaturesTitle": "Характеристики на камиона",

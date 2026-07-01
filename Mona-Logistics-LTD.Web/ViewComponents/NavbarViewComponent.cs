@@ -37,6 +37,7 @@ public class NavbarViewComponent : ViewComponent
             model.IsManager = false;
             model.IsUser = false;
             model.CanCreateLoadRequest = false;
+            model.CanCreateTruckListing = false;
             model.UnreadMessagesCount = 0;
             return View(model);
         }
