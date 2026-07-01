@@ -8,4 +8,5 @@ public class NavbarButtonsViewModel
     public bool IsManager { get; set; }
     public int UnreadMessagesCount { get; set; }
     public bool CanCreateLoadRequest { get; set; }
+    public bool CanCreateTruckListing { get; set; }
 }

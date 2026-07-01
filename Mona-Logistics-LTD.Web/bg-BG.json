@@ -213,7 +213,7 @@
   "Van": "Бус",
   "Trailer": "Ремaрке",
   "NewLoadRequest": "Нова заявка",
-  
+
   "CreateTruckListingTitle": "Обяви свободен камион",
   "CreateTruckListingSubtitle": "Попълнете данните за свободния камион и маршрута",
   "TruckDetailsTitle": "Информация за камиона",
@@ -260,9 +260,11 @@
   "Truck": "Камион",
   "Cooling": "Охлаждане",
   "TailLift": "Палетна количка",
-  "LinearMetersUnit": "лм"
+  "LinearMetersUnit": "лм",
+  "PostTruck": "Обяви камион"
  
-  
- 
+
+
+
 }
 

@@ -212,7 +212,7 @@
   "Van": "Van",
   "Trailer": "Trailer",
   "NewLoadRequest": "New Request",
-  
+
   "CreateTruckListingTitle": "Post Available Truck",
   "CreateTruckListingSubtitle": "Fill in the details of your available truck and route",
   "TruckDetailsTitle": "Truck Details",
@@ -259,8 +259,9 @@
   "Truck": "Truck",
   "Cooling": "Cooling",
   "TailLift": "Tail Lift",
-  "LinearMetersUnit": "lm"
- 
+  "LinearMetersUnit": "lm",
+  "PostTruck": "Post Truck"
+
 
 }
 

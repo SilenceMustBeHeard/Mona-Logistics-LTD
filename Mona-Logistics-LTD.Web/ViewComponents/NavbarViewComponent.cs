@@ -54,7 +54,7 @@ public class NavbarViewComponent : ViewComponent
 
        
         model.CanCreateLoadRequest = true;
-
+        model.CanCreateTruckListing = true; 
         if (model.IsUser)
         {
             try
