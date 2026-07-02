@@ -1,0 +1,41 @@
+/* Contact Page Styles */
+.contact-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(212, 160, 23, 0.1);
+    border: 2px solid rgba(212, 160, 23, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.3s ease;
+}
+
+    .contact-info-card:hover {
+        background: rgba(212, 160, 23, 0.04);
+        border-color: rgba(212, 160, 23, 0.15);
+    }
+
+.logistics-input-prepend {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: none;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 10px 14px;
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border-radius: 10px;
+}
+
+.text-danger {
+    color: #ff6b6b !important;
+}
