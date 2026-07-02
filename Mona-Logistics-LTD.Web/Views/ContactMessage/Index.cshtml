@@ -1,0 +1,145 @@
+﻿@using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages
+@model ContactMessageCreateViewModel
+
+@{
+    ViewData["Title"] = Localizer["ContactTitle"];
+}
+
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Left side - Contact Info Cards -->
+        <div class="col-lg-4">
+            <div class="logistics-card p-4 h-100">
+                <div class="text-center mb-4">
+                    <div class="contact-icon-wrapper mx-auto mb-3">
+                        <i class="bi bi-headset fs-1" style="color: var(--logistics-accent);"></i>
+                    </div>
+                    <h4 class="fw-bold mb-1" style="color: white;">@Localizer["ContactInfoTitle"]</h4>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">@Localizer["ContactInfoSubtitle"]</p>
+                </div>
+
+                <div class="contact-info-card mb-3 p-3 rounded-3">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="bi bi-envelope-fill fs-4" style="color: var(--logistics-accent);"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <small style="color: rgba(255,255,255,0.4); display: block;">@Localizer["EmailUs"]</small>
+                            <a href="mailto:info@monalogistics.com" style="color: var(--logistics-accent); text-decoration: none;">
+                                info@monalogistics.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info-card mb-3 p-3 rounded-3">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="bi bi-clock-fill fs-4" style="color: var(--logistics-accent);"></i>
+                        </div>
+                        <div>
+                            <small style="color: rgba(255,255,255,0.4); display: block;">@Localizer["BusinessHours"]</small>
+                            <span style="color: rgba(255,255,255,0.8);">@Localizer["BusinessHoursValue"]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info-card p-3 rounded-3">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="bi bi-chat-dots-fill fs-4" style="color: var(--logistics-accent);"></i>
+                        </div>
+                        <div>
+                            <small style="color: rgba(255,255,255,0.4); display: block;">@Localizer["ResponseTime"]</small>
+                            <span style="color: rgba(255,255,255,0.8);">@Localizer["ResponseTimeValue"]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border-color: rgba(212, 160, 23, 0.15); margin: 1.5rem 0;" />
+
+                <div class="text-center">
+                    <i class="bi bi-shield-check fs-1" style="color: rgba(212, 160, 23, 0.3);"></i>
+                    <p class="small mt-2" style="color: rgba(255,255,255,0.3);">@Localizer["SecureMessage"]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side - Contact Form -->
+        <div class="col-lg-8">
+            <div class="logistics-card p-4 p-md-5">
+
+                <!-- Header -->
+                <div class="text-center mb-4">
+                    <div class="contact-icon-wrapper mx-auto mb-3">
+                        <i class="bi bi-chat-dots-fill fs-1" style="color: var(--logistics-accent);"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2" style="color: white;">@Localizer["ContactFormTitle"]</h2>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.95rem;">
+                        @Localizer["ContactFormSubtitle"]
+                    </p>
+                </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"]
+                    </div>
+                }
+
+                <form asp-action="Index" method="post">
+                    @Html.AntiForgeryToken()
+                    
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row g-3">
+                        <!-- Subject field -->
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label asp-for="Subject" class="form-label fw-semibold" style="color: rgba(255,255,255,0.8);">
+                                    <i class="bi bi-tag me-1" style="color: var(--logistics-accent);"></i> @Localizer["SubjectLabel"]
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text logistics-input-prepend">
+                                        <i class="bi bi-chat-text"></i>
+                                    </span>
+                                    <input asp-for="Subject" class="form-control logistics-input" placeholder="@Localizer["SubjectPlaceholder"]" />
+                                </div>
+                                <span asp-validation-for="Subject" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <!-- Message field -->
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label asp-for="Message" class="form-label fw-semibold" style="color: rgba(255,255,255,0.8);">
+                                    <i class="bi bi-envelope me-1" style="color: var(--logistics-accent);"></i> @Localizer["MessageLabel"]
+                                </label>
+                                <textarea asp-for="Message" class="form-control logistics-input" rows="6"
+                                          placeholder="@Localizer["MessagePlaceholder"]"></textarea>
+                                <span asp-validation-for="Message" class="text-danger small"></span>
+                                <small class="d-block mt-1" style="color: rgba(255,255,255,0.3);">
+                                    <i class="bi bi-info-circle me-1"></i> @Localizer["MessageHint"]
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
+                        <button type="submit" class="btn-logistics-primary px-5 py-2">
+                            <i class="bi bi-send me-2"></i> @Localizer["SendButton"]
+                        </button>
+                        <a asp-controller="Home" asp-action="Index" class="btn-logistics-outline px-4 py-2">
+                            <i class="bi bi-arrow-left me-2"></i> @Localizer["BackToHome"]
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
