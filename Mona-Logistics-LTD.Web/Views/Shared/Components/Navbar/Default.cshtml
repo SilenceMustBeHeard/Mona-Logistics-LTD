@@ -48,9 +48,18 @@
                     <i class="bi bi-truck me-1"></i> @Localizer["PostTruck"]
                 </a>
             } *@
-            <a class="nav-link-logistics" asp-controller="Shipment" asp-action="MyShipments">
+          @*   <a class="nav-link-logistics" asp-controller="Shipment" asp-action="MyShipments">
                 <i class="bi bi-box-seam me-1"></i> @Localizer["MyShipments"]
-            </a>
+            </a> *@
+
+
+
+            @if ( Model.CanSendContactMessage)
+            {
+                <a class="nav-link-logistics" asp-controller="ContactMessage" asp-action="Index">
+                    <i class="bi bi-envelope me-1"></i> @Localizer["Contact"]
+                </a>
+            }
             <a class="nav-link-logistics position-relative" asp-controller="Messages" asp-action="Inbox">
                 <i class="bi bi-envelope-paper me-1"></i> @Localizer["Messages"]
                 @if (Model.UnreadMessagesCount > 0)

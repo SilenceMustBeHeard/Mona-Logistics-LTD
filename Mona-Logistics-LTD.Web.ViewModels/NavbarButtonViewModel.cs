@@ -7,6 +7,7 @@ public class NavbarButtonsViewModel
     public bool IsAdmin { get; set; }
     public bool IsManager { get; set; }
     public int UnreadMessagesCount { get; set; }
+    public bool CanSendContactMessage { get; set; }
     public bool CanCreateLoadRequest { get; set; }
     public bool CanCreateTruckListing { get; set; }
 }

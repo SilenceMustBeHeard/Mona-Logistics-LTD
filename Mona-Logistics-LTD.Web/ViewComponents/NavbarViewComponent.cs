@@ -36,6 +36,7 @@ public class NavbarViewComponent : ViewComponent
             model.IsAdmin = false;
             model.IsManager = false;
             model.IsUser = false;
+            model.CanSendContactMessage = false;
             model.CanCreateLoadRequest = false;
             model.CanCreateTruckListing = false;
             model.UnreadMessagesCount = 0;
@@ -53,9 +54,11 @@ public class NavbarViewComponent : ViewComponent
         model.IsManager = HttpContext.User.IsInRole("Manager");
         model.IsUser = !model.IsAdmin && !model.IsManager;
 
-       
+        model.CanSendContactMessage = true;
         model.CanCreateLoadRequest = true;
         model.CanCreateTruckListing = true; 
+
+
         if (model.IsUser)
         {
             try
