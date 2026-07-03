@@ -260,8 +260,26 @@
   "Cooling": "Cooling",
   "TailLift": "Tail Lift",
   "LinearMetersUnit": "lm",
-  "PostTruck": "Post Truck"
-
+  "PostTruck": "Post Truck",
+  
+  "ContactTitle": "Contact - Mona Logistics",
+  "ContactInfoTitle": "Contact Information",
+  "ContactInfoSubtitle": "We're here to help",
+  "EmailUs": "Email Us",
+  "BusinessHours": "Business Hours",
+  "BusinessHoursValue": "Mon-Fri: 9AM - 6PM",
+  "ResponseTime": "Response Time",
+  "ResponseTimeValue": "Average: 24 hours",
+  "SecureMessage": "Your message is secure and you will receive a response within 24 hours.",
+  "ContactFormTitle": "Send us a Message",
+  "ContactFormSubtitle": "Have a question or feedback? We'd love to hear from you!",
+  "SubjectLabel": "Subject",
+  "SubjectPlaceholder": "e.g., Question about shipment, Feedback, Support",
+  "MessageLabel": "Message",
+  "MessagePlaceholder": "Type your message here. Be as detailed as possible so we can assist you better...",
+  "MessageHint": "Minimum length: 10 characters",
+  "SendButton": "Send Message",
+  "BackToHome": "Back to Home"
 
 }
 

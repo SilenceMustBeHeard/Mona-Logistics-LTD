@@ -261,8 +261,28 @@
   "Cooling": "Охлаждане",
   "TailLift": "Палетна количка",
   "LinearMetersUnit": "лм",
-  "PostTruck": "Обяви камион"
- 
+  "PostTruck": "Обяви камион",
+  
+  "ContactTitle": "Контакти - Mona Logistics",
+  "ContactInfoTitle": "Информация за контакт",
+  "ContactInfoSubtitle": "Ние сме тук, за да ви помогнем",
+  "EmailUs": "Имейл",
+  "BusinessHours": "Работно време",
+  "BusinessHoursValue": "Пон-Пет: 9:00 - 18:00",
+  "ResponseTime": "Време за отговор",
+  "ResponseTimeValue": "Средно: 24 часа",
+  "SecureMessage": "Вашето съобщение е защитено и ще получите отговор в рамките на 24 часа.",
+  "ContactFormTitle": "Изпратете ни съобщение",
+  "ContactFormSubtitle": "Имате въпрос или обратна връзка? Бихме се радвали да чуем от вас!",
+  "SubjectLabel": "Тема",
+  "SubjectPlaceholder": "Например: Въпрос относно пратка, Обратна връзка, Поддръжка",
+  "MessageLabel": "Съобщение",
+  "MessagePlaceholder": "Напишете вашето съобщение тук. Бъдете възможно най-подробни, за да можем да ви помогнем по-добре...",
+  "MessageHint": "Минимална дължина: 10 символа",
+  "SendButton": "Изпрати съобщение",
+  "BackToHome": "Обратно към началната страница"
+
+
 
 
 
