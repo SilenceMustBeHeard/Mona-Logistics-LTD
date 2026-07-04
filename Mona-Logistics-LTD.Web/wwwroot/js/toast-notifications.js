@@ -1,82 +1,246 @@
-﻿
-$(document).ready(function () {
-    function showToast(title, message, type = 'success') {
-        //if toast container doesn't exist, create it
-        let toastContainer = $('.toast-container');
-        if (toastContainer.length === 0) {
-            $('body').append('<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100"></div>');
-            toastContainer = $('.toast-container');
+﻿(function () {
+    'use strict';
+
+    // Toast configuration
+    const config = {
+        containerClass: 'toast-container',
+        position: 'bottom-0 end-0',
+        autoHideDelay: 5000,
+        maxToasts: 5
+    };
+
+    // Color palette for different toast types (Logistics theme)
+    const toastColors = {
+        success: {
+            bg: 'rgba(40, 167, 69, 0.12)',
+            border: '#28a745',
+            icon: 'bi-check-circle-fill',
+            text: 'rgba(255,255,255,0.9)'
+        },
+        error: {
+            bg: 'rgba(220, 53, 69, 0.12)',
+            border: '#dc3545',
+            icon: 'bi-exclamation-triangle-fill',
+            text: 'rgba(255,255,255,0.9)'
+        },
+        warning: {
+            bg: 'rgba(255, 193, 7, 0.12)',
+            border: '#ffc107',
+            icon: 'bi-exclamation-triangle-fill',
+            text: 'rgba(255,255,255,0.9)'
+        },
+        info: {
+            bg: 'rgba(23, 162, 184, 0.12)',
+            border: '#17a2b8',
+            icon: 'bi-info-circle-fill',
+            text: 'rgba(255,255,255,0.9)'
         }
+    };
 
-        const colors = {
-            success: { bg: '#2a5f3a', border: '#4caf50', icon: 'bi-check-circle-fill' },
-            error: { bg: '#5f2a2a', border: '#dc3545', icon: 'bi-exclamation-triangle-fill' },
-            warning: { bg: '#5f4a2a', border: '#ffc107', icon: 'bi-exclamation-triangle-fill' },
-            info: { bg: '#2a4a5f', border: '#17a2b8', icon: 'bi-info-circle-fill' }
+    // Get localized messages
+    function getLocalizedMessages() {
+        const culture = document.documentElement.lang || 'bg';
+        const isBulgarian = culture.startsWith('bg');
+
+        return {
+            successTitle: isBulgarian ? 'Успешно!' : 'Success!',
+            errorTitle: isBulgarian ? 'Грешка!' : 'Error!',
+            warningTitle: isBulgarian ? 'Внимание' : 'Warning',
+            infoTitle: isBulgarian ? 'Информация' : 'Info'
         };
+    }
 
-        const color = colors[type] || colors.success;
+    // Create or get toast container
+    function getToastContainer() {
+        let container = document.querySelector(`.${config.containerClass}`);
+        if (!container) {
+            container = document.createElement('div');
+            container.className = `${config.containerClass} position-fixed ${config.position} p-3`;
+            container.style.zIndex = '1100';
+            document.body.appendChild(container);
+        }
+        return container;
+    }
 
-        const toastHtml = `
-            <div class="toast align-items-center text-white border-0 show mb-2" role="alert" style="background: linear-gradient(135deg, ${color.bg}, #1a1410); border-left: 4px solid ${color.border}; min-width: 300px; border-radius: 10px; backdrop-filter: blur(10px);">
-                <div class="toast-header" style="background: ${color.bg}; color: #ffd6b0; border-bottom: 1px solid rgba(255,107,53,0.2);">
-                    <i class="bi ${color.icon} me-2" style="color: ${color.border};"></i>
-                    <strong class="me-auto">${title}</strong>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-                </div>
-                <div class="toast-body" style="color: #ffd6b0;">
-                    <i class="bi bi-egg-fried me-2" style="color: ${color.border};"></i>
-                    ${message}
-                </div>
-            </div>
+    // Create a toast element
+    function createToastElement(title, message, type = 'success') {
+        const colors = toastColors[type] || toastColors.success;
+        const messages = getLocalizedMessages();
+
+        // Title mapping
+        const titleMap = {
+            success: messages.successTitle,
+            error: messages.errorTitle,
+            warning: messages.warningTitle,
+            info: messages.infoTitle
+        };
+        const finalTitle = title || titleMap[type] || messages.infoTitle;
+
+        const toast = document.createElement('div');
+        toast.className = `toast align-items-center show mb-2`;
+        toast.setAttribute('role', 'alert');
+        toast.style.cssText = `
+            background: var(--logistics-primary-dark);
+            border: 1px solid rgba(212, 160, 23, 0.15);
+            border-left: 4px solid ${colors.border};
+            border-radius: 12px;
+            min-width: 300px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+            padding: 0;
         `;
 
-        const toastElement = $(toastHtml);
-        toastContainer.append(toastElement);
+        toast.innerHTML = `
+            <div class="toast-header" style="
+                background: rgba(212, 160, 23, 0.05);
+                color: white;
+                border-bottom: 1px solid rgba(212, 160, 23, 0.08);
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            ">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="bi ${colors.icon}" style="color: ${colors.border}; font-size: 1.2rem;"></i>
+                    <strong style="font-weight: 600; font-size: 0.95rem;">${finalTitle}</strong>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" 
+                        style="filter: invert(1); opacity: 0.6; font-size: 0.8rem;"
+                        aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="
+                padding: 14px 16px;
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            ">
+                <i class="bi bi-truck" style="color: var(--logistics-accent); font-size: 1rem;"></i>
+                <span>${message}</span>
+            </div>
+            <div class="toast-progress" style="
+                height: 2px;
+                background: ${colors.border};
+                width: 100%;
+                animation: toastProgress ${config.autoHideDelay}ms linear forwards;
+            "></div>
+        `;
 
-        // auto-hide after 5 seconds
-        setTimeout(() => {
-            toastElement.fadeOut(500, function () {
-                $(this).remove();
-            });
-        }, 5000);
+        // Add progress animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes toastProgress {
+                from { width: 100%; }
+                to { width: 0%; }
+            }
+        `;
+        if (!document.querySelector('#toastStyles')) {
+            style.id = 'toastStyles';
+            document.head.appendChild(style);
+        }
+
+        return toast;
     }
 
-    //directly expose showToast to global scope for server-side use
+    // Main showToast function
+    function showToast(title, message, type = 'success') {
+        if (!message) return;
+
+        const container = getToastContainer();
+        const toast = createToastElement(title, message, type);
+
+        // Limit max toasts
+        while (container.children.length >= config.maxToasts) {
+            const firstChild = container.firstChild;
+            if (firstChild) {
+                firstChild.style.opacity = '0';
+                firstChild.style.transform = 'translateX(100px)';
+                setTimeout(() => firstChild.remove(), 300);
+            }
+        }
+
+        container.appendChild(toast);
+
+        // Trigger entrance animation
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(0)';
+        });
+
+        // Auto hide after delay
+        const timer = setTimeout(() => {
+            hideToast(toast);
+        }, config.autoHideDelay);
+
+        // Close button handler
+        const closeBtn = toast.querySelector('.btn-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                clearTimeout(timer);
+                hideToast(toast);
+            });
+        }
+
+        return toast;
+    }
+
+    function hideToast(toast) {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100px)';
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.remove();
+            }
+        }, 300);
+    }
+
+    // Read TempData from hidden inputs
+    function readTempData() {
+        const types = ['Success', 'Error', 'Warning', 'Info'];
+        const typeMap = {
+            'Success': 'success',
+            'Error': 'error',
+            'Warning': 'warning',
+            'Info': 'info'
+        };
+
+        types.forEach(type => {
+            const input = document.getElementById(`tempData${type}`);
+            if (input) {
+                const value = input.value;
+                if (value && value !== '' && value !== 'null') {
+                    showToast(null, value, typeMap[type]);
+                    input.value = '';
+                }
+            }
+        });
+    }
+
+    // Global AJAX listener for toast headers
+    function setupAjaxListener() {
+        if (typeof $ !== 'undefined') {
+            $(document).ajaxComplete(function (event, xhr) {
+                const toast = xhr.getResponseHeader('X-Toast-Message');
+                const toastType = xhr.getResponseHeader('X-Toast-Type') || 'success';
+                if (toast) {
+                    showToast(null, toast, toastType);
+                }
+            });
+        }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function () {
+        readTempData();
+        setupAjaxListener();
+    });
+
+    // Expose to global scope
     window.showToast = showToast;
 
-    // reads temp data from hidden inputs and shows toasts on page load,
-    // then clears the temp data
-    const success = $('#tempDataSuccess').val();
-    const error = $('#tempDataError').val();
-    const warning = $('#tempDataWarning').val();
-    const info = $('#tempDataInfo').val();
-
-    if (success && success !== '' && success !== 'null') {
-        showToast('🍞 Success!', success, 'success');
-        $('#tempDataSuccess').val(''); 
-    }
-    if (error && error !== '' && error !== 'null') {
-        showToast('❌ Error!', error, 'error');
-        $('#tempDataError').val('');
-    }
-    if (warning && warning !== '' && warning !== 'null') {
-        showToast('⚠️ Warning', warning, 'warning');
-        $('#tempDataWarning').val('');
-    }
-    if (info && info !== '' && info !== 'null') {
-        showToast('ℹ️ Info', info, 'info');
-        $('#tempDataInfo').val('');
-    }
-
-    // global AJAX listener for toast messages from server responses
-
-    $(document).ajaxComplete(function (event, xhr, settings) {
-        const toast = xhr.getResponseHeader('X-Toast-Message');
-        const toastType = xhr.getResponseHeader('X-Toast-Type') || 'success';
-
-        if (toast) {
-            showToast('🍞 Gruer\'s', toast, toastType);
-        }
-    });
-});
+})();
