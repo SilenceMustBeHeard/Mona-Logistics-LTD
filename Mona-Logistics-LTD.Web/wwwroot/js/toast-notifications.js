@@ -9,7 +9,7 @@
         maxToasts: 5
     };
 
-    // Color palette for different toast types (Logistics theme)
+    // Color palette for different toast types
     const toastColors = {
         success: {
             bg: 'rgba(40, 167, 69, 0.12)',
