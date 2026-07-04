@@ -262,7 +262,7 @@
   "TailLift": "Палетна количка",
   "LinearMetersUnit": "лм",
   "PostTruck": "Обяви камион",
-  
+
   "ContactTitle": "Контакти - Mona Logistics",
   "ContactInfoTitle": "Информация за контакт",
   "ContactInfoSubtitle": "Ние сме тук, за да ви помогнем",
@@ -280,7 +280,11 @@
   "MessagePlaceholder": "Напишете вашето съобщение тук. Бъдете възможно най-подробни, за да можем да ви помогнем по-добре...",
   "MessageHint": "Минимална дължина: 10 символа",
   "SendButton": "Изпрати съобщение",
-  "BackToHome": "Обратно към началната страница"
+  "BackToHome": "Обратно към началната страница",
+  "ToastSuccessTitle": "Успешно!",
+  "ToastErrorTitle": "Грешка!",
+  "ToastWarningTitle": "Внимание",
+  "ToastInfoTitle": "Информация"
 
 
 

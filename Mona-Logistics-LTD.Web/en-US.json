@@ -261,7 +261,7 @@
   "TailLift": "Tail Lift",
   "LinearMetersUnit": "lm",
   "PostTruck": "Post Truck",
-  
+
   "ContactTitle": "Contact - Mona Logistics",
   "ContactInfoTitle": "Contact Information",
   "ContactInfoSubtitle": "We're here to help",
@@ -279,7 +279,11 @@
   "MessagePlaceholder": "Type your message here. Be as detailed as possible so we can assist you better...",
   "MessageHint": "Minimum length: 10 characters",
   "SendButton": "Send Message",
-  "BackToHome": "Back to Home"
+  "BackToHome": "Back to Home",
+  "ToastSuccessTitle": "Success!",
+  "ToastErrorTitle": "Error!",
+  "ToastWarningTitle": "Warning",
+  "ToastInfoTitle": "Info"
 
 }
 
