@@ -1,4 +1,5 @@
 ﻿using Mona_Logistics_LTD.Data.Common.Enums;
+using Mona_Logistics_LTD.Web.ViewModels.Admin.Offer;
 
 
 namespace Mona_Logistics_LTD.Web.ViewModels.Admin.LoadRequest;
