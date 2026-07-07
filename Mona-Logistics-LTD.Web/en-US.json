@@ -283,7 +283,26 @@
   "ToastSuccessTitle": "Success!",
   "ToastErrorTitle": "Error!",
   "ToastWarningTitle": "Warning",
-  "ToastInfoTitle": "Info"
+  "ToastInfoTitle": "Info",
+  "AdminLoadRequestsTitle": "Load Requests",
+  "AdminLoadRequestsSubtitle": "Manage incoming client requests",
+  "NewRequests": "New Requests",
+  "NoLoadRequests": "No load requests",
+  "Client": "Client",
+  "View": "View",
+  "CreateOffer": "Create Offer",
+  "CreateOfferTitle": "Create Offer",
+  "CreateOfferSubtitle": "Fill in the offer details",
+  "OfferPending": "Pending Offer",
+  "Price": "Price",
+  "Discount": "Discount",
+  "ClientInfo": "Client Information",
+  "Name": "Name",
+  "Phone": "Phone",
+  "Accept": "Accept",
+  "Reject": "Reject",
+  "BackToList": "Back to List",
+  "LoadRequests": "Load Requests"
 
 }
 

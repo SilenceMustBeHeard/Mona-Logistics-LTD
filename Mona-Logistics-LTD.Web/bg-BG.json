@@ -284,7 +284,26 @@
   "ToastSuccessTitle": "Успешно!",
   "ToastErrorTitle": "Грешка!",
   "ToastWarningTitle": "Внимание",
-  "ToastInfoTitle": "Информация"
+  "ToastInfoTitle": "Информация",
+  "AdminLoadRequestsTitle": "Заявки за превоз",
+  "AdminLoadRequestsSubtitle": "Управление на входящите заявки от клиенти",
+  "NewRequests": "Нови заявки",
+  "NoLoadRequests": "Няма заявки за превоз",
+  "Client": "Клиент",
+  "View": "Преглед",
+  "CreateOffer": "Направи оферта",
+  "CreateOfferTitle": "Създаване на оферта",
+  "CreateOfferSubtitle": "Попълнете данните за офертата",
+  "OfferPending": "Има чакаща оферта",
+  "Price": "Цена",
+  "Discount": "Отстъпка",
+  "ClientInfo": "Информация за клиента",
+  "Name": "Име",
+  "Phone": "Телефон",
+  "Accept": "Приеми",
+  "Reject": "Отхвърли",
+  "BackToList": "Обратно към списъка",
+  "LoadRequests": "Заявки"
 
 
 
