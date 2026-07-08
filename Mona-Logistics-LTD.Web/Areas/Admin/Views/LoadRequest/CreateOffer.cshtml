@@ -1,0 +1,77 @@
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@using Mona_Logistics_LTD.Web.ViewModels.Admin.Offer
+@model CreateOfferViewModel
+
+@inject IJsonLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["CreateOfferTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="logistics-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-file-earmark-text display-4" style="color: var(--logistics-accent);"></i>
+                    <h1 class="h2 mt-3" style="color: white;">@Localizer["CreateOfferTitle"]</h1>
+                    <p style="color: rgba(255,255,255,0.6);">@Localizer["CreateOfferSubtitle"]</p>
+                    <div class="accent-line mx-auto"></div>
+                </div>
+
+                <div class="info-box p-3 mb-4 rounded-3" style="background: rgba(212,160,23,0.05); border: 1px solid rgba(212,160,23,0.1);">
+                    <div class="row g-2">
+                        <div class="col-md-6"><span style="color: rgba(255,255,255,0.4);">@Localizer["CargoName"]:</span> <span style="color: white;">@ViewBag.CargoName</span></div>
+                        <div class="col-md-6"><span style="color: rgba(255,255,255,0.4);">@Localizer["Client"]:</span> <span style="color: white;">@ViewBag.ClientName</span></div>
+                    </div>
+                </div>
+
+                <form asp-action="CreateOffer" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="LoadRequestId" />
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label asp-for="Price" class="form-label" style="color: rgba(255,255,255,0.8);">@Localizer["Price"]</label>
+                            <div class="input-group">
+                                <input asp-for="Price" class="form-control logistics-input" type="number" step="0.01" placeholder="0.00" />
+                                <span class="input-group-text logistics-input-prepend">BGN</span>
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Discount" class="form-label" style="color: rgba(255,255,255,0.8);">@Localizer["Discount"] (optional)</label>
+                            <div class="input-group">
+                                <input asp-for="Discount" class="form-control logistics-input" type="number" step="0.01" placeholder="0.00" />
+                                <span class="input-group-text logistics-input-prepend">BGN</span>
+                            </div>
+                            <span asp-validation-for="Discount" class="text-danger small"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="ValidUntil" class="form-label" style="color: rgba(255,255,255,0.8);">@Localizer["ValidUntil"]</label>
+                            <input asp-for="ValidUntil" class="form-control logistics-input" type="datetime-local" />
+                            <span asp-validation-for="ValidUntil" class="text-danger small"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Notes" class="form-label" style="color: rgba(255,255,255,0.8);">@Localizer["Notes"]</label>
+                            <textarea asp-for="Notes" class="form-control logistics-input" rows="3" placeholder="@Localizer["NotesPlaceholder"]"></textarea>
+                            <span asp-validation-for="Notes" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap mt-4">
+                        <button type="submit" class="btn-logistics-primary flex-fill">
+                            <i class="bi bi-check-circle me-2"></i> @Localizer["CreateOffer"]
+                        </button>
+                        <a asp-action="Details" asp-route-id="@Model.LoadRequestId" class="btn-logistics-outline flex-fill">
+                            <i class="bi bi-x-circle me-2"></i> @Localizer["Cancel"]
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
