@@ -1,0 +1,58 @@
+﻿@{
+    var currentCookie = Context.Request.Cookies[".AspNetCore.Culture"];
+    var isBulgarian = currentCookie != null && currentCookie.Contains("bg-BG");
+    var isEnglish = currentCookie != null && currentCookie.Contains("en-US");
+
+    if (currentCookie == null)
+    {
+        isBulgarian = true;
+        isEnglish = false;
+    }
+}
+
+<div class="language-switcher">
+    <a href="#" class="lang-link @(isBulgarian ? "active" : "")" onclick="setLanguage('bg-BG'); return false;">БГ</a>
+    <span class="lang-separator">|</span>
+    <a href="#" class="lang-link @(isEnglish ? "active" : "")" onclick="setLanguage('en-US'); return false;">EN</a>
+</div>
+
+<script>
+       function setLanguage(culture) {
+        window.location.href = `/Home/SetLanguage?culture=${culture}&returnUrl=${encodeURIComponent(window.location.pathname)}`;
+    }
+</script>
+
+<style>
+    .language-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-right: 15px;
+        padding-right: 15px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .lang-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        padding: 2px 4px;
+        cursor: pointer;
+    }
+
+        .lang-link:hover {
+            color: #d4a017;
+        }
+
+        .lang-link.active {
+            color: #d4a017;
+            font-weight: 700;
+        }
+
+    .lang-separator {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.7rem;
+    }
+</style>

@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="bg" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @Localizer["AppTitle"]</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Theme styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animations.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/logistics-auth.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/error.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/toast.css" asp-append-version="true" />
+</head>
+
+<body>
+    <canvas id="roadCanvas"></canvas>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark py-2">
+            <div class="container">
+                <!-- Logo / Brand -->
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-truck fs-2 text-accent"></i>
+                        <div>
+                            <span class="brand-main">MONA</span>
+                            <span class="brand-subtitle">LOGISTICS LTD</span>
+                        </div>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <!-- Center Navigation -->
+                    <div class="mx-auto d-flex justify-content-center">
+                        @await Component.InvokeAsync("Navbar")
+                    </div>
+
+                    <!-- Right Side - Account area -->
+                    <div class="d-flex gap-2 align-items-center">
+                        <!-- Language Switcher -->
+                        <partial name="_LanguageSwitcher" />
+
+                        <div class="dropdown">
+                            <button class="btn-logistics dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i>
+                                <span>@Localizer["Profile"]</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" style="min-width: 240px;">
+                                @await Component.InvokeAsync("AccountMenu")
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container py-4">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-logistics mt-auto py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; @DateTime.Now.Year - @Localizer["AppTitle"]</p>
+            <small class="text-muted">@Localizer["FooterSlogan"]</small>
+        </div>
+    </footer>
+
+    <!-- Hidden fields for TempData -->
+    <input type="hidden" id="tempDataSuccess" value="@TempData["Success"]" />
+    <input type="hidden" id="tempDataError" value="@TempData["Error"]" />
+    <input type="hidden" id="tempDataWarning" value="@TempData["Warning"]" />
+    <input type="hidden" id="tempDataInfo" value="@TempData["Info"]" />
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100"></div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/notifications.js" asp-append-version="true"></script>
+    <script src="~/js/toast-notifications.js" asp-append-version="true"></script>
+    <script src="~/js/road-animation.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

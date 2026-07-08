@@ -1,0 +1,123 @@
+﻿@using Mona_Logistics_LTD.Data.Models.Base
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    string displayName = null;
+
+    if (Model)
+    {
+        var user = await UserManager.GetUserAsync(User);
+
+        if (user != null)
+        {
+            displayName = !string.IsNullOrEmpty(user.FirstName)
+                ? user.FirstName
+                : user.UserName?.Split('@')[0] ?? user.Email;
+        }
+    }
+}
+
+@if (Model)
+{
+    <li class="dropdown-header border-bottom mb-2 pb-2">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-truck text-accent"></i>
+            <div>
+                <small class="text-muted d-block">@Localizer["WelcomeBack"]</small>
+                <strong class="text-glow">@displayName</strong>
+            </div>
+        </div>
+    </li>
+
+    @if (!User.IsInRole("Admin") && !User.IsInRole("Manager"))
+    {
+        <li>
+            <a class="dropdown-item" asp-controller="Profile" asp-action="Index">
+                <i class="bi bi-person-badge me-2 text-accent"></i> @Localizer["MyProfile"]
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" asp-controller="Shipment" asp-action="MyShipments">
+                <i class="bi bi-box-seam me-2 text-accent"></i> @Localizer["MyShipments"]
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item d-flex justify-content-between align-items-center"
+               asp-controller="Messages" asp-action="Inbox">
+                <span>
+                    <i class="bi bi-envelope-paper me-2 text-accent"></i> @Localizer["Messages"]
+                </span>
+                @await Component.InvokeAsync("UnreadMessageBadge")
+            </a>
+        </li>
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                <i class="bi bi-shield-lock me-2 text-accent"></i> @Localizer["AdminDashboard"]
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="UserManagement" asp-action="Index">
+                <i class="bi bi-people me-2 text-accent"></i> @Localizer["UserManagement"]
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="SystemMessage" asp-action="Index">
+                <i class="bi bi-megaphone me-2 text-accent"></i> @Localizer["SystemMessages"]
+            </a>
+        </li>
+    }
+
+    @if (User.IsInRole("Manager"))
+    {
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item" asp-area="Manager" asp-controller="Dashboard" asp-action="Index">
+                <i class="bi bi-clipboard-data me-2 text-accent"></i> @Localizer["ManagerDashboard"]
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" asp-area="Manager" asp-controller="ShipmentManagement" asp-action="Index">
+                <i class="bi bi-box-seam me-2 text-accent"></i> @Localizer["ManageShipments"]
+            </a>
+        </li>
+    }
+
+    <li><hr class="dropdown-divider"></li>
+
+    <li class="px-3 py-2">
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-logistics w-100">
+                <i class="bi bi-box-arrow-right me-2"></i> @Localizer["Logout"]
+            </button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="dropdown-header border-bottom mb-2 pb-2">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-truck text-accent"></i>
+            <small class="text-muted">@Localizer["WelcomeText"]</small>
+        </div>
+    </li>
+
+    <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="Login">
+            <i class="bi bi-box-arrow-in-right me-2 text-accent"></i> @Localizer["Login"]
+        </a>
+    </li>
+
+    <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="Register">
+            <i class="bi bi-person-plus me-2 text-accent"></i> @Localizer["Register"]
+        </a>
+    </li>
+}
