@@ -1,7 +1,9 @@
-﻿@using Mona_Logistics_LTD.Data.Models.Base
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
+@using Mona_Logistics_LTD.Data.Models.Base
+@using Mona_Logistics_LTD.Services.Localizer.Interfaces
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+@inject IJsonLocalizer Localizer
 
 @{
     string displayName = null;

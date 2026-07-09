@@ -1,7 +1,9 @@
-﻿@using Mona_Logistics_LTD.Data.Models.Base
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
+@using Mona_Logistics_LTD.Data.Models.Base
+@using Mona_Logistics_LTD.Services.Localizer.Interfaces
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+@inject IJsonLocalizer Localizer
 
 @{
     string displayName = null;
@@ -70,7 +72,7 @@
                 @if (ViewBag.NewRequestsCount > 0)
                 {
                     <span class="badge" style="background: #e63946; color: white; margin-left: 8px;
-                 border-radius: 50%; padding: 2px 8px; font-size: 0.7rem;">@ViewBag.NewRequestsCount</span>
+                    border-radius: 50%; padding: 2px 8px; font-size: 0.7rem;">@ViewBag.NewRequestsCount</span>
                 }
             </a>
         </li>
