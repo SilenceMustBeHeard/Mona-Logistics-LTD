@@ -1,0 +1,150 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@using Mona_Logistics_LTD.Web.ViewModels.Admin.Interactions
+@model IEnumerable<UserManagmentIndexViewModel>
+@inject IJsonLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["UserManagementTitle"];
+    var availableRoles = new[] { "User", "Manager", "Admin" };
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+        <div>
+            <h1 style="color: white;">@Localizer["UserManagementTitle"]</h1>
+            <p style="color: rgba(255,255,255,0.6);">@Localizer["UserManagementSubtitle"]</p>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5 logistics-card">
+            <i class="bi bi-people display-4" style="color: rgba(255,255,255,0.2);"></i>
+            <p class="mt-3" style="color: rgba(255,255,255,0.6);">@Localizer["NoUsersFound"]</p>
+        </div>
+    }
+    else
+    {
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Localizer["Email"]</th>
+                        <th>@Localizer["Roles"]</th>
+                        <th>@Localizer["Status"]</th>
+                        <th>@Localizer["Actions"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                <strong style="color: white;">@user.Email</strong>
+                            </td>
+                            <td>
+                                @foreach (var role in user.Roles)
+                                {
+                                    <span class="role-badge @(role == "Admin" ? "role-admin" : role == "Manager" ? "role-manager" : "role-user")">
+                                        @role
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (user.IsBanned)
+                                {
+                                    <span class="status-badge status-cancelled">
+                                        <i class="bi bi-ban me-1"></i> @Localizer["Banned"]
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge status-available">
+                                        <i class="bi bi-check-circle me-1"></i> @Localizer["Active"]
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <!-- Change Role Form -->
+                                    <form asp-action="AssignRole" method="post" class="d-flex gap-2 align-items-center">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="UserId" value="@user.Id" />
+                                        <select name="NewRole" class="form-select form-select-sm" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; width: auto; padding: 4px 8px; font-size: 0.8rem;">
+                                            @foreach (var role in availableRoles)
+                                            {
+                                                var isSelected = user.Roles.Contains(role);
+                                                <option value="@role" selected="@isSelected">@role</option>
+                                            }
+                                        </select>
+                                        <button type="submit" class="btn-sm btn-logistics-primary" style="padding: 4px 12px; font-size: 0.75rem;">
+                                            <i class="bi bi-arrow-repeat"></i> @Localizer["Assign"]
+                                        </button>
+                                    </form>
+
+                                    <!-- Ban/Unban Button -->
+                                    @if (!user.IsBanned)
+                                    {
+                                        <form asp-action="DisableUser" method="post" style="display:inline;">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="userId" value="@user.Id.ToString()" />
+                                            <button type="submit" class="btn-sm btn-logistics-outline" style="border-color: #dc3545; color: #dc3545; padding: 4px 12px; font-size: 0.75rem;" onclick="return confirm('@Localizer["BanConfirm"]')">
+                                                <i class="bi bi-ban"></i> @Localizer["Ban"]
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn-sm btn-logistics-outline" style="border-color: #28a745; color: #28a745; padding: 4px 12px; font-size: 0.75rem; cursor: default;">
+                                            <i class="bi bi-check-circle"></i> @Localizer["Banned"]
+                                        </button>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<style>
+    .role-badge {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-right: 4px;
+    }
+
+    .role-admin {
+        background: rgba(212, 160, 23, 0.2);
+        color: var(--logistics-accent);
+    }
+
+    .role-manager {
+        background: rgba(13, 202, 240, 0.15);
+        color: #0dcaf0;
+    }
+
+    .role-user {
+        background: rgba(40, 167, 69, 0.15);
+        color: #28a745;
+    }
+</style>
