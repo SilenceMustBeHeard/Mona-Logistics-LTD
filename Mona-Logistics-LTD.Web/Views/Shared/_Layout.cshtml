@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@inject IJsonLocalizer Localizer
+
+<!DOCTYPE html>
 <html lang="bg" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
@@ -20,12 +23,14 @@
     <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/logistics-auth.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/error.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/toast.css" asp-append-version="true" />
 </head>
+   
 
 <body>
     <canvas id="roadCanvas"></canvas>
