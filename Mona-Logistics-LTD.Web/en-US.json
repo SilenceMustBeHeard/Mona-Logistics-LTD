@@ -33,7 +33,6 @@
   "WhyUsDescription": "With years of experience in logistics, we understand your business needs and offer personalized solutions for every shipment.",
   "WhyUsTeam": "Transport Partners",
   "WhyUsTeamDesc": "We work with a trusted network of verified carriers, ensuring reliability and flexibility.",
-
   "WhyUsSupport": "24/7 Support",
   "WhyUsSupportDesc": "Our operators are available around the clock.",
   "TestimonialText": "\"The best logistics solution for our business. Timely, accurate, and always responsive!\"",
@@ -212,7 +211,6 @@
   "Van": "Van",
   "Trailer": "Trailer",
   "NewLoadRequest": "New Request",
-
   "CreateTruckListingTitle": "Ask for a Truck",
   "CreateTruckListingSubtitle": "Fill in the details of needed truck and route",
   "TruckDetailsTitle": "Truck Details",
@@ -261,7 +259,6 @@
   "TailLift": "Tail Lift",
   "LinearMetersUnit": "lm",
   "PostTruck": "Post Truck",
-
   "ContactTitle": "Contact - Mona Logistics",
   "ContactInfoTitle": "Contact Information",
   "ContactInfoSubtitle": "We're here to help",
@@ -302,7 +299,33 @@
   "Accept": "Accept",
   "Reject": "Reject",
   "BackToList": "Back to List",
-  "LoadRequests": "Load Requests"
+  "LoadRequests": "Load Requests",
+  "AdminDashboardTitle": "Admin Dashboard",
+  "AdminDashboardSubtitle": "Manage your logistics platform",
+  "TotalRequests": "Total Requests",
+  "TotalUsers": "Users",
+  "ActiveTrucks": "Active Trucks",
+  "NewMessages": "New Messages",
+  "QuickActions": "Quick Actions",
+  "LoadRequestsDesc": "View incoming requests",
+  "UserManagementDesc": "Manage users and roles",
+  "SystemMessagesDesc": "Send notifications",
+  "FleetManagement": "Fleet",
+  "FleetManagementDesc": "Manage trucks",
+  "PendingRequests": "Pending Requests",
+  "PendingRequestsDesc": "Requests awaiting processing",
+  "ContactMessagesDesc": "Messages from clients",
+  "RecentActivity": "Recent Activity",
+  "JustNow": "Just now",
+  "From": "from",
+  "OfferAccepted": "Offer Accepted",
+  "For": "for",
+  "UserRegistered": "New User",
+  "NewUser": "New user registered",
+  "DashboardQuote": "A good logistician doesn't just move cargo — they move trust.",
+  "DashboardQuoteAuthor": "Mona Logistics",
+  "Frontend": "Frontend"
+}
 
 }
 

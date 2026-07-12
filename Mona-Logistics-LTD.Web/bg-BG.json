@@ -33,8 +33,6 @@
   "WhyUsDescription": "С години опит в логистиката, ние разбираме нуждите на вашия бизнес и предлагаме персонализирани решения за всяка пратка.",
   "WhyUsTeam": "Транспортни партньори",
   "WhyUsTeamDesc": "Работим с доверена мрежа от верифицирани превозвачи, осигуряващи надеждност и гъвкавост.",
-
-
   "WhyUsSupport": "24/7 Поддръжка",
   "WhyUsSupportDesc": "Нашите оператори са на разположение по всяко време.",
   "TestimonialText": "\"Най-доброто логистично решение за нашия бизнес. Навременни, точни и винаги отзивчиви!\"",
@@ -85,7 +83,6 @@
   "AboutWhy3Desc": "Мониторираме всяка пратка в реално време, от натоварването до финалната доставка.",
   "AboutClosingText": "Мона Лоджистикс – надежден логистичен партньор,<br>който движи бизнеса напред.",
   "AboutContactBtn": "Свържете се с нас",
-
   "BadRequestBadge": "Грешна заявка",
   "BadRequestDesc": "Заявката, която изпратихте, не може да бъде обработена. Моля, проверете URL адреса и опитайте отново.",
   "NotAllowedTitle": "Достъпът е отказан",
@@ -213,7 +210,6 @@
   "Van": "Бус",
   "Trailer": "Ремaрке",
   "NewLoadRequest": "Нова заявка",
-
   "CreateTruckListingTitle": "Запитване за камион",
   "CreateTruckListingSubtitle": "Попълнете данните за  камиона и маршрута",
   "TruckDetailsTitle": "Информация за камиона",
@@ -262,7 +258,6 @@
   "TailLift": "Палетна количка",
   "LinearMetersUnit": "лм",
   "PostTruck": "Обяви камион",
-
   "ContactTitle": "Контакти - Mona Logistics",
   "ContactInfoTitle": "Информация за контакт",
   "ContactInfoSubtitle": "Ние сме тук, за да ви помогнем",
@@ -303,8 +298,44 @@
   "Accept": "Приеми",
   "Reject": "Отхвърли",
   "BackToList": "Обратно към списъка",
-  "LoadRequests": "Заявки"
+  "LoadRequests": "Заявки",
+  "AdminDashboardTitle": "Админ Панел",
+  "AdminDashboardSubtitle": "Управлявайте логистичната платформа",
+  "TotalRequests": "Общо заявки",
+  "TotalUsers": "Потребители",
+  "ActiveTrucks": "Активни камиони",
+  "NewMessages": "Нови съобщения",
+  "QuickActions": "Бързи действия",
+  "LoadRequestsDesc": "Преглед на входящи заявки",
+  "UserManagementDesc": "Управление на потребители и роли",
+  "SystemMessagesDesc": "Изпращане на известия",
+  "FleetManagement": "Автопарк",
+  "FleetManagementDesc": "Управление на камиони",
+  "PendingRequests": "Чакащи заявки",
+  "PendingRequestsDesc": "Заявки за обработка",
+  "ContactMessagesDesc": "Съобщения от клиенти",
+  "RecentActivity": "Последна активност",
+  "JustNow": "Току-що",
+  "From": "от",
+  "OfferAccepted": "Приета оферта",
+  "For": "за",
+  "UserRegistered": "Нов потребител",
+  "NewUser": "Нов потребител се регистрира",
+  "DashboardQuote": "Добрият логистик не просто движи товари — той движи доверие.",
+  "DashboardQuoteAuthor": "Мона Лоджистикс",
+  "Frontend": "Сайт"
 
+
+  
+
+
+
+
+
+ 
+
+
+ 
 
 
 
