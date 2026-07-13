@@ -1,38 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Mona_Logistics_LTD.Web-3a4a24c9-a6c9-4521-a2fd-c88447933f6e</UserSecretsId>
-    <RootNamespace>Mona_Logistics_LTD.Web</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-Mona_Logistics_LTD.Web-3a4a24c9-a6c9-4521-a2fd-c88447933f6e</UserSecretsId>
+		<RootNamespace>Mona_Logistics_LTD.Web</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.OpenApi" Version="3.8.0" />
-    <PackageReference Include="SendGrid" Version="9.29.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.9" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.9" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SendGrid" Version="9.29.3" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\Mona-Logistics-LTD.Data\Mona-Logistics-LTD.Data.csproj" />
-    <ProjectReference Include="..\Mona-Logistics-LTD.Services.Common\Mona-Logistics-LTD.Services.Common.csproj" />
-    <ProjectReference Include="..\Mona-Logistics-LTD.Services\Mona-Logistics-LTD.Services.csproj" />
-    <ProjectReference Include="..\Mona-Logistics-LTD.Web.Infrastructure\Mona-Logistics-LTD.Web.Infrastructure.csproj" />
-  </ItemGroup>
+		<!-- 🔥 Добави само Swashbuckle за Swagger UI (ако ти трябва) -->
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Error\" />
-    <Folder Include="Data\" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Mona-Logistics-LTD.Data\Mona-Logistics-LTD.Data.csproj" />
+		<ProjectReference Include="..\Mona-Logistics-LTD.Services.Common\Mona-Logistics-LTD.Services.Common.csproj" />
+		<ProjectReference Include="..\Mona-Logistics-LTD.Services\Mona-Logistics-LTD.Services.csproj" />
+		<ProjectReference Include="..\Mona-Logistics-LTD.Web.Infrastructure\Mona-Logistics-LTD.Web.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Areas\Admin\Views\Error\" />
+		<Folder Include="Data\" />
+	</ItemGroup>
 
 </Project>

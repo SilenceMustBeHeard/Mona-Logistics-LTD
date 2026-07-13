@@ -1,42 +1,34 @@
+
+
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 
-namespace Mona_Logistics_LTD.Api.Web;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+builder.Services.AddControllers();
+
+// Swagger - класическият начин
+builder.Services.AddSwaggerGen(c =>
 {
-    public static void Main(string[] args)
+    c.SwaggerDoc("v1", new OpenApiInfo
     {
-        var builder = WebApplication.CreateBuilder(args);
+        Title = "Mona Logistics API",
+        Version = "v1"
+    });
+});
 
-        builder.Services.AddControllers();
+var app = builder.Build();
 
-        // Swagger/OpenAPI
-        builder.Services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = "Mona Logistics API",
-                Version = "v1",
-                Description = "API for Mona Logistics LTD"
-            });
-        });
-
-        var app = builder.Build();
-
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mona Logistics API V1");
-            });
-        }
-
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        app.MapControllers();
-
-        app.Run();
-    }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mona Logistics API V1");
+    });
 }
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
