@@ -1,4 +1,7 @@
-﻿@model Mona_Logistics_LTD.Web.ViewModels.NavbarButtonsViewModel
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@model Mona_Logistics_LTD.Web.ViewModels.NavbarButtonsViewModel
+
+@inject IJsonLocalizer Localizer
 
 <div class="nav-links d-flex gap-3">
     <a class="nav-link-logistics" asp-controller="Home" asp-action="Index">

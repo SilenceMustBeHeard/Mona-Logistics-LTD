@@ -1,5 +1,5 @@
 using Microsoft.OpenApi;
-
+using Microsoft.OpenApi.Models;
 
 namespace Mona_Logistics_LTD.Api.Web;
 
@@ -11,13 +11,14 @@ public class Program
 
         builder.Services.AddControllers();
 
-        // Swagger  instead AddOpenApi
+        // Swagger/OpenAPI
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "Mona Logistics API",
-                Version = "v1"
+                Version = "v1",
+                Description = "API for Mona Logistics LTD"
             });
         });
 
@@ -25,7 +26,6 @@ public class Program
 
         if (app.Environment.IsDevelopment())
         {
-            //  Swagger UI instead MapOpenApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
