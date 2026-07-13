@@ -1,8 +1,11 @@
-/* Admin Dashboard Styles */
+/* ADMIN DASHBOARD STYLES
+   Mona Logistics - Admin Panel*/
+
 .admin-dashboard {
     padding: 20px 0;
 }
 
+/* HERO SECTION */
 .dashboard-hero {
     background: linear-gradient(135deg, var(--logistics-primary-dark), var(--logistics-primary));
     border-radius: 20px;
@@ -60,7 +63,7 @@
     margin: 0 auto;
 }
 
-/* Stats */
+/* STATS CARDS */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -92,6 +95,11 @@
 
     .stat-card:hover::before {
         opacity: 1;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 48px rgba(212, 160, 23, 0.15);
     }
 
 .stat-icon {
@@ -135,7 +143,7 @@
         color: #dc3545;
     }
 
-/* Actions */
+/*QUICK ACTIONS */
 .dashboard-actions {
     margin-bottom: 40px;
 }
@@ -236,7 +244,7 @@
     text-align: center;
 }
 
-/* Activity Timeline */
+/*ACTIVITY TIMELINE */
 .activity-timeline {
     background: var(--logistics-primary-dark);
     border-radius: 16px;
@@ -266,4 +274,112 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    flex:
+    flex: 1;
+}
+
+.activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--logistics-accent);
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.activity-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+    .activity-text strong {
+        color: white;
+        font-weight: 600;
+    }
+
+    .activity-text span {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+    }
+
+/*  QUOTE */
+.dashboard-quote {
+    text-align: center;
+    padding: 24px 0 8px;
+}
+
+.quote-line {
+    width: 40px;
+    height: 2px;
+    background: rgba(212, 160, 23, 0.2);
+    margin: 0 auto 16px;
+}
+
+.quote-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.quote-author {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: block;
+}
+
+/* RESPONSIVE*/
+@media (max-width: 768px) {
+    .dashboard-hero {
+        padding: 30px 20px;
+    }
+
+    .dashboard-hero-title {
+        font-size: 1.6rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .activity-item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .activity-time {
+        min-width: auto;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-number {
+        font-size: 1.6rem;
+    }
+
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-hero {
+        padding: 24px 16px;
+    }
+
+    .dashboard-hero-title {
+        font-size: 1.4rem;
+    }
+}
