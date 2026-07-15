@@ -6,9 +6,11 @@
 @inject IJsonLocalizer Localizer
 
 @{
+   
+    var isLoggedIn = Model is true;
     string displayName = null;
 
-    if (Model)
+    if (isLoggedIn)
     {
         var user = await UserManager.GetUserAsync(User);
 
@@ -19,9 +21,11 @@
                 : user.UserName?.Split('@')[0] ?? user.Email;
         }
     }
+
+    var newRequestsCount = ViewBag.NewRequestsCount as int? ?? 0;
 }
 
-@if (Model)
+@if (isLoggedIn)
 {
     <li class="dropdown-header border-bottom mb-2 pb-2">
         <div class="d-flex align-items-center gap-2">
@@ -60,13 +64,6 @@
     {
         <li><hr class="dropdown-divider"></li>
         <li>
-            <a class="dropdown-item" asp-area="Admin" asp-controller="UserManagement" asp-action="Index">
-                <i class="bi bi-people me-2 text-accent"></i> @Localizer["UserManagement"]
-            </a>
-        </li>
-
-        <li><hr class="dropdown-divider"></li>
-        <li>
             <a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
                 <i class="bi bi-shield-lock me-2 text-accent"></i> @Localizer["AdminDashboard"]
             </a>
@@ -76,20 +73,18 @@
             <a class="dropdown-item" asp-area="Admin" asp-controller="LoadRequest" asp-action="Index">
                 <i class="bi bi-box-seam me-2 text-accent"></i>
                 @Localizer["LoadRequests"]
-                @if (ViewBag.NewRequestsCount > 0)
+                @if (newRequestsCount > 0)
                 {
                     <span class="badge" style="background: #e63946; color: white; margin-left: 8px;
-                    border-radius: 50%; padding: 2px 8px; font-size: 0.7rem;">@ViewBag.NewRequestsCount</span>
+                    border-radius: 50%; padding: 2px 8px; font-size: 0.7rem;">@newRequestsCount</span>
                 }
             </a>
         </li>
-
         <li>
             <a class="dropdown-item" asp-area="Admin" asp-controller="UserManagement" asp-action="Index">
                 <i class="bi bi-people me-2 text-accent"></i> @Localizer["UserManagement"]
             </a>
         </li>
-
         <li>
             <a class="dropdown-item" asp-area="Admin" asp-controller="SystemMessage" asp-action="Index">
                 <i class="bi bi-megaphone me-2 text-accent"></i> @Localizer["SystemMessages"]
