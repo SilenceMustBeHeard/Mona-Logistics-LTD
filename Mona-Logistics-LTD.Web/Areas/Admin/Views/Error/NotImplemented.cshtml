@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = Localizer["NotImplementedTitle"];
+    string featureName = ViewBag.FeatureName ?? Localizer["DefaultFeatureName"];
+}
+
+<div class="error-page-wrapper">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="error-card text-center p-5">
+                    <!-- Construction Icon -->
+                    <div class="error-icon mb-4">
+                        <i class="bi bi-tools" style="font-size: 4rem; color: var(--logistics-warning, #e9c46a);"></i>
+                    </div>
+
+                    <div class="error-badge mb-3">
+                        <span class="badge-logistics" style="background: rgba(233, 196, 106, 0.15); color: #b8860b; border-color: rgba(233, 196, 106, 0.3);">
+                            <i class="bi bi-hammer me-1"></i> 501 - @Localizer["NotImplementedBadge"]
+                        </span>
+                    </div>
+
+                    <h1 class="display-1 fw-bold" style="color: var(--logistics-warning, #e9c46a);">501</h1>
+                    <h2 class="error-title">@Localizer["NotImplementedTitle"]</h2>
+                    <p class="error-description">@Localizer["NotImplementedDesc"] <strong>@featureName</strong> @Localizer["NotImplementedDesc2"]</p>
+
+                    <div class="action-buttons d-flex justify-content-center gap-3 flex-wrap mt-4">
+                        <a asp-controller="Home" asp-action="Index" class="btn-logistics-primary">
+                            <i class="bi bi-house-door me-2"></i> @Localizer["ReturnHome"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

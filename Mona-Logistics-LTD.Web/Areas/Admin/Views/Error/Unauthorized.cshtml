@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = Localizer["UnauthorizedTitle"];
+}
+
+<div class="error-page-wrapper">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="error-card text-center p-5">
+                    <!-- Lock Icon -->
+                    <div class="error-icon mb-4">
+                        <i class="bi bi-person-lock" style="font-size: 4rem; color: var(--logistics-accent);"></i>
+                    </div>
+
+                    <div class="error-badge mb-3">
+                        <span class="badge-logistics" style="background: rgba(212, 160, 23, 0.15); color: var(--logistics-accent); border-color: rgba(212, 160, 23, 0.3);">
+                            <i class="bi bi-shield-exclamation me-1"></i> 401 - @Localizer["UnauthorizedBadge"]
+                        </span>
+                    </div>
+
+                    <h1 class="display-1 fw-bold" style="color: var(--logistics-accent);">401</h1>
+                    <h2 class="error-title">@Localizer["UnauthorizedTitle"]</h2>
+                    <p class="error-description">@Localizer["UnauthorizedDesc"]</p>
+
+                    <div class="action-buttons d-flex justify-content-center gap-3 flex-wrap mt-4">
+                        <a asp-controller="Account" asp-action="Login" class="btn-logistics-primary">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> @Localizer["Login"]
+                        </a>
+                        <a asp-controller="Account" asp-action="Register" class="btn-logistics-outline">
+                            <i class="bi bi-person-plus me-2"></i> @Localizer["Register"]
+                        </a>
+                        <a asp-controller="Home" asp-action="Index" class="btn-logistics-outline">
+                            <i class="bi bi-house-door me-2"></i> @Localizer["ReturnHome"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
