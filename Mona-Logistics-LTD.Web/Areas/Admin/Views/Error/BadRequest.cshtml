@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = Localizer["BadRequestTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="logistics-card p-5 text-center">
+                <div class="error-icon-wrapper mb-4">
+                    <i class="bi bi-exclamation-triangle-fill display-1" style="color: var(--logistics-accent);"></i>
+                </div>
+
+                <div class="error-badge mb-3">
+                    <span class="badge-logistics">
+                        <i class="bi bi-shield-exclamation me-1"></i> 400 - @Localizer["BadRequestTitle"]
+                    </span>
+                </div>
+
+                <h1 class="display-4 fw-bold mb-3" style="color: white;">
+                    @Localizer["BadRequestTitle"]
+                </h1>
+
+                <p class="text-muted mb-4">@Localizer["BadRequestDesc"]</p>
+
+                <div class="suggestions-box p-4 mb-4 text-start" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(212,160,23,0.08);">
+                    <h6 class="text-accent mb-3">
+                        <i class="bi bi-lightbulb me-2"></i> @Localizer["TipsTitle"]
+                    </h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-accent me-2"></i>
+                            @Localizer["TipCheckUrl"]
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-accent me-2"></i>
+                            @Localizer["TipClearCache"]
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-arrow-right-circle text-accent me-2"></i>
+                            @Localizer["TipTryAgain"]
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a asp-controller="Home" asp-action="Index" class="btn-logistics-primary">
+                        <i class="bi bi-house-door me-2"></i> @Localizer["ReturnHome"]
+                    </a>
+                    <button onclick="history.back()" class="btn-logistics-outline">
+                        <i class="bi bi-arrow-left me-2"></i> @Localizer["GoBack"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
