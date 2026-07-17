@@ -1,0 +1,102 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@using Mona_Logistics_LTD.Web.ViewModels.User.Account.Messages
+@inject IJsonLocalizer Localizer
+
+@model SystemMessageViewModel
+
+@{
+    ViewData["Title"] = Localizer["SystemMessageDetailsTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="logistics-card p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="bi bi-megaphone display-6" style="color: var(--logistics-accent);"></i>
+                        <div>
+                            <h2 class="fw-bold mb-0" style="color: white;">@Localizer["SystemMessageDetailsTitle"]</h2>
+                            <p class="small" style="color: rgba(255,255,255,0.4);">@Localizer["SystemMessageInfo"]</p>
+                        </div>
+                    </div>
+                    <a asp-area="Admin" asp-controller="SystemMessage" asp-action="Index" class="btn-logistics-outline" style="padding: 8px 20px;">
+                        <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToMessages"]
+                    </a>
+                </div>
+
+                <div class="p-4 rounded-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">@Localizer["From"]</span>
+                            <p class="fw-semibold mb-0" style="color: rgba(255,255,255,0.8);">
+                                <i class="bi bi-person-badge me-2 text-accent"></i>
+                                @(Model.SenderName ?? Localizer["SystemSender"])
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">@Localizer["MessageType"]</span>
+                            <p class="mb-0">
+                                <span class="badge" style="background: rgba(212,160,23,0.15); color: var(--logistics-accent);">
+                                    @(Model.Type switch
+                                    {
+                                        InboxMessageType.AdminToUser => Localizer["AdminToUser"],
+                                        InboxMessageType.Notification => Localizer["Notification"],
+                                        InboxMessageType.System => Localizer["SystemAnnouncement"],
+                                        _ => Localizer["UserMessage"]
+                                    })
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">@Localizer["SentOn"]</span>
+                        <p class="mb-0" style="color: rgba(255,255,255,0.8);">
+                            <i class="bi bi-calendar-heart me-2 text-accent"></i>
+                            @Model.CreatedOn.ToLocalTime().ToString("dddd, dd MMMM yyyy")
+                        </p>
+                        <small style="color: rgba(255,255,255,0.3);">@Model.CreatedOn.ToLocalTime().ToString("HH:mm tt")</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">@Localizer["Message"]</span>
+                        <div class="p-4 mt-2 rounded-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);">
+                            <p class="mb-0" style="white-space: pre-wrap; line-height: 1.8; color: rgba(255,255,255,0.8);">
+                                @Model.Description
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">@Localizer["Status"]</span>
+                        <div class="mt-1">
+                            @if (Model.IsRead)
+                            {
+                                <span class="badge" style="background: rgba(40,167,69,0.15); color: #28a745;">
+                                    <i class="bi bi-check-circle-fill me-1"></i> @Localizer["Read"]
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge" style="background: rgba(212,160,23,0.15); color: var(--logistics-accent);">
+                                    <i class="bi bi-envelope-paper me-1"></i> @Localizer["Unread"]
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 justify-content-end mt-4 flex-wrap">
+                    <a asp-area="Admin" asp-controller="SystemMessage" asp-action="Create" class="btn-logistics-primary">
+                        <i class="bi bi-plus-circle me-2"></i> @Localizer["NewMessage"]
+                    </a>
+                    <a asp-area="Admin" asp-controller="SystemMessage" asp-action="Index" class="btn-logistics-outline">
+                        <i class="bi bi-check2-circle me-2"></i> @Localizer["Done"]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
