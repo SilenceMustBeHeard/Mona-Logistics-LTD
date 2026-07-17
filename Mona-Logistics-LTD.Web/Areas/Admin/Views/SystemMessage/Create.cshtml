@@ -1,0 +1,131 @@
+﻿@using Mona_Logistics_LTD.Data.Common.Enums
+@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@using Mona_Logistics_LTD.Web.ViewModels.Admin.Messages
+@inject IJsonLocalizer Localizer
+
+@model SystemMessageCreateViewModel
+
+@{
+    ViewData["Title"] = Localizer["SendSystemMessageTitle"];
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="logistics-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-megaphone display-4" style="color: var(--logistics-accent);"></i>
+                    <h1 class="h2 mt-2" style="color: white;">@Localizer["SendSystemMessageTitle"]</h1>
+                    <div class="accent-line mx-auto"></div>
+                    <p style="color: rgba(255,255,255,0.5);">@Localizer["SendSystemMessageSubtitle"]</p>
+                </div>
+
+                <form asp-area="Admin" asp-controller="SystemMessage" asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-4">
+                        <label asp-for="ReceiverId" class="form-label" style="color: rgba(255,255,255,0.8);">
+                            <i class="bi bi-person me-1 text-accent"></i> @Localizer["Recipient"]
+                        </label>
+                        @if (Model.AvailableUsers != null && Model.AvailableUsers.Any())
+                        {
+                            <select asp-for="ReceiverId" class="form-select logistics-input" required>
+                                <option value="">-- @Localizer["SelectRecipient"] --</option>
+                                @foreach (var user in Model.AvailableUsers)
+                                {
+                                    <option value="@user.Id" selected="@(user.Id == Model.ReceiverId)">
+                                        @user.FullName (@user.Email)
+                                    </option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control logistics-input" value="@Model.ReceiverName" readonly />
+                        }
+                        <span asp-validation-for="ReceiverId" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Type" class="form-label" style="color: rgba(255,255,255,0.8);">
+                            <i class="bi bi-tag me-1 text-accent"></i> @Localizer["MessageType"]
+                        </label>
+                        <select asp-for="Type" class="form-select logistics-input">
+                            <option value="">-- @Localizer["SelectType"] --</option>
+                            <option value="@InboxMessageType.AdminToUser">@Localizer["AdminToUser"]</option>
+                            <option value="@InboxMessageType.Notification">@Localizer["Notification"]</option>
+                            <option value="@InboxMessageType.System">@Localizer["SystemAnnouncement"]</option>
+                            <option value="@InboxMessageType.UserToAdmin">@Localizer["UserMessage"]</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label" style="color: rgba(255,255,255,0.8);">
+                            <i class="bi bi-chat-text me-1 text-accent"></i> @Localizer["Title"]
+                        </label>
+                        <input asp-for="Title" class="form-control logistics-input" placeholder="@Localizer["TitlePlaceholder"]" />
+                        <span asp-validation-for="Title" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Description" class="form-label" style="color: rgba(255,255,255,0.8);">
+                            <i class="bi bi-envelope-paper me-1 text-accent"></i> @Localizer["Message"]
+                        </label>
+                        <textarea asp-for="Description" class="form-control logistics-input" rows="6" placeholder="@Localizer["MessagePlaceholder"]"></textarea>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                        <div class="d-flex justify-content-between align-items-center mt-1">
+                            <small style="color: rgba(255,255,255,0.3);"><i class="bi bi-info-circle me-1"></i> @Localizer["MessageMinLength"]</small>
+                            <small style="color: rgba(255,255,255,0.3);" id="charCount">0 @Localizer["Characters"]</small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap mt-4">
+                        <a asp-area="Admin" asp-controller="SystemMessage" asp-action="Index" class="btn-logistics-outline flex-fill">
+                            <i class="bi bi-x-circle me-2"></i> @Localizer["Cancel"]
+                        </a>
+                        <button type="submit" class="btn-logistics-primary flex-fill" id="sendBtn">
+                            <i class="bi bi-send me-2"></i> @Localizer["SendMessage"]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.querySelector('textarea[name="Description"]');
+            const charCount = document.getElementById('charCount');
+
+            textarea?.addEventListener('input', function() {
+                charCount.textContent = this.value.length + ' @Localizer["Characters"]';
+            });
+
+            document.getElementById('sendBtn')?.addEventListener('click', function(e) {
+                const msg = textarea?.value.trim();
+                if (!msg || msg.length < 20) {
+                    e.preventDefault();
+                    showToast('@Localizer["MessageTooShort"]', 'error');
+                    textarea?.focus();
+                    textarea?.classList.add('border-danger');
+                    setTimeout(() => textarea?.classList.remove('border-danger'), 2000);
+                }
+            });
+
+            function showToast(message, type) {
+                const toast = document.createElement('div');
+                toast.className = `toast-notification ${type}`;
+                toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 12px 20px; border-radius: 10px; background: var(--logistics-primary-dark); border-left: 4px solid ${type === 'success' ? '#28a745' : '#dc3545'}; color: white; box-shadow: 0 8px 24px rgba(0,0,0,0.3); transform: translateX(120%); transition: transform 0.3s ease;`;
+                toast.innerHTML = `<i class="bi ${type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'} me-2"></i> ${message}`;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+                setTimeout(() => { toast.style.transform = 'translateX(120%)'; setTimeout(() => toast.remove(), 300); }, 4000);
+            }
+        });
+    </script>
+}
