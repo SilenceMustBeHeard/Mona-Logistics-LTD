@@ -1,0 +1,150 @@
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@using Mona_Logistics_LTD.Web.ViewModels.Admin.Messages
+@inject IJsonLocalizer Localizer
+
+@model AdminInboxViewModel
+
+@{
+    ViewData["Title"] = Localizer["AdminInboxTitle"];
+    var unreadCount = Model.ContactMessages.Count(m => !m.IsReadByAdmin);
+}
+
+<div class="container py-5">
+    <div class="logistics-card p-4">
+        <div class="text-center mb-4">
+            <div class="inbox-icon-wrapper">
+                <i class="bi bi-envelope-paper display-1" style="color: var(--logistics-accent);"></i>
+                <span class="inbox-badge" id="messageCount">@unreadCount</span>
+            </div>
+            <h1 class="h2 mt-2" style="color: white;">@Localizer["AdminInboxTitle"]</h1>
+            <div class="accent-line mx-auto"></div>
+            <p style="color: rgba(255,255,255,0.5);">@Localizer["AdminInboxSubtitle"]</p>
+        </div>
+
+        <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn-logistics-outline" style="padding: 8px 20px;">
+                <i class="bi bi-arrow-left me-1"></i> @Localizer["BackToDashboard"]
+            </a>
+            <div class="d-flex gap-2 flex-wrap">
+                <button id="markAllReadBtn" class="btn-logistics-outline" style="padding: 8px 20px;">
+                    <i class="bi bi-envelope-check me-1"></i> @Localizer["MarkAllRead"]
+                </button>
+                <button id="refreshBtn" class="btn-logistics-outline" style="padding: 8px 20px;">
+                    <i class="bi bi-arrow-repeat me-1"></i> @Localizer["Refresh"]
+                </button>
+            </div>
+        </div>
+
+        <div id="messagesContainer">
+            @if (!Model.ContactMessages.Any())
+            {
+                <div class="text-center py-5">
+                    <i class="bi bi-inbox display-1" style="color: rgba(255,255,255,0.1);"></i>
+                    <p class="mt-3" style="color: rgba(255,255,255,0.5);">@Localizer["NoContactMessages"]</p>
+                    <p class="small" style="color: rgba(255,255,255,0.3);">@Localizer["EmptyInboxDesc"]</p>
+                </div>
+            }
+            else
+            {
+                <div class="messages-stack" id="messagesList">
+                    @foreach (var message in Model.ContactMessages.OrderByDescending(m => m.CreatedOn))
+                    {
+                        var isUnread = !message.IsReadByAdmin;
+                        <div class="message-item p-3 mb-3 rounded-3 @(isUnread ? "unread" : "")" style="background: rgba(255,255,255,0.02); border: 1px solid @(isUnread ? "rgba(212,160,23,0.2)" : "rgba(255,255,255,0.04)"); transition: all 0.2s ease;" data-id="@message.Id">
+                            <a asp-area="Admin" asp-controller="ContactMessage" asp-action="Details" asp-route-id="@message.Id" class="message-link" style="text-decoration: none; color: inherit; display: block;">
+                                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <i class="bi @(string.IsNullOrEmpty(message.Response) ? "bi-chat" : "bi-reply-all-fill")" style="color: var(--logistics-accent);"></i>
+                                        <div>
+                                            <h6 class="fw-bold mb-0" style="color: white;">@message.Subject</h6>
+                                            <small style="color: rgba(255,255,255,0.3);">@message.CreatedOn.ToLocalTime().ToString("dd MMM yyyy · HH:mm")</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        @if (isUnread)
+                                        {
+                                            <span class="badge" style="background: #e63946; color: white;">@Localizer["New"]</span>
+                                        }
+                                        @if (!string.IsNullOrEmpty(message.Response))
+                                        {
+                                            <span class="badge" style="background: rgba(40,167,69,0.15); color: #28a745;">@Localizer["Replied"]</span>
+                                        }
+                                    </div>
+                                </div>
+                                <p class="mt-2 mb-1 small" style="color: rgba(255,255,255,0.5);">
+                                    @(message.Message.Length > 120 ? message.Message.Substring(0, 120) + "..." : message.Message)
+                                </p>
+                                <div class="d-flex gap-2 mt-2">
+                                    <small style="color: rgba(255,255,255,0.3);">
+                                        <i class="bi bi-person me-1"></i> @Localizer["From"]: @message.SenderName
+                                    </small>
+                                </div>
+                                <div class="mt-2">
+                                    <span style="color: var(--logistics-accent); font-weight: 500;">
+                                        @(string.IsNullOrEmpty(message.Response) ? Localizer["ViewAndRespond"] : Localizer["ViewResponse"])
+                                        <i class="bi bi-arrow-right"></i>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast-notification ${type}`;
+            toast.style.cssText = `position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 12px 20px; border-radius: 10px; background: var(--logistics-primary-dark); border-left: 4px solid ${type === 'success' ? '#28a745' : '#dc3545'}; color: white; box-shadow: 0 8px 24px rgba(0,0,0,0.3); transform: translateX(120%); transition: transform 0.3s ease;`;
+            toast.innerHTML = `<i class="bi ${type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'} me-2"></i> ${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            setTimeout(() => { toast.style.transform = 'translateX(120%)'; setTimeout(() => toast.remove(), 300); }, 4000);
+        }
+
+        async function refreshMessages() {
+            const container = document.getElementById('messagesList');
+            if (!container) return;
+            const scrollPos = window.scrollY;
+            try {
+                const response = await fetch('/Admin/ContactMessage/GetMessagesPartial');
+                if (!response.ok) throw new Error('Failed to fetch');
+                const html = await response.text();
+                container.innerHTML = html;
+                window.scrollTo(0, scrollPos);
+                const unread = document.querySelectorAll('.message-item.unread').length;
+                const badge = document.getElementById('messageCount');
+                if (badge) badge.textContent = unread;
+            } catch (e) {
+                showToast('@Localizer["RefreshFailed"]', 'error');
+            }
+        }
+
+        document.getElementById('refreshBtn')?.addEventListener('click', async function() {
+            this.disabled = true;
+            this.innerHTML = '<i class="bi bi-arrow-repeat spinner me-1"></i> @Localizer["Refreshing"]...';
+            await refreshMessages();
+            this.innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> @Localizer["Refresh"]';
+            this.disabled = false;
+        });
+
+        document.getElementById('markAllReadBtn')?.addEventListener('click', async function() {
+            if (!confirm('@Localizer["MarkAllReadConfirm"]')) return;
+            try {
+                const response = await fetch('/Admin/ContactMessage/MarkAllAsRead', { method: 'POST', headers: { 'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || '' } });
+                if (response.ok) {
+                    showToast('@Localizer["MarkAllReadSuccess"]');
+                    await refreshMessages();
+                } else {
+                    showToast('@Localizer["MarkAllReadFailed"]', 'error');
+                }
+            } catch (e) {
+                showToast('@Localizer["MarkAllReadFailed"]', 'error');
+            }
+        });
+    });
+</script>

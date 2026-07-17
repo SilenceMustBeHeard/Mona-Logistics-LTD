@@ -1,56 +1,101 @@
-﻿@{
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@inject IJsonLocalizer Localizer
+
+
+@{
     ViewData["Title"] = Localizer["ServerErrorTitle"];
 }
 
-<div class="error-page-wrapper">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="error-card text-center p-5">
-                    <!-- Warning Icon -->
-                    <div class="error-icon mb-4">
-                        <i class="bi bi-exclamation-triangle" style="font-size: 4rem; color: #e63946;"></i>
-                    </div>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="logistics-card p-5 text-center">
+                <div class="error-icon-wrapper mb-4">
+                    <i class="bi bi-exclamation-triangle display-1" style="color: #e63946;"></i>
+                </div>
 
-                    <div class="error-badge mb-3">
-                        <span class="badge-logistics" style="background: rgba(230, 57, 70, 0.15); color: #e63946; border-color: rgba(230, 57, 70, 0.3);">
-                            <i class="bi bi-server me-1"></i> 500 - @Localizer["ServerErrorBadge"]
-                        </span>
-                    </div>
+                <div class="error-badge mb-3">
+                    <span class="badge-logistics" style="background: rgba(230,57,70,0.15); color: #e63946; border-color: rgba(230,57,70,0.3);">
+                        <i class="bi bi-server me-1"></i> 500 - @Localizer["ServerErrorTitle"]
+                    </span>
+                </div>
 
-                    <h1 class="display-1 fw-bold" style="color: #e63946;">500</h1>
-                    <h2 class="error-title">@Localizer["ServerErrorTitle"]</h2>
-                    <p class="error-description">@Localizer["ServerErrorDesc"]</p>
+                <h1 class="display-4 fw-bold mb-3" style="color: #e63946;">
+                    @Localizer["ServerErrorTitle"]
+                </h1>
 
-                    <div class="auto-rescue mt-4 p-3" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                        <div class="rescue-text" style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
-                            <i class="bi bi-arrow-repeat me-2" style="animation: spin 1s linear infinite;"></i>
-                            @Localizer["AutoRescueText"]
+                <p class="text-muted mb-4">@Localizer["ServerErrorDesc"]</p>
+
+                <div class="technical-details p-3 mb-4" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(212,160,23,0.08);">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div>
+                            <i class="bi bi-receipt text-accent me-1"></i>
+                            <small class="text-muted">@Localizer["ErrorReference"]</small>
+                            <code id="errorId" class="small" style="color: var(--logistics-accent);"></code>
+                        </div>
+                        <div>
+                            <i class="bi bi-clock text-accent me-1"></i>
+                            <small class="text-muted" id="errorTime"></small>
                         </div>
                     </div>
+                </div>
 
-                    <div class="action-buttons d-flex justify-content-center gap-3 flex-wrap mt-4">
-                        <a asp-controller="Home" asp-action="Index" class="btn-logistics-primary">
-                            <i class="bi bi-house-door me-2"></i> @Localizer["ReturnHome"]
-                        </a>
-                        <button onclick="location.reload()" class="btn-logistics-outline">
-                            <i class="bi bi-arrow-repeat me-2"></i> @Localizer["TryAgain"]
+                <div class="auto-retry-box p-3 mb-4" style="background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(212,160,23,0.08);">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <i class="bi bi-arrow-repeat me-2 text-accent"></i>
+                            <span class="small">@Localizer["AutoRetry"]</span>
+                            <strong id="countdown">10</strong>
+                            <span class="small">@Localizer["Seconds"]</span>
+                        </div>
+                        <button class="btn-sm" id="retryNowBtn" style="background: var(--logistics-accent); border: none; border-radius: 20px; padding: 4px 16px; color: var(--logistics-primary-dark); font-weight: 600;">
+                            <i class="bi bi-play-fill me-1"></i> @Localizer["RetryNow"]
                         </button>
                     </div>
+                    <div class="progress mt-2" style="height: 3px;">
+                        <div class="progress-bar" id="retryProgress" style="width: 0%; background: var(--logistics-accent);"></div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a asp-controller="Home" asp-action="Index" class="btn-logistics-primary">
+                        <i class="bi bi-house-door me-2"></i> @Localizer["ReturnHome"]
+                    </a>
+                    <button onclick="location.reload()" class="btn-logistics-outline" id="reloadBtn">
+                        <i class="bi bi-arrow-repeat me-2"></i> @Localizer["TryAgain"]
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    @@keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorId = Math.random().toString(36).substring(2, 10).toUpperCase();
+        document.getElementById('errorId').textContent = errorId;
+        document.getElementById('errorTime').textContent = new Date().toLocaleTimeString();
 
-        to {
-            transform: rotate(360deg);
-        }
-    }
-</style>
+        let countdown = 10;
+        const countdownEl = document.getElementById('countdown');
+        const progressEl = document.getElementById('retryProgress');
+
+        const interval = setInterval(() => {
+            countdown--;
+            countdownEl.textContent = countdown;
+            progressEl.style.width = ((10 - countdown) / 10 * 100) + '%';
+            if (countdown <= 0) {
+                clearInterval(interval);
+                document.getElementById('retryNowBtn').innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> @Localizer["Retrying"]...';
+                setTimeout(() => location.reload(), 500);
+            }
+        }, 1000);
+
+        document.getElementById('retryNowBtn').addEventListener('click', function() {
+            clearInterval(interval);
+            this.innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> @Localizer["Retrying"]...';
+            this.disabled = true;
+            setTimeout(() => location.reload(), 300);
+        });
+    });
+</script>
