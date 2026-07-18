@@ -323,19 +323,101 @@
   "NewUser": "Нов потребител се регистрира",
   "DashboardQuote": "Добрият логистик не просто движи товари — той движи доверие.",
   "DashboardQuoteAuthor": "Мона Лоджистикс",
-  "Frontend": "Сайт"
+  "Frontend": "Сайт",
+
+  "BadRequestTitle": "Грешна заявка",
+ 
+  "TipsTitle": "Съвети",
+  "TipCheckUrl": "Проверете URL адреса за грешки",
+  "TipClearCache": "Изчистете кеша на браузъра",
+  "TipTryAgain": "Опитайте отново по-късно",
+  "RestrictedArea": "Ограничен достъп",
+  "RestrictedDesc": "Тази секция е само за упълномощени потребители.",
+  "PopularDestinations": "Популярни дестинации",
+  "ProgressLabel": "Напредък",
+
+  "StatusPlanning": "Планиране",
+  "StatusBuilding": "Изграждане",
+  "StatusTesting": "Тестване",
+  "StatusFinalizing": "Финален етап",
+  "StatusReady": "Готово!",
+  "ErrorReference": "Референция за грешка",
+  "AutoRetry": "Автоматичен опит след",
+  "Seconds": "секунди",
+  "RetryNow": "Опитай сега",
+  "Retrying": "Опитвам отново",
 
 
+  "AdminInboxTitle": "Входящи съобщения",
+  "AdminInboxSubtitle": "Управление на съобщения от клиенти",
+  "BackToDashboard": "Обратно към таблото",
+  "MarkAllRead": "Маркирай всички за прочетени",
+  "Refresh": "Обнови",
+ 
+  "EmptyInboxDesc": "Когато клиентите пишат, техните съобщения ще се появят тук",
+ 
+  "ViewAndRespond": "Преглед и отговор",
+  "ViewResponse": "Преглед на отговора",
+  "SenderInfo": "Информация за подателя",
+
+  "Message": "Съобщение",
+  "YourResponse": "Вашият отговор",
+  "RespondedOn": "Отговорено на",
+  "By": "От",
+  "RespondToMessage": "Отговори на съобщение",
+  "Done": "Готово",
+  "Loading": "Зареждане...",
+  "RefreshFailed": "Обновяването не бе успешно",
+  "MarkAllReadConfirm": "Сигурни ли сте, че искате да маркирате всички съобщения за прочетени?",
+  "MarkAllReadSuccess": "Всички съобщения са маркирани за прочетени",
+  "MarkAllReadFailed": "Неуспешно маркиране на съобщенията",
+
+
+  "SendSystemMessageTitle": "Изпрати системно съобщение",
+  "SendSystemMessageSubtitle": "Изпратете съобщение до клиенти",
+  "Recipient": "Получател",
+  "SelectRecipient": "Изберете получател",
+  "MessageType": "Тип съобщение",
+  "SelectType": "Изберете тип",
+  "AdminToUser": "Админ съобщение",
+  "Notification": "Известие",
+  "SystemAnnouncement": "Системно обявление",
+  "UserMessage": "Потребителско съобщение",
+  "Title": "Заглавие",
+  "TitlePlaceholder": "Например: Важно съобщение, Актуализация...",
+
+  "MessageMinLength": "Минимална дължина: 20 символа",
+  "Characters": "символа",
+  "SendMessage": "Изпрати съобщение",
   
+  "MessageTooShort": "Съобщението е твърде кратко. Минимум 20 символа.",
+  "SystemMessageDetailsTitle": "Детайли на съобщението",
+  "SystemMessageInfo": "Системно съобщение",
+  "BackToMessages": "Обратно към съобщенията",
+  "SentOn": "Изпратено на",
+  "Read": "Прочетено",
+  "Unread": "Непрочетено",
+  "NewMessage": "Ново съобщение",
+  "SystemMessagesTitle": "Системни съобщения",
+  "SystemMessagesSubtitle": "Управление на системни съобщения",
+  "TotalSent": "Общо изпратени",
+
+  "SendFirstMessage": "Изпрати първото съобщение",
+  "ReadMessage": "Прочети съобщението",
+  "FromClient": "От клиент",
+  "SystemSender": "Система"
 
 
 
 
 
- 
 
 
- 
+
+
+
+
+
 
 
 
