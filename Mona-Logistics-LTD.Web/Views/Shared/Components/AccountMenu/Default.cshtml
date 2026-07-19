@@ -8,6 +8,10 @@
 @{
    
     var isLoggedIn = Model is true;
+    var isAdmin = ViewBag.IsAdmin as bool? ?? false;
+    var isManager = ViewBag.IsManager as bool? ?? false;
+    var newRequestsCount = ViewBag.NewRequestsCount as int? ?? 0;
+
     string displayName = null;
 
     if (isLoggedIn)
@@ -21,8 +25,6 @@
                 : user.UserName?.Split('@')[0] ?? user.Email;
         }
     }
-
-    var newRequestsCount = ViewBag.NewRequestsCount as int? ?? 0;
 }
 
 @if (isLoggedIn)
@@ -37,7 +39,7 @@
         </div>
     </li>
 
-    @if (!User.IsInRole("Admin") && !User.IsInRole("Manager"))
+    @if (!isAdmin && !isManager)
     {
         <li>
             <a class="dropdown-item" asp-controller="Profile" asp-action="Index">
@@ -60,7 +62,7 @@
         </li>
     }
 
-    @if (User.IsInRole("Admin"))
+    @if (isAdmin)
     {
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -92,7 +94,7 @@
         </li>
     }
 
-    @if (User.IsInRole("Manager"))
+    @if (isManager)
     {
         <li><hr class="dropdown-divider"></li>
         <li>

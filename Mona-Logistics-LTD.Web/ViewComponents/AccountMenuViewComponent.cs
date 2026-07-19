@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Mona_Logistics_LTD.Data.Models.Base;
 using Mona_Logistics_LTD.Services.Admin.Interfaces.Loads;
@@ -20,7 +19,8 @@ public class AccountMenuViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync()
     {
         var isLoggedIn = _signInManager.IsSignedIn(HttpContext.User);
-        ViewBag.IsLoggedIn = isLoggedIn;
+
+        var model = isLoggedIn;
 
         if (isLoggedIn)
         {
@@ -38,6 +38,6 @@ public class AccountMenuViewComponent : ViewComponent
             }
         }
 
-        return View();
+        return View(model);  
     }
 }
