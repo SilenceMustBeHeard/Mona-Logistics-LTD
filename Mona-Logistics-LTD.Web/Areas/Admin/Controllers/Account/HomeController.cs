@@ -9,18 +9,17 @@ namespace Mona_Logistics_LTD.Web.Areas.Admin.Controllers.Account;
 
 [Area("Admin")]
 [Authorize(Roles = "Admin")]
+
 public class HomeController : BaseAdminController
 {
     public HomeController(UserManager<AppUser> userManager) : base(userManager)
     {
     }
 
-
     public IActionResult Index() => View();
 
 
     public IActionResult About() => View();
-
 
     public IActionResult Privacy() => View();
 

@@ -1,0 +1,13 @@
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@inject IJsonLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["AdminHomeTitle"];
+}
+
+<div class="admin-home">
+    <h1 style="color: white;">@Localizer["AdminHomeTitle"]</h1>
+    <p style="color: rgba(255,255,255,0.6);">@Localizer["AdminHeroDesc"]</p>
+
+    <!-- Тук ще дойде останалото съдържание -->
+</div>

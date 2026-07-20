@@ -5,9 +5,9 @@ using Mona_Logistics_LTD.Web.ViewModels.User.Account.Profile;
 
 namespace Mona_Logistics_LTD.Web.Areas.Admin.Controllers.Account;
 
-
 [Area("Admin")]
 [Authorize(Roles = "Admin")]
+
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
@@ -18,9 +18,11 @@ public class AccountController : Controller
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult Register() => View();
 
     [HttpPost]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
@@ -30,7 +32,7 @@ public class AccountController : Controller
         var result = await _accountService.RegisterAsync(model);
 
         if (result.Success)
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "Admin" });
 
         foreach (var error in result.Errors)
             ModelState.AddModelError("", error);
@@ -39,9 +41,11 @@ public class AccountController : Controller
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult Login() => View();
 
     [HttpPost]
+    [AllowAnonymous]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
     {
@@ -55,6 +59,7 @@ public class AccountController : Controller
 
         if (success)
         {
+           
             return RedirectToAction("Index", "Home", new { area = "Admin" });
         }
 
@@ -72,10 +77,8 @@ public class AccountController : Controller
 
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult ForgotPassword()
-    {
-        return View();
-    }
+    public IActionResult ForgotPassword() => View();
+}
 
     [HttpPost]
     [AllowAnonymous]
@@ -130,15 +133,10 @@ public class AccountController : Controller
 
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult ForgotPasswordConfirmation()
-    {
-        return View();
-    }
+    public IActionResult ForgotPasswordConfirmation() => View();
+
 
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult ResetPasswordConfirmation()
-    {
-        return View();
-    }
-}
+    public IActionResult ResetPasswordConfirmation() => View();
+ 
