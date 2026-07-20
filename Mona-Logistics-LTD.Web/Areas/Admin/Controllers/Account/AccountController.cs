@@ -59,7 +59,7 @@ public class AccountController : Controller
 
         if (success)
         {
-           
+
             return RedirectToAction("Index", "Home", new { area = "Admin" });
         }
 
@@ -78,7 +78,7 @@ public class AccountController : Controller
     [HttpGet]
     [AllowAnonymous]
     public IActionResult ForgotPassword() => View();
-}
+
 
     [HttpPost]
     [AllowAnonymous]
@@ -139,4 +139,4 @@ public class AccountController : Controller
     [HttpGet]
     [AllowAnonymous]
     public IActionResult ResetPasswordConfirmation() => View();
- 
+}
