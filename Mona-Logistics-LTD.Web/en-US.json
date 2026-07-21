@@ -384,7 +384,7 @@
   "MessageMinLength": "Minimum length: 20 characters",
   "Characters": "characters",
   "SendMessage": "Send Message",
- 
+
   "MessageTooShort": "Message is too short. Minimum 20 characters.",
   "SystemMessageDetailsTitle": "Message Details",
   "SystemMessageInfo": "System message",
@@ -400,7 +400,28 @@
   "SendFirstMessage": "Send First Message",
   "ReadMessage": "Read Message",
   "FromClient": "From client",
-  "SystemSender": "System"
+  "SystemSender": "System",
+  "AdminHomeTitle": "Command Center",
+  "SystemOnline": "System Online",
+
+  "UnreadMessages": "Unread",
+  "RecentRequests": "Recent Requests",
+  
+  "ViewAll": "View All",
+
+  "ViewRequests": "View Requests",
+  "SendAnnouncement": "Send Announcement",
+  "ManageUsers": "Manage Users",
+  "FullDashboard": "Full Dashboard",
+  "SystemStatus": "System Status",
+  "Database": "Database",
+  "EmailService": "Email Service",
+  "ApiService": "API Service",
+  "CacheService": "Cache Service",
+  "Operational": "Operational",
+  "Degraded": "Degraded",
+  "OfferSent": "Offer Sent",
+
 
 }
 

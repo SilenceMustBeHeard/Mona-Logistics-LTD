@@ -326,7 +326,7 @@
   "Frontend": "Сайт",
 
   "BadRequestTitle": "Грешна заявка",
- 
+
   "TipsTitle": "Съвети",
   "TipCheckUrl": "Проверете URL адреса за грешки",
   "TipClearCache": "Изчистете кеша на браузъра",
@@ -353,9 +353,9 @@
   "BackToDashboard": "Обратно към таблото",
   "MarkAllRead": "Маркирай всички за прочетени",
   "Refresh": "Обнови",
- 
+
   "EmptyInboxDesc": "Когато клиентите пишат, техните съобщения ще се появят тук",
- 
+
   "ViewAndRespond": "Преглед и отговор",
   "ViewResponse": "Преглед на отговора",
   "SenderInfo": "Информация за подателя",
@@ -389,7 +389,7 @@
   "MessageMinLength": "Минимална дължина: 20 символа",
   "Characters": "символа",
   "SendMessage": "Изпрати съобщение",
-  
+
   "MessageTooShort": "Съобщението е твърде кратко. Минимум 20 символа.",
   "SystemMessageDetailsTitle": "Детайли на съобщението",
   "SystemMessageInfo": "Системно съобщение",
@@ -405,7 +405,28 @@
   "SendFirstMessage": "Изпрати първото съобщение",
   "ReadMessage": "Прочети съобщението",
   "FromClient": "От клиент",
-  "SystemSender": "Система"
+  "SystemSender": "Система",
+  "AdminHomeTitle": "Команден център",
+  "SystemOnline": "Системата е онлайн",
+
+  "UnreadMessages": "Непрочетени",
+  "RecentRequests": "Последни заявки",
+
+  "ViewAll": "Виж всички",
+
+  "ViewRequests": "Преглед на заявки",
+  "SendAnnouncement": "Изпрати съобщение",
+  "ManageUsers": "Управление на потребители",
+  "FullDashboard": "Пълен Dashboard",
+  "SystemStatus": "Състояние на системата",
+  "Database": "База данни",
+  "EmailService": "Имейл услуга",
+  "ApiService": "API услуга",
+  "CacheService": "Кеш услуга",
+  "Operational": "Работи",
+  "Degraded": "Забавен",
+  "OfferSent": "Изпратена оферта"
+
 
 
 
