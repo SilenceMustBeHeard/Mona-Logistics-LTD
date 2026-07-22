@@ -16,7 +16,10 @@ public class HomeController : BaseAdminController
     {
     }
 
-    public IActionResult Index() => View();
+    public IActionResult Index()
+    {
+        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+    }
 
 
     public IActionResult About() => View();
