@@ -32,7 +32,7 @@ public class AccountController : Controller
         var result = await _accountService.RegisterAsync(model);
 
         if (result.Success)
-            return RedirectToAction("Index", "Home", new { area = "Admin" });
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
 
         foreach (var error in result.Errors)
             ModelState.AddModelError("", error);
