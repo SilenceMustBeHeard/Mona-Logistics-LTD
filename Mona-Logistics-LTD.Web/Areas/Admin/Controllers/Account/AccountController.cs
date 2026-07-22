@@ -60,7 +60,7 @@ public class AccountController : Controller
         if (success)
         {
 
-            return RedirectToAction("Index", "Home", new { area = "Admin" });
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
 
         ModelState.AddModelError("", "Invalid login attempt.");
