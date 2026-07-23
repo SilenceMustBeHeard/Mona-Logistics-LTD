@@ -14,7 +14,7 @@ public class AdminStatsController : ControllerBase
 {
     private readonly AppDbContext _context;
 
-    public AdminStatsController(AppDbContext context) qq
+    public AdminStatsController(AppDbContext context) 
     {
         _context = context;
     }

@@ -68,7 +68,8 @@
     <div class="dashboard-actions" data-aos="fade-up" data-aos-delay="200">
         <h2 class="section-title">@Localizer["QuickActions"]</h2>
         <div class="actions-grid">
-            <a asp-area="Admin" asp-controller="LoadRequest" asp-action="Index" class="action-card">
+
+            <a asp-area="Admin" asp-controller="LoadRequestAdmin" asp-action="Index" class="action-card">
                 <div class="action-icon">
                     <i class="bi bi-box-seam"></i>
                 </div>
@@ -76,6 +77,7 @@
                 <p>@Localizer["LoadRequestsDesc"]</p>
                 <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
+
             <a asp-area="Admin" asp-controller="UserManagement" asp-action="Index" class="action-card">
                 <div class="action-icon">
                     <i class="bi bi-people"></i>
@@ -119,6 +121,7 @@
             </a>
         </div>
     </div>
+
 
     <!-- Recent Activity -->
     <div class="dashboard-activity" data-aos="fade-up" data-aos-delay="300">
