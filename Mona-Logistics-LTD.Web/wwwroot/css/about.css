@@ -1,266 +1,321 @@
-/* About Page - Mona Logistics */
-.about-page {
-    background: var(--logistics-primary-dark);
-}
+/* 
+   ABOUT PAGE - Mona Logistics
+    */
 
-/* Hero Section */
+/* 
+   HERO
+    */
 .about-hero {
     background: linear-gradient(135deg, var(--logistics-primary) 0%, var(--logistics-primary-dark) 100%);
-    padding: 100px 0 80px;
+    padding: 80px 0 60px;
     text-align: center;
-    position: relative;
-    border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.1);
 }
 
-.hero-badge {
+.about-hero-badge {
     display: inline-block;
-    padding: 6px 16px;
-    background: rgba(212, 160, 23, 0.15);
-    border: 1px solid rgba(212, 160, 23, 0.3);
+    padding: 6px 18px;
+    background: rgba(212, 160, 23, 0.12);
+    border: 1px solid rgba(212, 160, 23, 0.2);
     border-radius: 30px;
     font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--logistics-accent);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .about-hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: white;
+    margin-bottom: 16px;
     line-height: 1.2;
 }
 
 .about-hero-line {
-    width: 70px;
-    height: 3px;
+    width: 60px;
+    height: 2px;
     background: var(--logistics-accent);
-    margin: 0 auto 25px;
+    margin: 0 auto 20px;
 }
 
 .about-hero-subtitle {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 700px;
+    margin: 0 auto;
     line-height: 1.6;
 }
 
-/* Mission Statement */
-.mission-statement {
-    padding: 60px 0;
-    background: rgba(212, 160, 23, 0.03);
+/* 
+   MISSION
+    */
+.about-mission {
+    padding: 50px 0;
+    background: rgba(212, 160, 23, 0.02);
 }
 
-.mission-quote {
-    text-align: center;
-    max-width: 900px;
+.about-mission-block {
+    max-width: 850px;
     margin: 0 auto;
+    text-align: center;
 }
 
-.quote-text {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: white;
-    line-height: 1.5;
+.about-mission-text {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
     font-style: italic;
     position: relative;
-    padding: 20px 0;
+    padding: 0 30px;
 }
 
-    .quote-text::before,
-    .quote-text::after {
+    .about-mission-text::before {
         content: '"';
         font-size: 3rem;
         color: var(--logistics-accent);
-        opacity: 0.5;
+        opacity: 0.4;
         position: absolute;
-    }
-
-    .quote-text::before {
         top: -20px;
         left: -10px;
     }
 
-    .quote-text::after {
+    .about-mission-text::after {
+        content: '"';
+        font-size: 3rem;
+        color: var(--logistics-accent);
+        opacity: 0.4;
+        position: absolute;
         bottom: -40px;
         right: -10px;
     }
 
-/* Commitment Section */
-.commitment-section {
-    padding: 80px 0;
+/* 
+   COMMITMENT
+    */
+.about-commitment {
+    padding: 70px 0;
 }
 
-.section-tag {
+.about-tag {
     color: var(--logistics-accent);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-.section-title {
+.about-title {
     font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: white;
+    margin-bottom: 16px;
 }
 
-    .section-title .highlight {
-        color: var(--logistics-accent);
-    }
+.about-highlight {
+    color: var(--logistics-accent);
+}
 
-.section-line {
+.about-line {
     width: 50px;
     height: 2px;
     background: var(--logistics-accent);
+    margin-bottom: 20px;
+}
+
+    .about-line.center {
+        margin: 0 auto 20px;
+    }
+
+.about-text {
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
     margin-bottom: 25px;
 }
 
-.commitment-text {
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.7;
-    margin-bottom: 30px;
+.about-subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
-.pillars {
+.about-pillars {
     display: flex;
     gap: 30px;
-    margin-top: 30px;
 }
 
-.pillar {
+.about-pillar {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pillar-number {
-    font-size: 2rem;
+.about-pillar-num {
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--logistics-accent);
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
-.pillar-name {
-    font-size: 0.9rem;
+.about-pillar-name {
+    font-size: 0.85rem;
     font-weight: 500;
     color: white;
-    margin-top: 8px;
+    margin-top: 4px;
 }
 
-/* Image Placeholder */
-.commitment-image {
-    background: linear-gradient(135deg, var(--logistics-primary) 0%, var(--logistics-primary-dark) 100%);
+/* Image Block */
+.about-image-block {
+    background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), rgba(212, 160, 23, 0.01));
     border-radius: 16px;
-    padding: 40px;
-    min-height: 300px;
+    padding: 50px 30px;
+    min-height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(212, 160, 23, 0.15);
+    border: 1px solid rgba(212, 160, 23, 0.08);
 }
 
-.image-placeholder {
+.about-image-placeholder {
     text-align: center;
-}
-
-.placeholder-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
-    .placeholder-content span {
-        font-size: 1rem;
+    .about-image-placeholder i {
+        font-size: 4rem;
         color: var(--logistics-accent);
+        opacity: 0.4;
+    }
+
+    .about-image-placeholder span {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.9rem;
         letter-spacing: 1px;
     }
 
-/* Why Choose Us Section */
-.why-section {
-    padding: 80px 0;
-    background: rgba(212, 160, 23, 0.03);
+/* 
+   WHY US
+    */
+.about-why {
+    padding: 70px 0;
+    background: rgba(212, 160, 23, 0.02);
 }
 
-.why-card {
+.about-why-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-why-card {
     background: var(--logistics-primary-dark);
-    border: 1px solid rgba(212, 160, 23, 0.1);
-    border-radius: 16px;
-    padding: 35px 30px;
+    border: 1px solid rgba(212, 160, 23, 0.06);
+    border-radius: 14px;
+    padding: 30px 24px;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
-    .why-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--logistics-accent);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    .about-why-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(212, 160, 23, 0.2);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
-.why-number {
-    font-size: 3rem;
+.about-why-num {
+    font-size: 2.5rem;
     font-weight: 700;
-    color: rgba(212, 160, 23, 0.15);
-    margin-bottom: 15px;
+    color: rgba(212, 160, 23, 0.12);
     font-family: monospace;
+    margin-bottom: 10px;
 }
 
-.why-card h3 {
-    font-size: 1.3rem;
+.about-why-card h4 {
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 15px;
     color: white;
+    margin-bottom: 10px;
 }
 
-.why-card p {
-    color: rgba(255, 255, 255, 0.6);
+.about-why-card p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
     line-height: 1.6;
+    margin: 0;
 }
 
-/* Closing Section */
-.closing-section {
-    padding: 60px 0 80px;
+/* 
+   CTA
+    */
+.about-cta {
+    padding: 60px 0 70px;
 }
 
-.closing-card {
+.about-cta-block {
     background: linear-gradient(135deg, var(--logistics-primary) 0%, var(--logistics-primary-dark) 100%);
     border-radius: 16px;
-    padding: 50px 40px;
-    border: 1px solid rgba(212, 160, 23, 0.2);
+    padding: 45px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px solid rgba(212, 160, 23, 0.1);
 }
 
-.closing-text {
-    font-size: 1.6rem;
+.about-cta-text {
+    font-size: 1.4rem;
     font-weight: 600;
     color: white;
+    margin: 0;
     line-height: 1.4;
-    margin-bottom: 0;
 }
 
-.btn-closing {
+.about-cta-btn {
     display: inline-block;
     background: var(--logistics-accent);
     color: var(--logistics-primary-dark);
-    padding: 14px 36px;
+    padding: 12px 34px;
     border-radius: 40px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
-    .btn-closing:hover {
+    .about-cta-btn:hover {
         background: var(--logistics-accent-dark);
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(212, 160, 23, 0.3);
+        box-shadow: 0 4px 16px rgba(212, 160, 23, 0.3);
         color: var(--logistics-primary-dark);
     }
 
-/* Responsive */
+/* 
+   RESPONSIVE
+    */
+@media (max-width: 992px) {
+    .about-cta-block {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px 25px;
+    }
+
+    .about-cta-text {
+        font-size: 1.2rem;
+    }
+
+    .about-cta-btn {
+        white-space: normal;
+    }
+}
+
 @media (max-width: 768px) {
     .about-hero {
-        padding: 60px 0 50px;
+        padding: 50px 0 40px;
     }
 
     .about-hero-title {
@@ -271,32 +326,22 @@
         font-size: 0.95rem;
     }
 
-    .quote-text {
-        font-size: 1.1rem;
-    }
-
-    .section-title {
+    .about-title {
         font-size: 1.8rem;
     }
 
-    .pillars {
-        flex-direction: column;
+    .about-mission-text {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+
+    .about-pillars {
         gap: 15px;
-        align-items: flex-start;
     }
 
-    .closing-text {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .closing-card {
-        text-align: center;
-        padding: 35px 25px;
-    }
-
-    .why-card {
-        padding: 25px;
+    .about-image-block {
+        min-height: 180px;
+        padding: 30px;
     }
 }
 
@@ -305,11 +350,33 @@
         font-size: 1.8rem;
     }
 
-    .quote-text {
+    .about-title {
+        font-size: 1.5rem;
+    }
+
+    .about-mission-text {
         font-size: 1rem;
     }
 
-    .section-title {
-        font-size: 1.5rem;
+    .about-pillars {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-pillar {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .about-pillar-name {
+        margin-top: 0;
+    }
+
+    .about-cta-block {
+        padding: 25px 20px;
+    }
+
+    .about-cta-text {
+        font-size: 1rem;
     }
 }
