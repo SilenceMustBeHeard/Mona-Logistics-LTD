@@ -1,69 +1,68 @@
-﻿@{
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@inject IJsonLocalizer Localizer
+
+@{
     ViewData["Title"] = Localizer["AboutTitle"];
 }
 
 <div class="about-page">
-    <!-- Hero Section -->
+
+    
+    <!-- HERO -->
+
     <section class="about-hero">
         <div class="container">
-            <div class="about-hero-content">
-                <div class="hero-badge">Mona Logistics LTD</div>
-                <h1 class="about-hero-title">@Localizer["AboutHeroTitle"]</h1>
-                <div class="about-hero-line"></div>
-                <p class="about-hero-subtitle">
-                    @Localizer["AboutHeroSubtitle"]
-                </p>
+            <span class="about-hero-badge">Mona Logistics LTD</span>
+            <h1 class="about-hero-title">@Localizer["AboutHeroTitle"]</h1>
+            <div class="about-hero-line"></div>
+            <p class="about-hero-subtitle">@Localizer["AboutHeroSubtitle"]</p>
+        </div>
+    </section>
+
+    
+    <!-- MISSION -->
+
+    <section class="about-mission">
+        <div class="container">
+            <div class="about-mission-block">
+                <p class="about-mission-text">@Localizer["AboutMissionQuote"]</p>
             </div>
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section class="mission-statement">
-        <div class="container">
-            <div class="mission-quote">
-                <p class="quote-text">
-                    @Localizer["AboutMissionQuote"]
-                </p>
-            </div>
-        </div>
-    </section>
+   
+    <!-- COMMITMENT -->
 
-    <!-- Commitment Section -->
-    <section class="commitment-section">
+    <section class="about-commitment">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <div class="commitment-image">
-                        <div class="image-placeholder">
-                            <div class="placeholder-content">
-                                <span>@Localizer["AboutPillar1"]</span>
-                                <span>@Localizer["AboutPillar2"]</span>
-                                <span>@Localizer["AboutPillar3"]</span>
-                            </div>
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <span class="about-tag">@Localizer["AboutCommitmentTag"]</span>
+                    <h2 class="about-title">@Localizer["AboutCommitmentTitle"] <span class="about-highlight">@Localizer["AboutCommitmentHighlight"]</span></h2>
+                    <div class="about-line"></div>
+                    <p class="about-text">@Localizer["AboutCommitmentText"]</p>
+                    <div class="about-pillars">
+                        <div class="about-pillar">
+                            <span class="about-pillar-num">01</span>
+                            <span class="about-pillar-name">@Localizer["AboutPillar1"]</span>
+                        </div>
+                        <div class="about-pillar">
+                            <span class="about-pillar-num">02</span>
+                            <span class="about-pillar-name">@Localizer["AboutPillar2"]</span>
+                        </div>
+                        <div class="about-pillar">
+                            <span class="about-pillar-num">03</span>
+                            <span class="about-pillar-name">@Localizer["AboutPillar3"]</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="commitment-content">
-                        <span class="section-tag">@Localizer["AboutCommitmentTag"]</span>
-                        <h2 class="section-title">@Localizer["AboutCommitmentTitle"] <span class="highlight">@Localizer["AboutCommitmentHighlight"]</span></h2>
-                        <div class="section-line"></div>
-                        <p class="commitment-text">
-                            @Localizer["AboutCommitmentText"]
-                        </p>
-                        <div class="pillars">
-                            <div class="pillar">
-                                <span class="pillar-number">01</span>
-                                <span class="pillar-name">@Localizer["AboutPillar1"]</span>
-                            </div>
-                            <div class="pillar">
-                                <span class="pillar-number">02</span>
-                                <span class="pillar-name">@Localizer["AboutPillar2"]</span>
-                            </div>
-                            <div class="pillar">
-                                <span class="pillar-number">03</span>
-                                <span class="pillar-name">@Localizer["AboutPillar3"]</span>
-                            </div>
+                <div class="col-lg-6">
+                    <div class="about-image-block">
+                        <div class="about-image-placeholder">
+                            <i class="bi bi-truck"></i>
+                            <span>@Localizer["AboutPillar1"]</span>
+                            <span>@Localizer["AboutPillar2"]</span>
+                            <span>@Localizer["AboutPillar3"]</span>
                         </div>
                     </div>
                 </div>
@@ -71,33 +70,36 @@
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="why-section">
+    
+    <!-- WHY US -->
+
+    <section class="about-why">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="section-tag">@Localizer["AboutWhyTag"]</span>
-                <h2 class="section-title">@Localizer["AboutWhyTitle"] <span class="highlight">@Localizer["AboutWhyHighlight"]</span><br>@Localizer["AboutWhySubtitle"]</h2>
-                <div class="section-line mx-auto"></div>
+            <div class="about-why-header">
+                <span class="about-tag">@Localizer["AboutWhyTag"]</span>
+                <h2 class="about-title">@Localizer["AboutWhyTitle"] <span class="about-highlight">@Localizer["AboutWhyHighlight"]</span></h2>
+                <p class="about-subtitle">@Localizer["AboutWhySubtitle"]</p>
+                <div class="about-line center"></div>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="why-card">
-                        <div class="why-number">01</div>
-                        <h3>@Localizer["AboutWhy1Title"]</h3>
+                    <div class="about-why-card">
+                        <div class="about-why-num">01</div>
+                        <h4>@Localizer["AboutWhy1Title"]</h4>
                         <p>@Localizer["AboutWhy1Desc"]</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="why-card">
-                        <div class="why-number">02</div>
-                        <h3>@Localizer["AboutWhy2Title"]</h3>
+                    <div class="about-why-card">
+                        <div class="about-why-num">02</div>
+                        <h4>@Localizer["AboutWhy2Title"]</h4>
                         <p>@Localizer["AboutWhy2Desc"]</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="why-card">
-                        <div class="why-number">03</div>
-                        <h3>@Localizer["AboutWhy3Title"]</h3>
+                    <div class="about-why-card">
+                        <div class="about-why-num">03</div>
+                        <h4>@Localizer["AboutWhy3Title"]</h4>
                         <p>@Localizer["AboutWhy3Desc"]</p>
                     </div>
                 </div>
@@ -105,21 +107,16 @@
         </div>
     </section>
 
-    <!-- Stats & Closing -->
-    <section class="closing-section">
+    
+    <!-- CTA / CLOSING -->
+
+    <section class="about-cta">
         <div class="container">
-            <div class="closing-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <p class="closing-text">
-                            @Localizer["AboutClosingText"]
-                        </p>
-                    </div>
-                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                        <a href="/Contact" class="btn-closing">@Localizer["AboutContactBtn"]</a>
-                    </div>
-                </div>
+            <div class="about-cta-block">
+                <p class="about-cta-text">@Localizer["AboutClosingText"]</p>
+                <a href="/Contact" class="about-cta-btn">@Localizer["AboutContactBtn"]</a>
             </div>
         </div>
     </section>
+
 </div>
