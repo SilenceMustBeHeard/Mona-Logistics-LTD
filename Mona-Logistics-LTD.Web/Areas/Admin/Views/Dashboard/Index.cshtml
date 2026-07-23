@@ -195,28 +195,33 @@
         const messagesEl = document.getElementById('messagesCount');
         const pendingEl = document.getElementById('pendingCount');
 
-        // Fetch real data from API endpoints
-        fetch('/api/admin/stats')
-            .then(response => response.json())
-            .then(data => {
-                animateNumber(loadRequestsEl, data.totalRequests || 0);
-                animateNumber(usersEl, data.totalUsers || 0);
-                animateNumber(trucksEl, data.activeTrucks || 0);
-                animateNumber(messagesEl, data.newMessages || 0);
-                if (pendingEl) {
-                    pendingEl.textContent = data.pendingRequests || 0;
-                }
-            })
-            .catch(() => {
-                // Fallback with sample data
-                animateNumber(loadRequestsEl, 42);
-                animateNumber(usersEl, 156);
-                animateNumber(trucksEl, 28);
-                animateNumber(messagesEl, 7);
-                if (pendingEl) {
-                    pendingEl.textContent = '5';
-                }
-            });
+
+
+
+    // Fetch real data from API endpoints
+
+
+    fetch('/api/admin/stats')
+        .then(response => response.json())
+        .then(data => {
+            animateNumber(loadRequestsEl, data.totalRequests || 0);
+            animateNumber(usersEl, data.totalUsers || 0);
+            animateNumber(trucksEl, data.activeTrucks || 0);
+            animateNumber(messagesEl, data.newMessages || 0);
+            if (pendingEl) {
+                pendingEl.textContent = data.pendingRequests || 0;
+            }
+        })
+        .catch(() => {
+            // Fallback with sample data - само ако API-то не работи
+            animateNumber(loadRequestsEl, 0);
+            animateNumber(usersEl, 0);
+            animateNumber(trucksEl, 0);
+            animateNumber(messagesEl, 0);
+            if (pendingEl) {
+                pendingEl.textContent = '0';
+            }
+        });
 
         // Add hover glow effect on cards
         document.querySelectorAll('.action-card').forEach(card => {
