@@ -406,7 +406,7 @@
 
   "UnreadMessages": "Unread",
   "RecentRequests": "Recent Requests",
-  
+
   "ViewAll": "View All",
 
   "ViewRequests": "View Requests",
@@ -420,7 +420,10 @@
   "CacheService": "Cache Service",
   "Operational": "Operational",
   "Degraded": "Degraded",
-  "OfferSent": "Offer Sent"
+  "OfferSent": "Offer Sent",
+  "HeroTitleLoggedIn": "Welcome back,",
+  "CTATitleLoggedIn": "Ready for a new shipment?",
+  "CTADescriptionLoggedIn": "Create a new request or view your shipments."
 
 
 }

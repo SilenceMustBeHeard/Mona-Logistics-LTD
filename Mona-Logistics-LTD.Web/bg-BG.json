@@ -425,7 +425,11 @@
   "CacheService": "Кеш услуга",
   "Operational": "Работи",
   "Degraded": "Забавен",
-  "OfferSent": "Изпратена оферта"
+  "OfferSent": "Изпратена оферта",
+  "HeroTitleLoggedIn": "Добре дошли отново,",
+  "CTATitleLoggedIn": "Готови ли сте за нов превоз?",
+  "CTADescriptionLoggedIn": "Създайте нова заявка или прегледайте вашите пратки."
+
 
 
 
