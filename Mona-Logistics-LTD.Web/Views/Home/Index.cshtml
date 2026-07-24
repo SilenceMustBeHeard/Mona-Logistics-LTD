@@ -1,5 +1,11 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using Mona_Logistics_LTD.Data.Models.Base
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
     ViewData["Title"] = Localizer["HomeTitle"];
+    var isLoggedIn = SignInManager.IsSignedIn(User);
 }
 
 <link rel="stylesheet" href="~/css/pages/home.css" asp-append-version="true" />
@@ -8,24 +14,39 @@
 <section class="home-hero">
     <div class="container">
         <div class="home-hero-content">
-          @*   <div class="home-hero-badge">
-                <span class="home-hero-icon"></span>
-                <span class="home-hero-tag">@Localizer["OfficialPartner"]</span>
-            </div> *@
             <h1 class="home-hero-title">
-                @Localizer["HeroTitle"]<br>
+                @if (isLoggedIn)
+                {
+                    <text>@Localizer["HeroTitleLoggedIn"]<br></text>
+                }
+                else
+                {
+                    <text>@Localizer["HeroTitle"]<br></text>
+                }
                 <span class="home-hero-title-accent">@Localizer["HeroTitleAccent"]</span>
             </h1>
             <p class="home-hero-description">
                 @Localizer["HeroDescription"]
             </p>
             <div class="home-hero-buttons">
-                <a asp-controller="Account" asp-action="Register" class="home-hero-btn-primary">
-                    <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
-                </a>
-                <a asp-controller="Shipment" asp-action="Track" class="home-hero-btn-secondary">
-                    <i class="bi bi-search"></i> @Localizer["TrackShipment"]
-                </a>
+                @if (isLoggedIn)
+                {
+                    <a asp-controller="LoadRequest" asp-action="Create" class="home-hero-btn-primary">
+                        <i class="bi bi-plus-circle-fill"></i> @Localizer["NewLoadRequest"]
+                    </a>
+                    <a asp-controller="Shipment" asp-action="MyShipments" class="home-hero-btn-secondary">
+                        <i class="bi bi-box-seam"></i> @Localizer["MyShipments"]
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Register" class="home-hero-btn-primary">
+                        <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
+                    </a>
+                    <a asp-controller="Shipment" asp-action="Track" class="home-hero-btn-secondary">
+                        <i class="bi bi-search"></i> @Localizer["TrackShipment"]
+                    </a>
+                }
             </div>
         </div>
     </div>
@@ -34,7 +55,7 @@
     <div class="home-hero-glow-2"></div>
 </section>
 
-<!-- Services Section -->
+<!-- Services Section (unchanged) -->
 <section class="home-services">
     <div class="container">
         <div class="home-section-header">
@@ -92,8 +113,6 @@
                     </div>
                 </div>
 
-            
-
                 <div class="home-whyus-item">
                     <i class="bi bi-clock-history home-whyus-icon"></i>
                     <div>
@@ -115,30 +134,48 @@
     </div>
 </section>
 
-<!-- Partners Section -->
-<section class="home-partners">
-    <div class="container">
-        <div class="home-partners-header">
-            <h2 class="home-partners-title">@Localizer["PartnersTitle"]</h2>
-            <p class="home-partners-subtitle">@Localizer["PartnersSubtitle"]</p>
-        </div>
-
-      
-    </div>
-</section>
-
-<!-- CTA Section -->
+<!-- CTA Section - different for logged in users -->
 <section class="home-cta">
     <div class="container">
-        <h2 class="home-cta-title">@Localizer["CTATitle"]</h2>
-        <p class="home-cta-description">@Localizer["CTADescription"]</p>
+        <h2 class="home-cta-title">
+            @if (isLoggedIn)
+            {
+                @Localizer["CTATitleLoggedIn"]
+            }
+            else
+            {
+                @Localizer["CTATitle"]
+            }
+        </h2>
+        <p class="home-cta-description">
+            @if (isLoggedIn)
+            {
+                @Localizer["CTADescriptionLoggedIn"]
+            }
+            else
+            {
+                @Localizer["CTADescription"]
+            }
+        </p>
         <div class="home-cta-buttons">
-            <a asp-controller="Account" asp-action="Register" class="home-cta-btn-primary">
-                <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
-            </a>
-        @*     <a href="/Contact" class="home-cta-btn-secondary">
-                <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"]
-            </a> *@
+            @if (isLoggedIn)
+            {
+                <a asp-controller="LoadRequest" asp-action="Create" class="home-cta-btn-primary">
+                    <i class="bi bi-plus-circle-fill"></i> @Localizer["NewLoadRequest"]
+                </a>
+                <a asp-controller="Shipment" asp-action="MyShipments" class="home-cta-btn-secondary">
+                    <i class="bi bi-box-seam"></i> @Localizer["MyShipments"]
+                </a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Register" class="home-cta-btn-primary">
+                    <i class="bi bi-person-plus-fill"></i> @Localizer["Register"]
+                </a>
+                <a href="/Contact" class="home-cta-btn-secondary">
+                    <i class="bi bi-envelope-fill"></i> @Localizer["ContactUs"]
+                </a>
+            }
         </div>
     </div>
 </section>
