@@ -383,3 +383,283 @@
         font-size: 1.4rem;
     }
 }
+
+
+/*User Management*/
+<style >
+.user-card {
+    background: var(--logistics-primary-dark);
+    border-radius: 16px;
+    border: 1px solid rgba(212,160,23,0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.user-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,160,23,0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.user-card.banned {
+    opacity: 0.6;
+    border-color: rgba(220,53,69,0.2);
+}
+
+.user-card.admin-card {
+    border-color: rgba(212,160,23,0.15);
+    background: rgba(212,160,23,0.02);
+}
+
+.user-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+}
+
+.user-avatar {
+    width: 72px;
+    height: 72px;
+    background: rgba(212,160,23,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2rem;
+    color: var(--logistics-accent);
+    border: 2px solid rgba(212,160,23,0.1);
+    position: relative;
+}
+
+    .user-avatar.banned-avatar {
+        opacity: 0.4;
+        border-color: #dc3545;
+    }
+
+.user-status {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--logistics-primary-dark);
+}
+
+    .user-status.status-active {
+        background: #28a745;
+        color: white;
+    }
+
+    .user-status.status-banned {
+        background: #dc3545;
+        color: white;
+    }
+
+.user-email {
+    color: white;
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    text-align: center;
+    word-break: break-all;
+}
+
+.user-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.role-admin {
+    background: rgba(212,160,23,0.2);
+    color: var(--logistics-accent);
+}
+
+.role-manager {
+    background: rgba(13,202,240,0.15);
+    color: #0dcaf0;
+}
+
+.role-user {
+    background: rgba(40,167,69,0.15);
+    color: #28a745;
+}
+
+/*FIX: DROPDOWN STYLES */
+
+.role-selector .logistics-input,
+.role-selector select,
+.role-selector .form-select {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    width: 100%;
+    appearance: auto;
+    -webkit-appearance: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .role-selector .logistics-input:hover,
+    .role-selector select:hover {
+        border-color: rgba(212, 160, 23, 0.3) !important;
+    }
+
+    .role-selector .logistics-input:focus,
+    .role-selector select:focus {
+        outline: none;
+        border-color: var(--logistics-accent) !important;
+        box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .role-selector select option {
+        background: #0a1a2a !important;
+        color: white !important;
+        padding: 8px 12px;
+    }
+
+        .role-selector select option:hover,
+        .role-selector select option:checked,
+        .role-selector select option:focus {
+            background: rgba(212, 160, 23, 0.25) !important;
+            color: var(--logistics-accent) !important;
+        }
+
+    .role-selector select:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+.role-selector .form-label {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+    display: block;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.role-selector {
+    margin-top: 4px;
+}
+
+.user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.action-form {
+    width: 100%;
+}
+
+.banned-ribbon {
+    position: absolute;
+    top: 12px;
+    right: -28px;
+    background: #dc3545;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 30px;
+    transform: rotate(45deg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 120px;
+    text-align: center;
+}
+
+.admin-crown {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    background: rgba(212,160,23,0.12);
+    color: var(--logistics-accent);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.admin-protected {
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    padding: 8px 0;
+    font-size: 0.8rem;
+}
+
+.stat-badge {
+    transition: all 0.3s ease;
+}
+
+    .stat-badge:hover {
+        transform: translateY(-2px);
+    }
+
+/* Toast styles */
+.user-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: var(--logistics-primary-dark);
+    border-left: 4px solid var(--logistics-accent);
+    color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+}
+
+    .user-toast.show {
+        transform: translateX(0);
+    }
+
+    .user-toast.success {
+        border-left-color: #28a745;
+    }
+
+    .user-toast.error {
+        border-left-color: #dc3545;
+    }
+
+@media (max-width: 768px) {
+    .user-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-badge {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+</style >
