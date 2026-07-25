@@ -504,7 +504,7 @@
     color: #28a745;
 }
 
-/*FIX: DROPDOWN STYLES */
+/*DROPDOWN STYLES IN SYSTEM MESSAGE*/
 
 .role-selector .logistics-input,
 .role-selector select,
@@ -662,4 +662,90 @@
     }
 }
 
-</style >
+
+/* DROPDOWN STYLES  */
+
+logistics-input, .form-select.logistics-input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    width: 100%;
+    appearance: auto;
+    -webkit-appearance: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logistics-input:hover,
+.form-select.logistics-input:hover {
+    border-color: rgba(212, 160, 23, 0.3) !important;
+}
+
+.logistics-input:focus,
+.form-select.logistics-input:focus {
+    outline: none;
+    border-color: var(--logistics-accent) !important;
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Styles for option dropdown-а */
+.form-select.logistics-input option {
+    background: #0a1a2a !important;
+    color: white !important;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+    .form-select.logistics-input option:hover,
+    .form-select.logistics-input option:checked,
+    .form-select.logistics-input option:focus {
+        background: rgba(212, 160, 23, 0.25) !important;
+        color: var(--logistics-accent) !important;
+    }
+
+/* forbidden select (disabled) */
+.form-select.logistics-input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Placeholder  styles for input-и */
+.logistics-input::placeholder {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Textarea styles */
+textarea.logistics-input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+    textarea.logistics-input:focus {
+        outline: none;
+        border-color: var(--logistics-accent) !important;
+        box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    textarea.logistics-input::placeholder {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+/* Validation errors */
+.text-danger {
+    color: #ff6b6b !important;
+}
+
+.border-danger {
+    border-color: #dc3545 !important;
+}
