@@ -86,7 +86,7 @@
   "AboutClosingText": "Мона Лоджистикс – надежден логистичен партньор, който движи бизнеса напред.",
   "AboutContactBtn": "Свържете се с нас",
 
-  //  ACCOUNT / AUTH 
+
   "LoginTitle": "Вход в системата",
   "LoginSubtitle": "Въведете вашите идентификационни данни",
   "RegisterTitle": "Регистрация",
@@ -116,7 +116,7 @@
   "LastName": "Фамилия",
   "AlternateEmail": "Алтернативен имейл",
 
-  //  ERROR PAGES 
+
   "BadRequestTitle": "Грешна заявка",
   "BadRequestBadge": "Грешна заявка",
   "BadRequestDesc": "Заявката, която изпратихте, не може да бъде обработена. Моля, проверете URL адреса и опитайте отново.",
@@ -160,7 +160,6 @@
   "RetryNow": "Опитай сега",
   "Retrying": "Опитвам отново",
 
-  //  ADMIN 
   "AdminInboxTitle": "Входящи съобщения",
   "AdminInboxSubtitle": "Управление на съобщения от клиенти",
   "BackToDashboard": "Обратно към таблото",
@@ -276,7 +275,7 @@
   "DashboardQuoteAuthor": "Мона Лоджистикс",
   "Frontend": "Сайт",
 
-  //  LOAD REQUESTS 
+
   "CreateLoadRequestTitle": "Нова заявка за превоз",
   "CreateLoadRequestSubtitle": "Попълнете данните за вашия товар и транспортни нужди",
   "ReviewRequestTitle": "Преглед на заявката",
@@ -349,7 +348,7 @@
   "Expired": "Изтекла",
   "Rejected": "Отхвърлена",
 
-  //  TRUCK LISTINGS 
+
   "CreateTruckListingTitle": "Запитване за камион",
   "CreateTruckListingSubtitle": "Попълнете данните за камиона и маршрута",
   "TruckDetailsTitle": "Информация за камиона",
@@ -406,7 +405,7 @@
   "Van": "Бус",
   "Trailer": "Ремарке",
 
-  //  CONTACT 
+   
   "ContactTitle": "Контакти - Mona Logistics",
   "ContactInfoTitle": "Информация за контакт",
   "ContactInfoSubtitle": "Ние сме тук, за да ви помогнем",
@@ -426,7 +425,6 @@
   "SendButton": "Изпрати съобщение",
   "BackToHome": "Обратно към началната страница",
 
-  //  TOASTS 
   "ToastSuccessTitle": "Успешно!",
   "ToastErrorTitle": "Грешка!",
   "ToastWarningTitle": "Внимание",

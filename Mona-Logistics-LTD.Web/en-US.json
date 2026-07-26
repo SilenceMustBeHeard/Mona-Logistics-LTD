@@ -86,7 +86,7 @@
   "AboutClosingText": "Mona Logistics – your reliable logistics partner, moving your business forward.",
   "AboutContactBtn": "Contact Us",
 
-  //  ACCOUNT / AUTH 
+
   "LoginTitle": "Login to System",
   "LoginSubtitle": "Enter your credentials",
   "RegisterTitle": "Create Account",
@@ -116,7 +116,7 @@
   "LastName": "Last Name",
   "AlternateEmail": "Alternate Email",
 
-  // ERROR PAGES 
+
   "BadRequestTitle": "Bad Request",
   "BadRequestBadge": "Bad Request",
   "BadRequestDesc": "The request you sent cannot be processed. Please check the URL and try again.",
@@ -160,7 +160,7 @@
   "RetryNow": "Retry Now",
   "Retrying": "Retrying...",
 
-  //  ADMIN 
+
   "AdminInboxTitle": "Inbox",
   "AdminInboxSubtitle": "Manage client messages",
   "BackToDashboard": "Back to Dashboard",
@@ -276,7 +276,7 @@
   "DashboardQuoteAuthor": "Mona Logistics",
   "Frontend": "Frontend",
 
-  //  LOAD REQUESTS 
+
   "CreateLoadRequestTitle": "New Load Request",
   "CreateLoadRequestSubtitle": "Fill in the details of your cargo and transport needs",
   "ReviewRequestTitle": "Review Your Request",
@@ -349,7 +349,7 @@
   "Expired": "Expired",
   "Rejected": "Rejected",
 
-  //  TRUCK LISTINGS 
+
   "CreateTruckListingTitle": "Ask for a Truck",
   "CreateTruckListingSubtitle": "Fill in the details of needed truck and route",
   "TruckDetailsTitle": "Truck Details",
@@ -406,7 +406,7 @@
   "Van": "Van",
   "Trailer": "Trailer",
 
-  // CONTACT 
+
   "ContactTitle": "Contact - Mona Logistics",
   "ContactInfoTitle": "Contact Information",
   "ContactInfoSubtitle": "We're here to help",
@@ -426,7 +426,6 @@
   "SendButton": "Send Message",
   "BackToHome": "Back to Home",
 
-  // TOASTS 
   "ToastSuccessTitle": "Success!",
   "ToastErrorTitle": "Error!",
   "ToastWarningTitle": "Warning",
