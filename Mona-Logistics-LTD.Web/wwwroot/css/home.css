@@ -1,4 +1,6 @@
-/*HOME PAGE STYLES*/
+/* ============================================
+   HOME PAGE STYLES
+   ============================================ */
 
 /* Hero Section */
 .home-hero {
@@ -54,40 +56,54 @@
     opacity: 0.9;
 }
 
+/* HERO BUTTONS */
 .home-hero-buttons {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.home-hero-btn-primary,
-.home-hero-btn-secondary {
+.home-hero-btn-primary {
+    background: #524e0ad2 !important;
+    color: var(--logistics-primary-dark) !important;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 40px;
     text-decoration: none;
     transition: all 0.3s ease;
-}
-
-.home-hero-btn-primary {
-    background: var(--secondary);
-    color: var(--dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    border: 2px solid var(--logistics-accent);
 }
 
     .home-hero-btn-primary:hover {
-        background: var(--secondary-dark);
+        background:#6b4e0060 !important;
+        border-color: var(--logistics-accent-dark);
         transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(212, 160, 23, 0.35);
+        color: var(--logistics-primary-dark) !important;
     }
 
 .home-hero-btn-secondary {
-    background: transparent;
-    border: 2px solid var(--secondary);
-    color: var(--secondary);
+    background: #0603444d !important;
+    border: 2px solid var(--logistics-accent) !important;
+    color: var(--logistics-accent) !important;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
 }
 
     .home-hero-btn-secondary:hover {
-        background: var(--secondary);
-        color: var(--dark);
+        background: #1a4a6b !important;
+        color: #d7e00e1a !important;
         transform: translateY(-2px);
     }
 
@@ -112,49 +128,6 @@
     border-radius: 50%;
 }
 
-/* Stats Section */
-.home-stats {
-    padding: 60px 0;
-    background: white;
-}
-
-.home-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    text-align: center;
-}
-
-.home-stat-card {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    text-align: center;
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--secondary);
-    box-shadow: var(--shadow-sm);
-    animation: slideUp 0.5s ease forwards;
-}
-
-    .home-stat-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
-
-.home-stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 8px;
-}
-
-.home-stat-label {
-    color: var(--gray);
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
 /* Services Section */
 .home-services {
     padding: 80px 0;
@@ -176,6 +149,7 @@
 .home-section-title {
     font-size: 36px;
     margin-top: 10px;
+    color: var(--dark);
 }
 
 .home-section-subtitle {
@@ -212,6 +186,7 @@
 .home-service-title {
     margin-bottom: 15px;
     font-size: 1.5rem;
+    color: var(--dark);
 }
 
 .home-service-description {
@@ -256,6 +231,7 @@
 .home-whyus-title {
     font-size: 36px;
     margin: 15px 0 20px;
+    color: var(--dark);
 }
 
 .home-whyus-description {
@@ -277,6 +253,7 @@
 
 .home-whyus-item-title {
     margin-bottom: 8px;
+    color: var(--dark);
 }
 
 .home-whyus-item-text {
@@ -303,56 +280,19 @@
 .home-testimonial-text {
     font-size: 18px;
     margin: 20px 0;
+    color: white;
 }
 
 .home-testimonial-author {
     font-weight: 600;
+    color: white;
 }
 
 .home-testimonial-title {
     font-size: 14px;
     opacity: 0.8;
+    color: rgba(255, 255, 255, 0.7);
 }
-
-/* Partners Section */
-.home-partners {
-    padding: 60px 0;
-    background: var(--light);
-}
-
-.home-partners-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.home-partners-title {
-    font-size: 28px;
-}
-
-.home-partners-subtitle {
-    color: var(--gray);
-}
-
-.home-partners-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    opacity: 0.7;
-}
-
-.home-partner-logo {
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--gray);
-    transition: all 0.3s ease;
-}
-
-    .home-partner-logo:hover {
-        color: var(--secondary);
-        opacity: 1;
-    }
 
 /* CTA Section */
 .home-cta {
@@ -375,6 +315,7 @@
     margin-right: auto;
 }
 
+/* CTA BUTTONS */
 .home-cta-buttons {
     display: flex;
     gap: 20px;
@@ -383,33 +324,46 @@
 }
 
 .home-cta-btn-primary {
-    background: var(--secondary);
-    color: var(--dark);
+    background: var(--logistics-accent) !important;
+    color: var(--logistics-primary-dark) !important;
     padding: 14px 32px;
+    font-size: 16px;
     border-radius: 40px;
     text-decoration: none;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    border: 2px solid var(--logistics-accent);
 }
 
     .home-cta-btn-primary:hover {
-        background: var(--secondary-dark);
+        background: var(--logistics-accent-dark) !important;
+        border-color: var(--logistics-accent-dark);
         transform: translateY(-2px);
-        color: var(--dark);
+        box-shadow: 0 4px 20px rgba(212, 160, 23, 0.35);
+        color: var(--logistics-primary-dark) !important;
     }
 
 .home-cta-btn-secondary {
-    border: 2px solid white;
-    background: transparent;
-    color: white;
+    background: transparent !important;
+    border: 2px solid var(--logistics-accent) !important;
+    color: var(--logistics-accent) !important;
     padding: 14px 32px;
+    font-size: 16px;
     border-radius: 40px;
     text-decoration: none;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
 }
 
     .home-cta-btn-secondary:hover {
-        background: white;
-        color: var(--primary-dark);
+        background: var(--logistics-accent) !important;
+        color: var(--logistics-primary-dark) !important;
         transform: translateY(-2px);
     }
 
@@ -453,8 +407,11 @@
     }
 
     .home-hero-btn-primary,
-    .home-hero-btn-secondary {
+    .home-hero-btn-secondary,
+    .home-cta-btn-primary,
+    .home-cta-btn-secondary {
         text-align: center;
+        justify-content: center;
     }
 
     .home-section-title {
