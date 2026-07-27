@@ -148,24 +148,25 @@ a:not(.btn):not(.nav-link):not(.dropdown-item):not(.text-link) {
     }
 
 .btn-logistics-primary {
-    background: var(--logistics-accent);
-    color: var(--logistics-primary-dark);
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 40px;
     text-decoration: none;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-weight: 600;
 }
 
     .btn-logistics-primary:hover {
-        background: var(--logistics-accent-dark);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--logistics-accent);
+        color: var(--logistics-accent);
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(212, 160, 23, 0.3);
-        color: var(--logistics-primary-dark);
     }
 
 .btn-logistics-outline {

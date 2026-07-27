@@ -1,5 +1,5 @@
 /* ============================================
-   HOME PAGE STYLES
+   HOME PAGE - Mona Logistics
    ============================================ */
 
 /* Hero Section */
@@ -32,8 +32,8 @@
 }
 
 .home-hero-tag {
-    background: var(--secondary);
-    color: var(--dark);
+    background: var(--logistics-accent);
+    color: var(--logistics-primary-dark);
     padding: 5px 15px;
     border-radius: 30px;
     font-size: 14px;
@@ -47,13 +47,14 @@
 }
 
 .home-hero-title-accent {
-    color: var(--secondary);
+    color: var(--logistics-accent);
 }
 
 .home-hero-description {
     font-size: 18px;
     margin-bottom: 30px;
     opacity: 0.9;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* HERO BUTTONS */
@@ -64,8 +65,9 @@
 }
 
 .home-hero-btn-primary {
-    background: #524e0ad2 !important;
-    color: var(--logistics-primary-dark) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 40px;
@@ -74,22 +76,20 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: 700;
-    border: 2px solid var(--logistics-accent);
+    font-weight: 600;
 }
 
     .home-hero-btn-primary:hover {
-        background:#6b4e0060 !important;
-        border-color: var(--logistics-accent-dark);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--logistics-accent);
+        color: var(--logistics-accent);
         transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(212, 160, 23, 0.35);
-        color: var(--logistics-primary-dark) !important;
     }
 
 .home-hero-btn-secondary {
-    background: #0603444d !important;
-    border: 2px solid var(--logistics-accent) !important;
-    color: var(--logistics-accent) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 40px;
@@ -102,8 +102,9 @@
 }
 
     .home-hero-btn-secondary:hover {
-        background: #1a4a6b !important;
-        color: #d7e00e1a !important;
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--logistics-accent);
+        color: var(--logistics-accent);
         transform: translateY(-2px);
     }
 
@@ -114,7 +115,7 @@
     right: -50px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
     border-radius: 50%;
 }
 
@@ -124,14 +125,14 @@
     left: -100px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(212, 160, 23, 0.05) 0%, transparent 70%);
     border-radius: 50%;
 }
 
 /* Services Section */
 .home-services {
     padding: 80px 0;
-    background: var(--light);
+    background: #f0f2f4;
 }
 
 .home-section-header {
@@ -140,7 +141,7 @@
 }
 
 .home-section-tag {
-    color: var(--secondary);
+    color: var(--logistics-accent);
     font-weight: 600;
     letter-spacing: 2px;
     display: inline-block;
@@ -149,11 +150,11 @@
 .home-section-title {
     font-size: 36px;
     margin-top: 10px;
-    color: var(--dark);
+    color: #1a2a36;
 }
 
 .home-section-subtitle {
-    color: var(--gray);
+    color: #6b7a88;
     max-width: 600px;
     margin: 15px auto 0;
 }
@@ -170,12 +171,12 @@
     text-align: center;
     padding: 40px 30px;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
     .home-service-card:hover {
         transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
 .home-service-icon {
@@ -186,29 +187,29 @@
 .home-service-title {
     margin-bottom: 15px;
     font-size: 1.5rem;
-    color: var(--dark);
+    color: #1a2a36;
 }
 
 .home-service-description {
-    color: var(--gray);
+    color: #6b7a88;
     margin-bottom: 20px;
 }
 
 .home-service-link {
-    color: var(--secondary);
+    color: var(--logistics-accent);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
     .home-service-link:hover {
-        color: var(--secondary-dark);
+        color: var(--logistics-accent-dark);
     }
 
 /* Why Choose Us Section */
 .home-whyus {
     padding: 80px 0;
-    background: white;
+    background: #0a2a3b;
 }
 
 .home-whyus-grid {
@@ -223,7 +224,7 @@
 }
 
 .home-whyus-tag {
-    color: var(--secondary);
+    color: var(--logistics-accent);
     font-weight: 600;
     letter-spacing: 2px;
 }
@@ -231,11 +232,11 @@
 .home-whyus-title {
     font-size: 36px;
     margin: 15px 0 20px;
-    color: var(--dark);
+    color: white;
 }
 
 .home-whyus-description {
-    color: var(--gray);
+    color: white;
     margin-bottom: 30px;
 }
 
@@ -247,17 +248,17 @@
 }
 
 .home-whyus-icon {
-    color: var(--secondary);
+    color: var(--logistics-accent);
     font-size: 24px;
 }
 
 .home-whyus-item-title {
     margin-bottom: 8px;
-    color: var(--dark);
+    color: white;
 }
 
 .home-whyus-item-text {
-    color: var(--gray);
+    color: white;
 }
 
 .home-testimonial {
@@ -274,13 +275,13 @@
 
 .home-testimonial-quote {
     font-size: 48px;
-    color: var(--secondary);
+    color: var(--logistics-accent);
 }
 
 .home-testimonial-text {
     font-size: 18px;
     margin: 20px 0;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .home-testimonial-author {
@@ -290,8 +291,8 @@
 
 .home-testimonial-title {
     font-size: 14px;
-    opacity: 0.8;
-    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.7;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* CTA Section */
@@ -313,6 +314,7 @@
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* CTA BUTTONS */
@@ -324,8 +326,9 @@
 }
 
 .home-cta-btn-primary {
-    background: var(--logistics-accent) !important;
-    color: var(--logistics-primary-dark) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 40px;
@@ -334,22 +337,20 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-weight: 700;
-    border: 2px solid var(--logistics-accent);
+    font-weight: 600;
 }
 
     .home-cta-btn-primary:hover {
-        background: var(--logistics-accent-dark) !important;
-        border-color: var(--logistics-accent-dark);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--logistics-accent);
+        color: var(--logistics-accent);
         transform: translateY(-2px);
-        box-shadow: 0 4px 20px rgba(212, 160, 23, 0.35);
-        color: var(--logistics-primary-dark) !important;
     }
 
 .home-cta-btn-secondary {
-    background: transparent !important;
-    border: 2px solid var(--logistics-accent) !important;
-    color: var(--logistics-accent) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
     padding: 14px 32px;
     font-size: 16px;
     border-radius: 40px;
@@ -362,8 +363,9 @@
 }
 
     .home-cta-btn-secondary:hover {
-        background: var(--logistics-accent) !important;
-        color: var(--logistics-primary-dark) !important;
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--logistics-accent);
+        color: var(--logistics-accent);
         transform: translateY(-2px);
     }
 
