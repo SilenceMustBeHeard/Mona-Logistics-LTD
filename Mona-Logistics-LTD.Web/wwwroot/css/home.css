@@ -1,6 +1,4 @@
-/* ============================================
-   HOME PAGE - Mona Logistics
-   ============================================ */
+/*  HOME PAGE - Mona Logistics */
 
 /* Hero Section */
 .home-hero {
@@ -65,8 +63,8 @@
 }
 
 .home-hero-btn-primary {
-    background: #284bd5cc;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: #07163776;
+    border: 2px solid #e6db11;
     color: white;
     padding: 14px 32px;
     font-size: 16px;
@@ -80,15 +78,15 @@
 }
 
     .home-hero-btn-primary:hover {
-        background: #d9ab1580;
-        border-color: var(--logistics-accent);
-        color: var(--logistics-accent);
+        background: #e6db11;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 
 .home-hero-btn-secondary {
     background: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid #e6db11;
     color: white;
     padding: 14px 32px;
     font-size: 16px;
@@ -102,9 +100,9 @@
 }
 
     .home-hero-btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: var(--logistics-accent);
-        color: var(--logistics-accent);
+        background: #e6db11;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 
@@ -209,7 +207,7 @@
 /* Why Choose Us Section */
 .home-whyus {
     padding: 80px 0;
-    background: #0a2a3b;
+    background: linear-gradient(135deg, #0a2a3b 0%, #1a4a6b 50%, #0d1a24 100%);
 }
 
 .home-whyus-grid {
@@ -298,7 +296,7 @@
 /* CTA Section */
 .home-cta {
     padding: 80px 0;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    background: linear-gradient(135deg, #0a2a3b 0%, #1a4a6b 50%, #0d1a24 100%);
     color: white;
     text-align: center;
 }
@@ -326,8 +324,8 @@
 }
 
 .home-cta-btn-primary {
-    background: #284bd5cc;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: #07163776;
+    border: 2px solid #e6db11;
     color: white;
     padding: 14px 32px;
     font-size: 16px;
@@ -341,15 +339,15 @@
 }
 
     .home-cta-btn-primary:hover {
-        background:#d9ab1580;
-        border-color: var(--logistics-accent);
-        color: var(--logistics-accent);
+        background: #e6db11;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 
 .home-cta-btn-secondary {
     background: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid #e6db11;
     color: white;
     padding: 14px 32px;
     font-size: 16px;
@@ -363,9 +361,9 @@
 }
 
     .home-cta-btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: var(--logistics-accent);
-        color: var(--logistics-accent);
+        background: #e6db11;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 
