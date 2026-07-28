@@ -41,7 +41,7 @@
 
 .about-hero-subtitle {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: white;
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.6;
@@ -64,7 +64,7 @@
 .about-mission-text {
     font-size: 1.3rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     line-height: 1.7;
     font-style: italic;
     position: relative;
@@ -74,7 +74,7 @@
     .about-mission-text::before {
         content: '"';
         font-size: 3rem;
-        color: var(--logistics-accent);
+        color: #e9eb0e;
         opacity: 0.4;
         position: absolute;
         top: -20px;
@@ -84,7 +84,7 @@
     .about-mission-text::after {
         content: '"';
         font-size: 3rem;
-        color: var(--logistics-accent);
+        color: #e9eb0e;
         opacity: 0.4;
         position: absolute;
         bottom: -40px;
@@ -99,7 +99,7 @@
 }
 
 .about-tag {
-    color: var(--logistics-accent);
+    color: white;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 2px;
@@ -122,7 +122,7 @@
 .about-line {
     width: 50px;
     height: 2px;
-    background: var(--logistics-accent);
+    background:white;
     margin-bottom: 20px;
 }
 
@@ -131,13 +131,13 @@
     }
 
 .about-text {
-    color: rgba(255, 255, 255, 0.65);
+    color: white;
     line-height: 1.7;
     margin-bottom: 25px;
 }
 
 .about-subtitle {
-    color: rgba(255, 255, 255, 0.5);
+    color: white;
     font-size: 1rem;
     margin-bottom: 20px;
 }
@@ -156,7 +156,7 @@
 .about-pillar-num {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--logistics-accent);
+    color: white;
     opacity: 0.5;
 }
 
@@ -188,12 +188,12 @@
 
     .about-image-placeholder i {
         font-size: 4rem;
-        color: var(--logistics-accent);
+        color: #e9eb0e;
         opacity: 0.4;
     }
 
     .about-image-placeholder span {
-        color: rgba(255, 255, 255, 0.3);
+        color: #e9eb0e;
         font-size: 0.9rem;
         letter-spacing: 1px;
     }
@@ -222,14 +222,14 @@
 
     .about-why-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(212, 160, 23, 0.2);
+        border-color: #9f9313d2;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
 .about-why-num {
     font-size: 2.5rem;
     font-weight: 700;
-    color: rgba(212, 160, 23, 0.12);
+    color: rgba#b49210;
     font-family: monospace;
     margin-bottom: 10px;
 }
@@ -242,7 +242,7 @@
 }
 
 .about-why-card p {
-    color: rgba(255, 255, 255, 0.5);
+    color: #eed61a;
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
