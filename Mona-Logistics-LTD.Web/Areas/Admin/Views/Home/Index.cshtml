@@ -1,0 +1,265 @@
+﻿@using Mona_Logistics_LTD.Services.Localizer.Interfaces
+@inject IJsonLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["AdminDashboardTitle"];
+}
+
+<div class="admin-dashboard">
+    <!-- Hero Section -->
+    <div class="dashboard-hero" data-aos="fade-down">
+        <div class="dashboard-hero-content">
+            <div class="hero-icon-wrapper">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <h1 class="dashboard-hero-title">@Localizer["AdminDashboardTitle"]</h1>
+            <div class="dashboard-hero-line"></div>
+            <p class="dashboard-hero-subtitle">@Localizer["AdminDashboardSubtitle"]</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="dashboard-stats" data-aos="fade-up" data-aos-delay="100">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <div class="stat-number" id="loadRequestsCount">0</div>
+                <div class="stat-label">@Localizer["TotalRequests"]</div>
+                <div class="stat-trend up">
+                    <i class="bi bi-arrow-up"></i> 12%
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="stat-number" id="usersCount">0</div>
+                <div class="stat-label">@Localizer["TotalUsers"]</div>
+                <div class="stat-trend up">
+                    <i class="bi bi-arrow-up"></i> 8%
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-truck"></i>
+                </div>
+                <div class="stat-number" id="trucksCount">0</div>
+                <div class="stat-label">@Localizer["ActiveTrucks"]</div>
+                <div class="stat-trend down">
+                    <i class="bi bi-arrow-down"></i> 3%
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="bi bi-envelope-paper"></i>
+                </div>
+                <div class="stat-number" id="messagesCount">0</div>
+                <div class="stat-label">@Localizer["NewMessages"]</div>
+                <div class="stat-trend up">
+                    <i class="bi bi-arrow-up"></i> 24%
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Grid -->
+    <div class="dashboard-actions" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="section-title">@Localizer["QuickActions"]</h2>
+        <div class="actions-grid">
+
+            <a asp-area="Admin" asp-controller="LoadRequestAdmin" asp-action="Index" class="action-card">
+                <div class="action-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <h5>@Localizer["LoadRequests"]</h5>
+                <p>@Localizer["LoadRequestsDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+            </a>
+
+            <a asp-area="Admin" asp-controller="UserManagement" asp-action="Index" class="action-card">
+                <div class="action-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <h5>@Localizer["UserManagement"]</h5>
+                <p>@Localizer["UserManagementDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+            </a>
+            <a asp-area="Admin" asp-controller="SystemMessage" asp-action="Index" class="action-card">
+                <div class="action-icon">
+                    <i class="bi bi-megaphone"></i>
+                </div>
+                <h5>@Localizer["SystemMessages"]</h5>
+                <p>@Localizer["SystemMessagesDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+            </a>
+            <a asp-area="Admin" asp-controller="TruckManagement" asp-action="Index" class="action-card">
+                <div class="action-icon">
+                    <i class="bi bi-truck"></i>
+                </div>
+                <h5>@Localizer["FleetManagement"]</h5>
+                <p>@Localizer["FleetManagementDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+            </a>
+            <a asp-area="Admin" asp-controller="LoadRequest" asp-action="Index" class="action-card highlight">
+                <div class="action-icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <h5>@Localizer["PendingRequests"]</h5>
+                <p>@Localizer["PendingRequestsDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+                <span class="action-badge" id="pendingCount">0</span>
+            </a>
+            <a asp-area="Admin" asp-controller="ContactMessage" asp-action="AdminInbox" class="action-card">
+                <div class="action-icon">
+                    <i class="bi bi-envelope-paper"></i>
+                </div>
+                <h5>@Localizer["ContactMessages"]</h5>
+                <p>@Localizer["ContactMessagesDesc"]</p>
+                <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- Recent Activity -->
+    <div class="dashboard-activity" data-aos="fade-up" data-aos-delay="300">
+        <h2 class="section-title">@Localizer["RecentActivity"]</h2>
+        <div class="activity-timeline" id="activityTimeline">
+            <div class="activity-item">
+                <div class="activity-time">@Localizer["JustNow"]</div>
+                <div class="activity-content">
+                    <div class="activity-dot"></div>
+                    <div class="activity-text">
+                        <strong>@Localizer["NewLoadRequest"]</strong>
+                        <span>@Localizer["From"] client@example.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-time">10 min</div>
+                <div class="activity-content">
+                    <div class="activity-dot"></div>
+                    <div class="activity-text">
+                        <strong>@Localizer["OfferAccepted"]</strong>
+                        <span>@Localizer["For"] @Localizer["CargoName"]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-time">1 hour</div>
+                <div class="activity-content">
+                    <div class="activity-dot"></div>
+                    <div class="activity-text">
+                        <strong>@Localizer["UserRegistered"]</strong>
+                        <span>@Localizer["NewUser"]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="dashboard-quote" data-aos="fade-up" data-aos-delay="400">
+        <div class="quote-line"></div>
+        <p class="quote-text">“@Localizer["DashboardQuote"]”</p>
+        <small class="quote-author">— @Localizer["DashboardQuoteAuthor"]</small>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate stats numbers
+        function animateNumber(element, target, duration = 2000) {
+            const start = 0;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * target);
+                element.textContent = current.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target.toLocaleString();
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Set initial values and animate
+        const loadRequestsEl = document.getElementById('loadRequestsCount');
+        const usersEl = document.getElementById('usersCount');
+        const trucksEl = document.getElementById('trucksCount');
+        const messagesEl = document.getElementById('messagesCount');
+        const pendingEl = document.getElementById('pendingCount');
+
+
+
+
+    // Fetch real data from API endpoints
+
+
+    fetch('/api/admin/stats')
+        .then(response => response.json())
+        .then(data => {
+            animateNumber(loadRequestsEl, data.totalRequests || 0);
+            animateNumber(usersEl, data.totalUsers || 0);
+            animateNumber(trucksEl, data.activeTrucks || 0);
+            animateNumber(messagesEl, data.newMessages || 0);
+            if (pendingEl) {
+                pendingEl.textContent = data.pendingRequests || 0;
+            }
+        })
+        .catch(() => {
+            // Fallback with sample data - само ако API-то не работи
+            animateNumber(loadRequestsEl, 0);
+            animateNumber(usersEl, 0);
+            animateNumber(trucksEl, 0);
+            animateNumber(messagesEl, 0);
+            if (pendingEl) {
+                pendingEl.textContent = '0';
+            }
+        });
+
+        // Add hover glow effect on cards
+        document.querySelectorAll('.action-card').forEach(card => {
+            card.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+
+        // Add micro-interactions to stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '0 12px 48px rgba(212, 160, 23, 0.15)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Real-time clock update in activity section
+        function updateActivityTimes() {
+            const items = document.querySelectorAll('.activity-item .activity-time');
+            const times = [
+                { id: 0, label: '@Localizer["JustNow"]' },
+                { id: 1, label: '10 min' },
+                { id: 2, label: '1 hour' }
+            ];
+            // In a real app, you'd fetch actual timestamps
+        }
+        updateActivityTimes();
+    });
+</script>
+

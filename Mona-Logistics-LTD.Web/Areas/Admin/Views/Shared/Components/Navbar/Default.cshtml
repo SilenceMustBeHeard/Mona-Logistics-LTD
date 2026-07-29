@@ -4,9 +4,7 @@
 @inject IJsonLocalizer Localizer
 
 <div class="nav-links d-flex gap-3">
-    <a class="nav-link-logistics" asp-controller="Home" asp-action="Index">
-        <i class="bi bi-house-door me-1"></i> @Localizer["Home"]
-    </a>
+ 
 
     @if (Model.IsLoggedIn)
     {
@@ -65,6 +63,9 @@
     }
     else
     {
+        <a class="nav-link-logistics" asp-controller="Home" asp-action="Index">
+            <i class="bi bi-house-door me-1"></i> @Localizer["Home"]
+        </a>
         <a class="nav-link-logistics" asp-controller="Home" asp-action="About">
             <i class="bi bi-info-circle me-1"></i> @Localizer["About"]
         </a>
