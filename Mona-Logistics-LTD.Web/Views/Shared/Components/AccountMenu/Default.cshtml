@@ -6,7 +6,7 @@
 @inject IJsonLocalizer Localizer
 
 @{
-   
+
     var isLoggedIn = Model is true;
     var isAdmin = ViewBag.IsAdmin as bool? ?? false;
     var isManager = ViewBag.IsManager as bool? ?? false;
@@ -64,7 +64,15 @@
 
     @if (isAdmin)
     {
+
+        <li>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="AdminProfile" asp-action="Index">
+                <i class="bi bi-shield-lock me-2 text-accent"></i> @Localizer["AdminProfile"]
+            </a>
+        </li>
+
         <li><hr class="dropdown-divider"></li>
+
         <li>
             <a class="dropdown-item" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
                 <i class="bi bi-shield-lock me-2 text-accent"></i> @Localizer["AdminDashboard"]
