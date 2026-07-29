@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
 .error-card {
@@ -15,17 +15,17 @@
 }
 
 .error-icon {
-    line-height: 1;
+    line-height: 2;
 }
 
 .badge-logistics {
     display: inline-block;
     padding: 6px 16px;
-    border: 1px solid rgba(212, 160, 23, 0.2);
+    border: 1px solid #e6db11;
     border-radius: 30px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--logistics-accent);
+    color:#b7a50f;
     background: rgba(212, 160, 23, 0.08);
 }
 
@@ -37,49 +37,53 @@
 }
 
 .error-description {
-    color: rgba(255, 255, 255, 0.6);
+    color: white;
     font-size: 1rem;
     max-width: 400px;
     margin: 10px auto 0;
 }
 
 .btn-logistics-primary {
+    background: #07163776;
+    border: 2px solid #e6db11;
+    color: white;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 28px;
-    background: var(--logistics-accent);
-    color: var(--logistics-primary-dark);
-    border: none;
-    border-radius: 10px;
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
 }
 
     .btn-logistics-primary:hover {
-        background: var(--logistics-accent-dark);
+        background: #cfa10a86;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
-        color: var(--logistics-primary-dark);
     }
 
 .btn-logistics-outline {
+    background: #07163776;
+    border: 2px solid #e6db11;
+    color: white;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 28px;
-    background: transparent;
-    border: 2px solid var(--logistics-accent);
-    color: var(--logistics-accent);
-    border-radius: 10px;
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
 }
 
     .btn-logistics-outline:hover {
-        background: var(--logistics-accent);
-        color: var(--logistics-primary-dark);
+        background: #cfa10a86;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 

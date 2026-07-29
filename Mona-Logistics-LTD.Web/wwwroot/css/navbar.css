@@ -251,9 +251,9 @@ body {
 }
 
     .nav-link-logistics.btn-create-request:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: var(--logistics-accent);
-        color: var(--logistics-accent);
+        background: #e6db11;
+        border-color: #b7a50f;
+        color: #0d1a24;
         transform: translateY(-2px);
     }
 
