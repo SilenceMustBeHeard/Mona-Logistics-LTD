@@ -121,7 +121,7 @@
                             @foreach (var message in Model.ContactMessages.OrderByDescending(x => x.CreatedOn))
                             {
                                 <div class="message-item mb-3 p-3 rounded-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);">
-                                    <a asp-area="Admin" asp-controller="ContactMessage" asp-action="Details" asp-route-id="@message.Id" class="message-link" style="text-decoration: none; color: inherit; display: block;">
+                                    <a asp-area="Admin" asp-controller="ContactMessageAdmin" asp-action="Details" asp-route-id="@message.Id" class="message-link" style="text-decoration: none; color: inherit; display: block;">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div class="d-flex gap-2 align-items-center">
                                                 <i class="bi bi-chat" style="color: var(--logistics-accent);"></i>
