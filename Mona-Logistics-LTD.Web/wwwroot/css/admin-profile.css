@@ -1,0 +1,210 @@
+/* ADMIN PROFILE - Mona Logistics */
+
+/* Profile Avatar */
+.profile-avatar-wrapper {
+    width: 120px;
+    height: 120px;
+    background: rgba(212, 160, 23, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(212, 160, 23, 0.2);
+}
+
+    .profile-avatar-wrapper i {
+        font-size: 4rem;
+        color: var(--logistics-accent);
+    }
+
+/* Profile Name */
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+}
+
+/* Admin Badge */
+.admin-badge {
+    background: var(--logistics-accent);
+    color: var(--logistics-primary-dark);
+    padding: 4px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+
+/* Profile Info Items */
+.profile-info-item {
+    margin-bottom: 12px;
+}
+
+    .profile-info-item small {
+        color: rgba(255, 255, 255, 0.4);
+        display: block;
+        font-size: 0.75rem;
+    }
+
+    .profile-info-item p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .profile-info-item p i {
+            color: var(--logistics-accent);
+        }
+
+.profile-divider {
+    border-color: rgba(212, 160, 23, 0.1);
+    margin: 1.5rem 0;
+}
+
+/* TABS  */
+.profile-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgba(212, 160, 23, 0.1);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-tab-btn {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+    .profile-tab-btn:hover {
+        color: white;
+    }
+
+    .profile-tab-btn.active {
+        background: var(--logistics-accent);
+        color: var(--logistics-primary-dark);
+    }
+
+    .profile-tab-btn .badge {
+        background: #e63946;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 20px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        margin-left: 4px;
+    }
+
+/*  MESSAGES STACK */
+.message-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+    .message-item:hover {
+        background: rgba(212, 160, 23, 0.03);
+        border-color: rgba(212, 160, 23, 0.12);
+    }
+
+.message-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.message-item .message-icon {
+    color: var(--logistics-accent);
+    flex-shrink: 0;
+}
+
+.message-item .message-title {
+    font-weight: 600;
+    margin-bottom: 0;
+    color: white;
+}
+
+.message-item .message-date {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.8rem;
+}
+
+.message-item .message-preview {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+.message-item .message-action {
+    color: var(--logistics-accent);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    transition: gap 0.3s ease;
+}
+
+    .message-item .message-action:hover {
+        gap: 8px;
+    }
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+}
+
+    .empty-state i {
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.1);
+    }
+
+    .empty-state p {
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 12px;
+    }
+
+    .empty-state .small {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .profile-tabs {
+        flex-direction: column;
+    }
+
+    .profile-tab-btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile-avatar-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+
+        .profile-avatar-wrapper i {
+            font-size: 3rem;
+        }
+}
