@@ -102,7 +102,7 @@
                 <p>@Localizer["FleetManagementDesc"]</p>
                 <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
             </a>
-            <a asp-area="Admin" asp-controller="LoadRequest" asp-action="Index" class="action-card highlight">
+           @*  <a asp-area="Admin" asp-controller="LoadRequestAdmin" asp-action="Index" class="action-card highlight">
                 <div class="action-icon">
                     <i class="bi bi-file-earmark-text"></i>
                 </div>
@@ -111,19 +111,19 @@
                 <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
                 <span class="action-badge" id="pendingCount">0</span>
             </a>
-            <a asp-area="Admin" asp-controller="ContactMessage" asp-action="AdminInbox" class="action-card">
+            <a asp-area="Admin" asp-controller="ContactMessageAdmin" asp-action="Details" class="action-card">
                 <div class="action-icon">
                     <i class="bi bi-envelope-paper"></i>
                 </div>
                 <h5>@Localizer["ContactMessages"]</h5>
                 <p>@Localizer["ContactMessagesDesc"]</p>
                 <span class="action-arrow"><i class="bi bi-arrow-right"></i></span>
-            </a>
+            </a> *@
         </div>
     </div>
 
 
-    <!-- Recent Activity -->
+   @*  <!-- Recent Activity -->
     <div class="dashboard-activity" data-aos="fade-up" data-aos-delay="300">
         <h2 class="section-title">@Localizer["RecentActivity"]</h2>
         <div class="activity-timeline" id="activityTimeline">
@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-
+ *@
     <!-- Quote -->
     <div class="dashboard-quote" data-aos="fade-up" data-aos-delay="400">
         <div class="quote-line"></div>

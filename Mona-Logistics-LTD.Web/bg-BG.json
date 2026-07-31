@@ -85,6 +85,7 @@
   "AboutWhy3Desc": "Мониторираме всяка пратка в реално време, от натоварването до финалната доставка.",
   "AboutClosingText": "Мона Лоджистикс – надежден логистичен партньор, който движи бизнеса напред.",
   "AboutContactBtn": "Свържете се с нас",
+  "ContactMessageDetailsTitle": "Детайли за съобщението",
 
 
   "LoginTitle": "Вход в системата",
@@ -405,7 +406,7 @@
   "Van": "Бус",
   "Trailer": "Ремарке",
 
-   
+
   "ContactTitle": "Контакти - Mona Logistics",
   "ContactInfoTitle": "Информация за контакт",
   "ContactInfoSubtitle": "Ние сме тук, за да ви помогнем",
