@@ -18,7 +18,7 @@ using Mona_Logistics_LTD.Web.Infrastructure.Extensions;
 using Mona_Logistics_LTD.Web.ViewComponents;
 using SendGrid;
 using System.Globalization;
-using Mona_Logistics_LTD.Data.Seeding;  
+using Mona_Logistics_LTD.Data.Seeding;
 
 namespace Mona_Logistics_LTD.Web;
 
@@ -31,9 +31,11 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Missing connection string");
 
+        //  DATABASE - PostgreSQL 
         builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseNpgsql(connectionString));
 
+        //  IDENTITY 
         builder.Services.AddDefaultIdentity<AppUser>(options =>
         {
             options.SignIn.RequireConfirmedAccount = false;
@@ -45,12 +47,14 @@ public class Program
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<AppDbContext>();
 
+        //  AUTHORIZATION 
         builder.Services.AddAuthorization(options =>
         {
             options.AddPolicy("AdminPolicy", p => p.RequireRole("Admin"));
             options.AddPolicy("ManagerPolicy", p => p.RequireRole("Manager"));
         });
 
+        //  SESSION 
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(options =>
         {
@@ -62,11 +66,12 @@ public class Program
 
         builder.Services.AddHttpContextAccessor();
 
-        // Register ViewComponents
+        //  VIEW COMPONENTS 
         builder.Services.AddScoped<NavbarViewComponent>();
         builder.Services.AddScoped<AccountMenuViewComponent>();
         builder.Services.AddScoped<UnreadMessageBadgeViewComponent>();
 
+        //  REPOSITORIES & SERVICES 
         builder.Services.RegisterRepositories(typeof(IAppUserRepository).Assembly);
         builder.Services.RegisterServices(typeof(IAccountService).Assembly);
 
@@ -74,6 +79,7 @@ public class Program
         builder.Services.AddScoped<IContactMessageClientService, ContactMessageClientService>();
         builder.Services.AddScoped<ISystemMessageClientService, SystemMessageClientService>();
 
+        //  SENDGRID 
         builder.Services.AddSingleton(sp =>
         {
             var apiKey = builder.Configuration["SendGrid:ApiKey"];
@@ -92,7 +98,7 @@ public class Program
 
         builder.Services.AddScoped<IEmailService, EmailService>();
 
-        //  LOCALIZATION  
+        //  LOCALIZATION 
         builder.Services.AddMemoryCache();
         builder.Services.AddSingleton<IJsonLocalizer, JsonLocalizerService>();
 
@@ -110,8 +116,12 @@ public class Program
             options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
         });
 
+        //  MVC 
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
+
+        //  HEALTH CHECKS 
+        builder.Services.AddHealthChecks();
 
         builder.Services.Configure<ApiBehaviorOptions>(options =>
         {
@@ -120,8 +130,7 @@ public class Program
 
         var app = builder.Build();
 
-       
-       
+        //  SEEDING 
         using (var scope = app.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -135,6 +144,7 @@ public class Program
             await IdentitySeeder.SeedManagerAsync(userManager);
         }
 
+        //  STATIC FILES 
         var provider = new FileExtensionContentTypeProvider();
         provider.Mappings[".glb"] = "model/gltf-binary";
 
@@ -163,6 +173,7 @@ public class Program
         app.UseAuthorization();
         app.UseSession();
 
+        //  ROUTING 
         app.MapGet("/", context =>
         {
             context.Response.Redirect("/Home/Index");
@@ -178,6 +189,9 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.MapRazorPages();
+
+        //  HEALTH CHECK 
+        app.MapHealthChecks("/health");
 
         await app.RunAsync();
     }
