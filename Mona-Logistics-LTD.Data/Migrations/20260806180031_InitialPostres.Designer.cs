@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mona_Logistics_LTD.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260806175144_InitialPostres")]
+    [Migration("20260806180031_InitialPostres")]
     partial class InitialPostres
     {
         /// <inheritdoc />
@@ -355,7 +355,7 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
@@ -492,7 +492,7 @@ namespace Mona_Logistics_LTD.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("CreatedById")
                         .IsRequired()

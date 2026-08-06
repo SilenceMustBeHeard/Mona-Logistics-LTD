@@ -33,7 +33,7 @@ public class LoadRequestConfig : IEntityTypeConfiguration<LoadRequest>
             .HasDefaultValue(LoadRequestStatus.Pending);
 
         builder.Property(lr => lr.CreatedAt)
-            .HasDefaultValueSql("GETUTCDATE()");
+              .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
         // Check constraints for numeric fields
         builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0"));

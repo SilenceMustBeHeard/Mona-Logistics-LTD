@@ -33,7 +33,7 @@ public class OfferConfig : IEntityTypeConfiguration<Offer>
             .HasDefaultValue(OfferStatus.Pending);
 
         builder.Property(o => o.CreatedAt)
-            .HasDefaultValueSql("GETUTCDATE()");
+               .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
         // Price must be positive
         builder.ToTable(tb => tb.HasCheckConstraint("CK_Offer_Price", "Price >= 0"));
