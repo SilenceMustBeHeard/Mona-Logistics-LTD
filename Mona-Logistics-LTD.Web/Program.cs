@@ -130,19 +130,32 @@ public class Program
 
         var app = builder.Build();
 
-        //  SEEDING 
-        using (var scope = app.Services.CreateScope())
+        // Add Identity
+        builder.Services.AddDefaultIdentity<AppUser>(options =>
         {
-            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            options.SignIn.RequireConfirmedAccount = true;
+            options.SignIn.RequireConfirmedEmail = true;
 
-            await context.Database.MigrateAsync();
+            // password settings
+            options.Password.RequireDigit = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequiredLength = 10;
+            options.Password.RequiredUniqueChars = 4;
 
-            await IdentitySeeder.SeedRolesAsync(roleManager);
-            await IdentitySeeder.SeedAdminAsync(userManager);
-            await IdentitySeeder.SeedManagerAsync(userManager);
-        }
+            // lockout settings
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.AllowedForNewUsers = true;
+
+            // user settings
+            options.User.RequireUniqueEmail = true;
+            options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+        })
+        .AddRoles<IdentityRole>()
+        .AddEntityFrameworkStores<AppDbContext>();
 
         //  STATIC FILES 
         var provider = new FileExtensionContentTypeProvider();
