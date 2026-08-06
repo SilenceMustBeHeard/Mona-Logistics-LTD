@@ -5,7 +5,7 @@ namespace Mona_Logistics_LTD.Data.Seeding;
 
 public static class IdentitySeeder
 {
-    private const string DefaultPassword = "1234567890";
+    private const string DefaultPassword = "M0n@123!!AlexKv";
 
     // 1️⃣ Seed Roles
     public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
@@ -22,16 +22,16 @@ public static class IdentitySeeder
     // 2️⃣ Seed Admin
     public static async Task SeedAdminAsync(UserManager<AppUser> userManager)
     {
-        const string adminEmail = "admin@mona.com";
-        const string adminAlternateEmail = "admin.alt@mona.com";
+        const string adminEmail = "alex.konstantinov3@gmail.com";
+        const string adminAlternateEmail = "alex.konstantinov3@gmail.com";
         var admin = await userManager.FindByEmailAsync(adminEmail);
 
         if (admin == null)
         {
             admin = new AppUser
             {
-                FirstName = "Admin",
-                LastName = "Administrator",
+                FirstName = "Alex",
+                LastName = "Konstantinov",
 
                 UserName = adminEmail,
                 Email = adminEmail,
