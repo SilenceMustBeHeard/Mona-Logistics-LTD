@@ -35,7 +35,7 @@ public class Program
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(connectionString));
 
-        //  IDENTITY - СИГУРНА КОНФИГУРАЦИЯ
+        //  IDENTITY 
         builder.Services.AddDefaultIdentity<AppUser>(options =>
         {
             options.SignIn.RequireConfirmedAccount = true;
