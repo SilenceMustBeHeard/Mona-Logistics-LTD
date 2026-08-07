@@ -11,7 +11,7 @@ public class LoadRequestConfig : IEntityTypeConfiguration<LoadRequest>
     {
         builder.HasKey(lr => lr.Id);
 
-        // Client (AppUser) - one-to-many, as LoadRequest  is the dependent side
+        // Client (AppUser) - one-to-many, as LoadRequest is the dependent side
         builder.HasOne(lr => lr.Client)
             .WithMany()
             .HasForeignKey(lr => lr.ClientId)
@@ -33,10 +33,10 @@ public class LoadRequestConfig : IEntityTypeConfiguration<LoadRequest>
             .HasDefaultValue(LoadRequestStatus.Pending);
 
         builder.Property(lr => lr.CreatedAt)
-              .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-        // Check constraints for numeric fields
-        builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0"));
-        builder.ToTable(tb => tb.HasCheckConstraint("CK_LoadRequest_LinearMeters", "LinearMeters > 0"));
+        // Check constraints for numeric fields 
+        builder.HasCheckConstraint("CK_LoadRequest_WeightKg", "\"WeightKg\" > 0");
+        builder.HasCheckConstraint("CK_LoadRequest_LinearMeters", "\"LinearMeters\" > 0");
     }
 }
