@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mona_Logistics_LTD.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260807021849_fixedCheckConstraints")]
-    partial class fixedCheckConstraints
+    [Migration("20260807025045_initialPostgres")]
+    partial class initialPostgres
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
