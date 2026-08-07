@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mona_Logistics_LTD.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialPostres : Migration
+    public partial class initialPostgres : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -303,8 +303,8 @@ namespace Mona_Logistics_LTD.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoadRequests", x => x.Id);
-                    table.CheckConstraint("CK_LoadRequest_LinearMeters", "LinearMeters > 0");
-                    table.CheckConstraint("CK_LoadRequest_WeightKg", "WeightKg > 0");
+                    table.CheckConstraint("CK_LoadRequest_LinearMeters", "\"LinearMeters\" > 0");
+                    table.CheckConstraint("CK_LoadRequest_WeightKg", "\"WeightKg\" > 0");
                     table.ForeignKey(
                         name: "FK_LoadRequests_AspNetUsers_ClientId",
                         column: x => x.ClientId,
@@ -432,8 +432,8 @@ namespace Mona_Logistics_LTD.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Offers", x => x.Id);
-                    table.CheckConstraint("CK_Offer_Discount", "Discount >= 0 AND Discount <= Price");
-                    table.CheckConstraint("CK_Offer_Price", "Price >= 0");
+                    table.CheckConstraint("CK_Offer_Discount", "\"Discount\" >= 0 AND \"Discount\" <= \"Price\"");
+                    table.CheckConstraint("CK_Offer_Price", "\"Price\" >= 0");
                     table.ForeignKey(
                         name: "FK_Offers_AspNetUsers_CreatedById",
                         column: x => x.CreatedById,
