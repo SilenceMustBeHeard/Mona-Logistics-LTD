@@ -17,7 +17,7 @@ public class OfferConfig : IEntityTypeConfiguration<Offer>
             .HasForeignKey<Offer>(o => o.LoadRequestId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        //  Creator (AppUser) - one-to-many
+        // Creator (AppUser) - one-to-many
         builder.HasOne(o => o.CreatedBy)
             .WithMany()
             .HasForeignKey(o => o.CreatedById)
@@ -33,10 +33,10 @@ public class OfferConfig : IEntityTypeConfiguration<Offer>
             .HasDefaultValue(OfferStatus.Pending);
 
         builder.Property(o => o.CreatedAt)
-               .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-        // Price must be positive
-        builder.ToTable(tb => tb.HasCheckConstraint("CK_Offer_Price", "Price >= 0"));
-        builder.ToTable(tb => tb.HasCheckConstraint("CK_Offer_Discount", "Discount >= 0 AND Discount <= Price"));
+        // Check constraints for numeric fields - FIXED with quotes
+        builder.HasCheckConstraint("CK_Offer_Price", "\"Price\" >= 0");
+        builder.HasCheckConstraint("CK_Offer_Discount", "\"Discount\" >= 0 AND \"Discount\" <= \"Price\"");
     }
 }
