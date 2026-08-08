@@ -28,10 +28,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        if (builder.Environment.IsProduction())
-        {
+       
             builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
-        }
+        
 
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Missing connection string");
