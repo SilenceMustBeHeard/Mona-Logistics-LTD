@@ -29,7 +29,6 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
        
-            builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
         
 
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
