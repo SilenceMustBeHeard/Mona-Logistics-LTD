@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Mona_Logistics_LTD.Data.Models.Base;
 
 namespace Mona_Logistics_LTD.Data.Seeding;
 
 public static class IdentitySeeder
 {
-    private const string DefaultPassword = "M0n@123!!AlexKv";
-
     // 1️⃣ Seed Roles
     public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
     {
@@ -20,10 +19,15 @@ public static class IdentitySeeder
     }
 
     // 2️⃣ Seed Admin
-    public static async Task SeedAdminAsync(UserManager<AppUser> userManager)
+    public static async Task SeedAdminAsync(
+        UserManager<AppUser> userManager,
+        IConfiguration configuration)
     {
-        const string adminEmail = "alex.konstantinov3@gmail.com";
-        const string adminAlternateEmail = "alex.konstantinov3@gmail.com";
+        var adminEmail = configuration["SeedData:AdminEmail"]
+            ?? throw new InvalidOperationException("SeedData:AdminEmail is missing");
+        var adminPassword = configuration["SeedData:AdminPassword"]
+            ?? throw new InvalidOperationException("SeedData:AdminPassword is missing");
+
         var admin = await userManager.FindByEmailAsync(adminEmail);
 
         if (admin == null)
@@ -32,13 +36,22 @@ public static class IdentitySeeder
             {
                 FirstName = "Alex",
                 LastName = "Konstantinov",
-
                 UserName = adminEmail,
                 Email = adminEmail,
-                AlternateEmail = adminAlternateEmail,
+                AlternateEmail = adminEmail,
                 EmailConfirmed = true
             };
-            await userManager.CreateAsync(admin, DefaultPassword);
+
+            var result = await userManager.CreateAsync(admin, adminPassword);
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                throw new Exception($"Admin creation failed: {errors}");
+            }
+
+            
+            admin = await userManager.FindByEmailAsync(adminEmail)
+                ?? throw new Exception("Admin not found after creation");
         }
 
         if (!await userManager.IsInRoleAsync(admin, "Admin"))
@@ -46,10 +59,15 @@ public static class IdentitySeeder
     }
 
     // 3️⃣ Seed Manager
-    public static async Task SeedManagerAsync(UserManager<AppUser> userManager)
+    public static async Task SeedManagerAsync(
+        UserManager<AppUser> userManager,
+        IConfiguration configuration)
     {
-        const string managerEmail = "manager@mona.com";
-        const string managerAlternateEmail = "manager.alt@mona.com";
+        var managerEmail = configuration["SeedData:ManagerEmail"]
+            ?? throw new InvalidOperationException("SeedData:ManagerEmail is missing");
+        var managerPassword = configuration["SeedData:ManagerPassword"]
+            ?? throw new InvalidOperationException("SeedData:ManagerPassword is missing");
+
         var manager = await userManager.FindByEmailAsync(managerEmail);
 
         if (manager == null)
@@ -60,10 +78,19 @@ public static class IdentitySeeder
                 LastName = "Manager",
                 UserName = managerEmail,
                 Email = managerEmail,
-                AlternateEmail = managerAlternateEmail,
+                AlternateEmail = "manager.alt@mona.com",
                 EmailConfirmed = true
             };
-            await userManager.CreateAsync(manager, DefaultPassword);
+
+            var result = await userManager.CreateAsync(manager, managerPassword);
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                throw new Exception($"Manager creation failed: {errors}");
+            }
+
+            manager = await userManager.FindByEmailAsync(managerEmail)
+                ?? throw new Exception("Manager not found after creation");
         }
 
         if (!await userManager.IsInRoleAsync(manager, "Manager"))
