@@ -151,17 +151,18 @@ public class Program
         //  SEEDING 
         using (var scope = app.Services.CreateScope())
         {
-            var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<AppDbContext>();
+            var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            var configuration = services.GetRequiredService<IConfiguration>(); 
 
             await context.Database.MigrateAsync();
 
             await IdentitySeeder.SeedRolesAsync(roleManager);
-            await IdentitySeeder.SeedAdminAsync(userManager);
-            await IdentitySeeder.SeedManagerAsync(userManager);
+            await IdentitySeeder.SeedAdminAsync(userManager, configuration); 
+            await IdentitySeeder.SeedManagerAsync(userManager, configuration); 
         }
-
         //  STATIC FILES 
         var provider = new FileExtensionContentTypeProvider();
         provider.Mappings[".glb"] = "model/gltf-binary";
