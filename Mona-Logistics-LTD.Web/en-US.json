@@ -86,8 +86,6 @@
   "AboutClosingText": "Mona Logistics – your reliable logistics partner, moving your business forward.",
   "AboutContactBtn": "Contact Us",
   "ContactMessageDetailsTitle": "Contact Message",
-
-
   "LoginTitle": "Login to System",
   "LoginSubtitle": "Enter your credentials",
   "RegisterTitle": "Create Account",
@@ -116,8 +114,6 @@
   "FirstName": "First Name",
   "LastName": "Last Name",
   "AlternateEmail": "Alternate Email",
-
-
   "BadRequestTitle": "Bad Request",
   "BadRequestBadge": "Bad Request",
   "BadRequestDesc": "The request you sent cannot be processed. Please check the URL and try again.",
@@ -160,8 +156,6 @@
   "Seconds": "seconds",
   "RetryNow": "Retry Now",
   "Retrying": "Retrying...",
-
-
   "AdminInboxTitle": "Inbox",
   "AdminInboxSubtitle": "Manage client messages",
   "BackToDashboard": "Back to Dashboard",
@@ -276,8 +270,6 @@
   "DashboardQuote": "A good logistician doesn't just move cargo — they move trust.",
   "DashboardQuoteAuthor": "Mona Logistics",
   "Frontend": "Frontend",
-
-
   "CreateLoadRequestTitle": "New Load Request",
   "CreateLoadRequestSubtitle": "Fill in the details of your cargo and transport needs",
   "ReviewRequestTitle": "Review Your Request",
@@ -349,8 +341,6 @@
   "OfferWaitingMessage": "Offer awaiting your decision.",
   "Expired": "Expired",
   "Rejected": "Rejected",
-
-
   "CreateTruckListingTitle": "Ask for a Truck",
   "CreateTruckListingSubtitle": "Fill in the details of needed truck and route",
   "TruckDetailsTitle": "Truck Details",
@@ -406,8 +396,6 @@
   "ContainerTruck": "Container Truck",
   "Van": "Van",
   "Trailer": "Trailer",
-
-
   "ContactTitle": "Contact - Mona Logistics",
   "ContactInfoTitle": "Contact Information",
   "ContactInfoSubtitle": "We're here to help",
@@ -426,7 +414,6 @@
   "MessageHint": "Minimum length: 10 characters",
   "SendButton": "Send Message",
   "BackToHome": "Back to Home",
-
   "ToastSuccessTitle": "Success!",
   "ToastErrorTitle": "Error!",
   "ToastWarningTitle": "Warning",
